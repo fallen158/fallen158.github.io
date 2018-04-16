@@ -229,6 +229,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/css布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敢看破不敢在乎">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/16/css布局/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T23:24:39+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CSS自适应常用布局"><a href="#CSS自适应常用布局" class="headerlink" title="CSS自适应常用布局"></a>CSS自适应常用布局</h2><p> <strong>单列布局：水平居中</strong></p>
+<p> <strong>1.使用inline-block 和 text-align实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;text-align: center;&#125;</span><br><span class="line">.child&#123;display: inline-block;&#125;</span><br></pre></td></tr></table></figure>
+<p>优点：兼容性好；<br>不足：需要同时设置子元素和父元素</p>
+<p><strong>2.给元素定宽，使用margin:0 auto来实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.child&#123;width: 200px; margin: 0 auto;&#125;</span><br></pre></td></tr></table></figure>
+<p>优点：兼容性好<br>缺点: 需要指定宽度</p>
+<p><strong>3.使用绝对定位实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;position:relative;&#125;</span><br><span class="line">/*或者实用margin-left的负值为盒子宽度的一半也可以实现，不过这样就必须知道盒子的宽度，但兼容性好*/</span><br><span class="line">.child&#123;position:absolute; left:50%; transform:translate(-50%);&#125;</span><br></pre></td></tr></table></figure>
+<p>不足：兼容性差,IE9及以上可用</p>
+<p><strong>4.实用flex布局实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*第一种方法*/</span><br><span class="line">.parent&#123;display:flex; justify-content:center;&#125;</span><br><span class="line">/*第二种方法*/</span><br><span class="line">.parent&#123;display:flex;&#125;</span><br><span class="line">.child&#123;margin:0 auto;&#125;</span><br></pre></td></tr></table></figure>
+<p>缺点：兼容性差，如果进行大面积的布局可能会影响效率</p>
+<p><strong>垂直居中</strong></p>
+<p><strong>1.vertical-align</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*第一种方法*/</span><br><span class="line">.parent&#123;display:table-cell;vertical-align:middle;height:20px;&#125;</span><br><span class="line">/*第二种方法*/</span><br><span class="line">.parent&#123;display:inline-block;vertical-align:middle;line-height:20px;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2.实用绝对定位</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;position:relative;&#125;</span><br><span class="line">.child&#123;positon:absolute; top:50%; transform:translate(0,-50%);&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.实用flex实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex; align-items:center;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>水平垂直全部居中</strong><br><strong>1.利用vertical-align,text-align,inline-block实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:table-cell; vertical-align:middle; text-align:center;&#125;</span><br><span class="line">.child&#123;display:inline-block;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.利用绝对定位实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;position:relative;&#125;</span><br><span class="line">.child&#123;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.利用flex实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex;justify-content:center;align-items:center;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>多列布局：左列定宽，右列自适应</strong></p>
+<p><strong>1.利用float+margin实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;float:left;width:100px;&#125;</span><br><span class="line">.right&#123;margin-left:100px;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.利用float+margin(fix)实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right-fix&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.left&#123;width:100px;float:left;&#125;</span><br><span class="line">.right-fix&#123;width:100%;margin-left:-100px;float:right;&#125;</span><br><span class="line">.right&#123;margin-left:100px;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3.使用float+overflow实现</strong></p>
+<p>overflow:hidden，触发bfc模式，浮动无法影响，隔离其他元素，IE6不支持，左侧left设置margin-left当作left与right之间的边距，右侧利用overflow:hidden 进行形成bfc模式<br>如果我们需要将两列设置为等高，可以用下述方法将“背景”设置为等高，其实并不是内容的等高</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;width:100px;float:left;&#125;</span><br><span class="line">.right&#123;overflow:hidden;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4.实用flex实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex;&#125;</span><br><span class="line">.left&#123;width:100px;&#125;</span><br><span class="line">.right&#123;flex:1;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>5.使用table实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:table;table-layout:fixed;width:100%;&#125;</span><br><span class="line">.left&#123;width:100px;&#125;</span><br><span class="line">.right,.left&#123;display:table-cell;&#125;</span><br></pre></td></tr></table></figure>
+<p>（右列定宽，左列自适应和上面一样，交换一下就好）</p>
+<p><strong>两列定宽，一列自适应</strong></p>
+<p>1.利用float+margin实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.left,.center&#123;float:left:width:200px;&#125;</span><br><span class="line">.right&#123;margin-left:400px;&#125;</span><br></pre></td></tr></table></figure>
+<p>2.利用float+overflow实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.left,.center&#123;float:left:width:200px;&#125;</span><br><span class="line">.right&#123;overflow:hidden;&#125;</span><br></pre></td></tr></table></figure>
+<p>3.利用table实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:table;table-layout:fixed;width:100%;&#125;</span><br><span class="line">.left,.center,.right&#123;display:table-cell;&#125;</span><br><span class="line">.left,.center&#123;width:200px;&#125;</span><br></pre></td></tr></table></figure>
+<p>4.利用flex实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex;&#125;</span><br><span class="line">.left,.center&#123;width:100px;&#125;</span><br><span class="line">.right&#123;flex:1&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>两侧定宽，中栏自适应</strong></p>
+<p>1.利用float+margin实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;width：100px;float:left;&#125;</span><br><span class="line">.center&#123;float:left;width:100%;margin-right:-200px;&#125;</span><br><span class="line">.right&#123;width:100px;float:right;&#125;</span><br></pre></td></tr></table></figure>
+<p>2.利用table实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;width:100%;display:table;table-layout:fixed&#125;</span><br><span class="line">.left,.center,.right&#123;display:table-cell;&#125;</span><br><span class="line">.left&#123;width:100px;&#125;</span><br><span class="line">.right&#123;width:100px;&#125;</span><br></pre></td></tr></table></figure>
+<p>3.利用flex实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex;&#125;</span><br><span class="line">.left&#123;width:100px;&#125;</span><br><span class="line">.center&#123;flex:1;&#125;</span><br><span class="line">.right&#123;width:100px;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>一列不定宽，一列自适应</strong></p>
+<p>1.利用float+overflow实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;float:left;&#125;</span><br><span class="line">.right&#123;overflow:hidden;&#125;</span><br></pre></td></tr></table></figure>
+<p>2.利用table实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:table;table-layout:fixed;width:100%;&#125;</span><br><span class="line">.left&#123;width:0.1%;&#125;</span><br><span class="line">.left,.right&#123;display:table-cell;&#125;</span><br></pre></td></tr></table></figure>
+<p>3.利用flex实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;display:flex;&#125;</span><br><span class="line">.right&#123;flex:1;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小技巧</strong></p>
+<p>1.清楚浮动：<br>给子元素设置浮动后，只需要简单的把它们的爸爸父元素设置clearfix，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;card clearfix&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;card__message&quot;&gt;&lt;/div&gt;</span><br><span class="line">   &lt;div class=&quot;card__staturer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.clearfix:after&#123;</span><br><span class="line">  content:&apos;&apos;;</span><br><span class="line">  display: block;</span><br><span class="line">  clear: both;</span><br><span class="line">&#125;</span><br><span class="line">.card__message&#123;</span><br><span class="line">  float:left;</span><br><span class="line">&#125;</span><br><span class="line">.card__staturer&#123;</span><br><span class="line">  float:left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/HTML入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1332,7 +1515,7 @@ process.exit(1)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
