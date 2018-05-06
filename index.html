@@ -229,6 +229,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/jQuery设计思想/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敢看破不敢在乎">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/06/jQuery设计思想/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T14:44:03+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="jQuery设计原理"><a href="#jQuery设计原理" class="headerlink" title="jQuery设计原理"></a>jQuery设计原理</h2><p>jQuery实质上是一个构造函数，该构造函数接受一个参数，jQuery通过这个参数利用原生API找到节点，之后返回一个方法对象，该方法对象上的方法对节点进行操作(方法使用了闭包)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(parameter)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if( typeof parameter === &apos;string&apos; )&#123;</span><br><span class="line">    let temp = document.querySelectorAll(parameter)</span><br><span class="line">    for(let i = 0;i &lt; temp.length;i++)&#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.length = temp.length</span><br><span class="line">  &#125; else if(parameter instanceof Node) &#123;</span><br><span class="line">    nodes[i] = parameter</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    addClass: function(className)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(className)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setText: function(text)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
+<p> jQuery简单API实现思想</p>
+<h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ul&gt;li&#123;id=item$&#125;*5</span><br><span class="line">window.wcdom =&#123;&#125;</span><br><span class="line">wcdom.getSilbing = function(node)&#123;</span><br><span class="line">   var allchildren = node.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== node)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">wcdom.addclass = function(node,classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">       var methoName = value ? &apos;add&apos; : &apos;remove&apos;   </span><br><span class="line">        node.classList[methoName](key)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">wcdom.getSilbing(item3)</span><br><span class="line">wcdom.addclass(item3,&#123;a:true,b:true,c:false&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="命令空间"><a href="#命令空间" class="headerlink" title="命令空间"></a>命令空间</h2><p>i. 扩展 Node 对象接口<br> 直接在 Node 对象上添加封装函数，修改Node.protorype对象，在Node.prototype对象上新增方法。  缺点： 修改 Node 对象的原型，可能无意识覆盖原生API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSilbing = function()&#123;</span><br><span class="line">   var allchildren = this.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== this)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function(classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">      &#125; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">item3.getSilbing()</span><br><span class="line">item3.addClass(&#123;a:true,b:true,c:false,d:true&#125;)</span><br><span class="line"></span><br><span class="line">也可以选择加入call，加啦call，this就是call第一个参数</span><br><span class="line">item3.getSilbing.call(item3)</span><br><span class="line">item3.addClass.call(item3,&#123;a:true,b:true,c:false,d:true&#125;)</span><br></pre></td></tr></table></figure>
+<p>ii.  创建一个新的接口  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">window.Node2 = function(node)&#123;</span><br><span class="line">  return&#123;</span><br><span class="line">    getSilbing:function()&#123;</span><br><span class="line">      var allchildren = node.parentNode.children</span><br><span class="line">        var array=&#123;</span><br><span class="line">           length:0</span><br><span class="line">        &#125;</span><br><span class="line">      for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">         if(allchildren[i] !== node)&#123;</span><br><span class="line">           array[array.length] = allchildren[i]</span><br><span class="line">           array.length += 1</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">        return array</span><br><span class="line">  &#125;,</span><br><span class="line">   addClass:function(classes)&#123;</span><br><span class="line">      for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">        &#125; </span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var node2 = Node2(item3)</span><br><span class="line">console.log(node2.getSilbing())</span><br><span class="line">node2.addClass(&#123;&apos;a&apos;:true,&apos;b&apos;:true,&apos;c&apos;:false&#125;)</span><br></pre></td></tr></table></figure>
+<p> 这种方法的优点是「无侵入」。jQuery构造函数生成一个新的对象，并给对象封装方法，不会修改节点上的原生Node对象。</p>
+<p>闭包：如果一个函数用到啦外面声明的变量，那么这个变量加函数就叫做闭包。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/JS小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1822,7 +1951,7 @@ process.exit(1)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
