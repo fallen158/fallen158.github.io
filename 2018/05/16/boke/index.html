@@ -79,17 +79,14 @@
 
 
 
-<meta name="description" content="mac搭建hexo基于github的博客环境配置  先安装node.js https://nodejs.org/en/ 按着官网的步骤一步步安装即可。 安装git：先安装Homebrew(https://brew.sh)，然后输入brew install git，安装git。  安装好Hexo  用终端执行以下命令：sudo npm install -g hexo 在桌面新建一个blog文件，然后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记昨日书">
-<meta property="og:url" content="http://yoursite.com/2018/04/08/my博客/index.html">
+<meta property="og:title" content="boke">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/boke/index.html">
 <meta property="og:site_name" content="记昨日书">
-<meta property="og:description" content="mac搭建hexo基于github的博客环境配置  先安装node.js https://nodejs.org/en/ 按着官网的步骤一步步安装即可。 安装git：先安装Homebrew(https://brew.sh)，然后输入brew install git，安装git。  安装好Hexo  用终端执行以下命令：sudo npm install -g hexo 在桌面新建一个blog文件，然后">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-08T13:05:02.000Z">
+<meta property="og:updated_time" content="2018-05-16T10:02:54.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记昨日书">
-<meta name="twitter:description" content="mac搭建hexo基于github的博客环境配置  先安装node.js https://nodejs.org/en/ 按着官网的步骤一步步安装即可。 安装git：先安装Homebrew(https://brew.sh)，然后输入brew install git，安装git。  安装好Hexo  用终端执行以下命令：sudo npm install -g hexo 在桌面新建一个blog文件，然后">
+<meta name="twitter:title" content="boke">
 
 
 
@@ -119,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/08/my博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/boke/"/>
 
 
 
 
 
-  <title> | 记昨日书</title>
+  <title>boke | 记昨日书</title>
   
 
 
@@ -232,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/my博客/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/boke/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="敢看破不敢在乎">
@@ -249,7 +246,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">boke</h1>
         
 
         <div class="post-meta">
@@ -261,8 +258,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T21:05:02+08:00">
-                2018-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T18:02:54+08:00">
+                2018-05-16
               </time>
             
 
@@ -299,45 +296,7 @@
       
 
       
-        <h2 id="mac搭建hexo基于github的博客"><a href="#mac搭建hexo基于github的博客" class="headerlink" title="mac搭建hexo基于github的博客"></a>mac搭建hexo基于github的博客</h2><p>环境配置</p>
-<ol>
-<li>先安装node.js <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 按着官网的步骤一步步安装即可。</li>
-<li>安装git：先安装Homebrew(<a href="https://brew.sh)，然后输入brew" target="_blank" rel="noopener">https://brew.sh)，然后输入brew</a> install git，安装git。</li>
-</ol>
-<p>安装好Hexo</p>
-<ol>
-<li>用终端执行以下命令：sudo npm install -g hexo</li>
-<li>在桌面新建一个blog文件，然后cd到那个目录下执行以下命令</li>
-<li>hexo init</li>
-<li>npm install</li>
-<li>hexo s</li>
-<li>此时用浏览器打开网站<a href="http://localhost:4000相信就可以看到一个静态网页" target="_blank" rel="noopener">http://localhost:4000相信就可以看到一个静态网页</a></li>
-</ol>
-<p>配置github</p>
-<ol>
-<li>创建github账号并新建一个项目，项目名称为用户名.github.io的固定写法 例如：fallen123.github.io</li>
-<li>blog文件下的_config.yml打开 并编辑网站的基本配置</li>
-<li>首先第 6 行的 title 改成你想要的名字</li>
-<li>第 9 行的 author 改成你的大名</li>
-<li>最后一行的 type 改成 type: git</li>
-<li>在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头你知道吧？不知道？不知道的话现在你知道了）</li>
-<li>最后一步一定要注意repo：type：后面有个空格，不然配置失败。</li>
-<li>npm install hexo-deployer-git –save，安装 git 部署插件</li>
-<li>hexo deploy</li>
-<li>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接，就可以看到博客啦。</li>
-<li></li>
-</ol>
-<p>创建第二篇博客</p>
-<ol>
-<li>hexo new 第二篇博客</li>
-<li>复制显示的路径，使用 start 路径 来编辑它</li>
-<li>hexo generate</li>
-<li>hexo deploy</li>
-<li>去看你的博客，应该能看到第二篇博客了</li>
-<li>如果想编写博客的内容呢，可以使用你可以使用CSDN网上面提供的MarkDown编辑器 <a href="http://write.blog.csdn.net/mdeditor" target="_blank" rel="noopener">http://write.blog.csdn.net/mdeditor</a><br>(在csdn博客写新文章的时候能切换到这种编辑器)，写好文章后，找到菜单栏的“导出到本地”选项<br>以md格式导出到本地，然后copy该md文件，粘贴到你当初建的博客站点文件夹下的source\<br>_posts目录下，一个md文件对应一篇博客文章。</li>
-<li>接着在你博客站点文件夹下右键空白处，选择Git Bash Here，输入：hexo generate，回车，生成静态页面，<br>再输入：hexo server，回车，到localhost:4000预览博客效果，  最后输入：hexo<br>deploy，回车，同步到github上去就行了。</li>
-</ol>
-
+        
       
     </div>
     
@@ -361,15 +320,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/06/jQuery设计思想/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/08/命令行/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,17 +380,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -446,7 +396,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -473,22 +423,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mac搭建hexo基于github的博客"><span class="nav-number">1.</span> <span class="nav-text">mac搭建hexo基于github的博客</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
