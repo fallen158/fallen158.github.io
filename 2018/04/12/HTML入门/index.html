@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML入门基础html版本（由w3c组织制定规范）：  HTML 4.01  XHTML  HTML 5  HTML 5.1  w3c(万维网联盟）  万维网联盟（W3C）由蒂姆·伯纳斯-李于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记昨日书">
+<meta property="og:url" content="http://yoursite.com/2018/04/12/HTML入门/index.html">
+<meta property="og:site_name" content="记昨日书">
+<meta property="og:description" content="HTML入门基础html版本（由w3c组织制定规范）：  HTML 4.01  XHTML  HTML 5  HTML 5.1  w3c(万维网联盟）  万维网联盟（W3C）由蒂姆·伯纳斯-李于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-12T13:52:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记昨日书">
+<meta name="twitter:description" content="HTML入门基础html版本（由w3c组织制定规范）：  HTML 4.01  XHTML  HTML 5  HTML 5.1  w3c(万维网联盟）  万维网联盟（W3C）由蒂姆·伯纳斯-李于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/12/HTML入门/"/>
+
+
+
+
+
+  <title> | 记昨日书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/fallen158" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/HTML入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T21:36:57+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/12/HTML入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/12/HTML入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML入门基础"><a href="#HTML入门基础" class="headerlink" title="HTML入门基础"></a>HTML入门基础</h1><p><strong>html版本（由w3c组织制定规范）：</strong></p>
+<ul>
+<li>HTML 4.01 </li>
+<li>XHTML </li>
+<li>HTML 5 </li>
+<li>HTML 5.1</li>
+</ul>
+<p><strong>w3c(万维网联盟）</strong></p>
+<ul>
+<li>万维网联盟（W3C）由蒂姆·伯纳斯-李于1994年10月离开欧洲核子研究中心（CERN）后成立，在欧盟执委会和国防高等研究计划署（DARPA）的支持下成立于麻省理工学院MIT计算机科学与人工智能实验室（MIT／LCS）[2]，DARPA曾率先推出了互联网及其前身ARPANET。</li>
+<li><p>该组织试图通过W3C制定的新标准来促进业界成员间的兼容性和协议。不兼容的HTML版本由不同的供应商提供，导致网页显示方式不一致。联盟试图让所有的供应商实施一套由联盟选择的核心原则和组件。</p>
+</li>
+<li><p>w3c的官方网站：<a href="https://www.w3.org/" target="_blank" rel="noopener">https://www.w3.org/</a></p>
+</li>
+<li><strong>国内的盗版网站：<a href="http://www.w3school.com.cn" target="_blank" rel="noopener">http://www.w3school.com.cn</a></strong></li>
+<li>mdn网站：<a href="https://developer.mozilla.org/zh-CN/docs/Learn（国内网络学习web的开发的最佳网站，有中文版）" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn（国内网络学习web的开发的最佳网站，有中文版）</a></li>
+</ul>
+<h1 id="html的常用标签元素："><a href="#html的常用标签元素：" class="headerlink" title="html的常用标签元素："></a>html的常用标签元素：</h1><h2 id="1-HTML5头部结构"><a href="#1-HTML5头部结构" class="headerlink" title="1.HTML5头部结构"></a>1.HTML5头部结构</h2><ul>
+<li>【！DOCTYPE  html】 </li>
+<li>声明文档类型为HTML5文件。 </li>
+<li><p>文档声明在HTML5文档必不可少，且必须放在文档的第一行。</p>
+</li>
+<li><p>【meta标签</p>
+</li>
+<li>1-charset属性：单独使用，设置文档字符及编码格式。</li>
+<li>写法：<meta charset="UTF-8"></li>
+<li>常见的中文编码格式：</li>
+<li>B-2312:国标码，简体中文</li>
+<li>GBK：扩展的国标编码，简体中文</li>
+<li>UTF-8:万国码 Unicode码，基本兼容各国语言</li>
+<li>2-http-equiv属性：需配合content属性使用。主要声明浏览器如何解释编译文件。</li>
+<li>写法：&lt;meta http-equiv=”属性值” content=”属性值详细内容”</li>
+<li>常用属性值：Content-Type HTML4.01之前的文档内容编码声明。</li>
+<li>refresh 网页刷新</li>
+<li>set-Cookie 设置浏览器cookie缓存</li>
+<li>3-name属性：需配合content属性使用，主要用于给搜索引擎提供必要信息。</li>
+<li>写法：&lt;meta name=”属性值” content=”属性值详细内容”</li>
+<li>重要属性值：author 作者，声明网站作者，常用公司网址表示</li>
+<li>keywords 网站关键字，多个关键字，用英文逗号分隔</li>
+<li>description 网页描述，搜索引擎显示在title下的描述内容</li>
+<li>☆☆http-equiv和name属性，必须与content属性配合使用，前两者只是用于</li>
+<li>声明即将修改哪些属性值，而实际的属性值内容，在content中描述。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;!--charset属性--&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;!--作者--&gt;</span><br><span class="line">&lt;meta name=&quot;anthor&quot; contet=&quot;http://www.yt4561761.com&quot; /&gt;</span><br><span class="line">&lt;!--网页关键字--&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;HTML5,网页，第一个&quot;／&gt;</span><br><span class="line">&lt;!--网页描述--&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=我的第一个网页 /&gt;</span><br><span class="line">&lt;!--声明文档的编码格式--&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>【link标签】</p>
+</li>
+<li><p>1-作用：用于为网页链接各种文件。</p>
+</li>
+<li>2-常用属性：</li>
+<li>rel：用于表明被链接文件与当前文件关系。icon表明被链接图片是当前网页的icon图标。</li>
+<li>type：表明被链接文件是什么类型，可省略。</li>
+<li>href：表明链接文件的地址。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;icon&quot; href=&quot;img/icon.png&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>【title标签】</p>
+</li>
+<li><p>网页的标题，即网页选项卡上的文字。<br><code>&lt;title&gt;虞涛&lt;/title&gt;</code></p>
+</li>
+</ul>
+<h2 id="2-常见的块级标签"><a href="#2-常见的块级标签" class="headerlink" title="2.常见的块级标签"></a>2.常见的块级标签</h2><ul>
+<li><p>【常见的块级标签】</p>
+</li>
+<li><p>标题标签<code>&lt;h1&gt;&lt;/h1&gt;...&lt;h6&gt;&lt;/h6&gt;</code></p>
+</li>
+<li>水平线<code>&lt;hr/&gt;</code></li>
+<li>段落<code>&lt;p&gt;&lt;/p&gt;</code></li>
+<li>换行<code>&lt;br/&gt;</code></li>
+<li>引用<code>&lt;blockquote&lt;/blockquote&gt;</code></li>
+<li><p>预格式<code>&lt;pre&gt;&lt;/pre&gt;</code></p>
+</li>
+<li><p>引用标签<code>&lt;blockquote&gt;&lt;/blockquote&gt;</code></p>
+</li>
+<li>表明标签中的文字，为引用的内容，浏览器显示为等宽字体，并缩进。</li>
+<li>cite属性，表明引用的来源，一般为引用的网址URL</li>
+<li><code>&lt;blockquote cite=&quot;http：//www.yt4561761.com&quot;&gt;</code></li>
+<li><code>hahahahahahah</code></li>
+<li><p><code>&lt;/blockquote&gt;</code></p>
+</li>
+<li><p>预格式标签<code>&lt;pre&gt;&lt;/pre&gt;</code></p>
+</li>
+<li>浏览器解析时，会按照等宽字体显示，并保留标签内的空格和回车。</li>
+<li>常用于保留代码格式。</li>
+<li><code>&lt;pre&gt;</code></li>
+<li>yt4561761</li>
+<li><code>&lt;/pre&gt;</code></li>
+</ul>
+<ul>
+<li>【有序列表ol order list】</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- &lt;ol&gt;</span><br><span class="line">- &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">- &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">- &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">- &lt;li&gt;4&lt;/li&gt;</span><br><span class="line">- &lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>【无序列表ul unorder list】</p>
+<ul>
+<li><code>&lt;ul&gt;</code></li>
+</ul>
+</li>
+<li><code>&lt;li&gt;。&lt;/li&gt;</code></li>
+<li><code>&lt;li&gt;。&lt;/li&gt;</code></li>
+<li><code>&lt;li&gt;。&lt;/li&gt;</code></li>
+<li><code>&lt;li&gt;。&lt;/li&gt;</code></li>
+<li><code>&lt;/ul&gt;</code></li>
+</ul>
+<ul>
+<li><p>【定义描述列表】</p>
+<ul>
+<li><code>&lt;dl&gt;</code></li>
+<li><code>&lt;dt&gt;标题&lt;/dt&gt;</code></li>
+<li><code>&lt;dd&gt;描述项&lt;/dd&gt;</code></li>
+<li><code>&lt;/dl&gt;</code></li>
+<li>一般情况下，标题dt只有一项。描述项dd可以有多项。</li>
+<li>浏览器显示时，标题顶格显示，dd缩进显示。</li>
+<li><code>&lt;dl&gt;</code></li>
+<li><code>&lt;dt&gt;这是dl列表的标题&lt;/dt&gt;</code></li>
+<li><code>&lt;dd&gt;描述项1&lt;/dd&gt;</code></li>
+<li><code>&lt;dd&gt;描述项2&lt;/dd&gt;</code></li>
+<li><code>&lt;dd&gt;描述项3&lt;/dd&gt;</code></li>
+<li><p><code>&lt;/dl&gt;</code></p>
+</li>
+<li><p>【图片组合标签figure】</p>
+</li>
+<li>1-<code>&lt;figure&gt;&lt;/figure&gt;</code>标签有两个子标签：</li>
+<li><code>&lt;img src=&quot;&quot;&gt;</code>:一幅图片，src表示图片的路径。</li>
+<li><code>&lt;figcaption&gt;&lt;/figcaption&gt;</code>：图片的标题</li>
+<li>2-浏览器显示为：图片与标题上下排列，且整体向后缩进一个单位。</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line"> - &lt;img src=&quot;img/icon.png&quot; /&gt;</span><br><span class="line">&lt;figcaption&gt;洪浩光伏</span><br><span class="line">&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"> - 【分区标签div】</span><br><span class="line"> - 常配合CSS使用，为网页中最常用的分区标签，常用于网页布局使用</span><br><span class="line"> - `&lt;div style=&quot;width：100%; height：100px; &quot;&gt;`</span><br><span class="line"> - 这是div里面的文字</span><br><span class="line"> - `&lt;h1&gt;div里面的标题&lt;/h1&gt;`</span><br><span class="line"> - `&lt;/div&gt;`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3.常见的行级标签</span><br><span class="line">---------</span><br><span class="line"></span><br><span class="line"> - 【常见的行级标签】</span><br><span class="line"> - span 文本：</span><br><span class="line"> - img 图片</span><br><span class="line"> - em 强调</span><br><span class="line"> - strong 强调</span><br><span class="line"> - q 短引用</span><br><span class="line"> - a 超链接</span><br><span class="line"> - i 倾斜</span><br><span class="line"> - b 加粗</span><br><span class="line"> - small 缩小字体</span><br><span class="line"> - u 下划线</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4.表格标签</span><br><span class="line">---------</span><br><span class="line"></span><br><span class="line"> - 【table】 </span><br><span class="line"> - `&lt;table&gt;&lt;/table&gt;`表格框 </span><br><span class="line"> - `&lt;tr&gt;&lt;/tr&gt;`表格行 </span><br><span class="line"> - `&lt;td&gt;&lt;/td&gt;`表格列 </span><br><span class="line"> - `&lt;th&gt;&lt;/th&gt;`表格标题列（将tr中的td替换为th)，th默认加粗且在单元格居中显示。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> - 【table的常用属性】</span><br><span class="line"> - 1-border：表格边框属性；当使用border=&quot;1&quot;设置边框时，会在所有td以及table上嵌套边框，当border加大时，只有table框会加粗。</span><br><span class="line"> - 2-cellspacing：单元格与单元格之间的间隙。当cellspacing=&quot;0&quot;时，单元格之间的间隙为0，但边框线并不会合并。</span><br><span class="line"> - ☆☆合并边框的写法style=&quot;border-collapse:collapse;&quot; 使用边框合并时，无需设置cellspacing。</span><br><span class="line"> - 3-cellpadding:单元格内边距，单元格中文字与单元格边框之间的距离。</span><br><span class="line"> - 4-width/height:表格的宽高</span><br><span class="line"> - 5-align：设置表格在父容器中的对齐方式 ，left/居左 center/居中 right/居右</span><br><span class="line"> - ☆☆当表格使用align属性时，相当于使表格浮动，可能会导致表格后面的元素受表格浮动影响，导致布局错乱。</span><br><span class="line"> - 6-bgcolor：背景色</span><br><span class="line"> - 7-background：背景图，后接相对路径。背景图和背景色同时生效时，图会覆盖背景色</span><br><span class="line"> - 8-bordercolor：设置边框颜色</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【&lt;tr&gt;&lt;td&gt;标签的属性】</span><br><span class="line"> - 当表格属性与行列属性冲突时，以行列属性为优先，属性设置优先级td&gt;tr&gt;table。</span><br><span class="line"> - 1-width,height:给单个的行列设置宽高</span><br><span class="line"> - 2-bgcolor:背景色</span><br><span class="line"> - 3-align：设置单元格中的文字，在单元格中的水平对齐方式 left/center/right</span><br><span class="line"> - 4-valign:设置单元格中文字在格中的垂直对齐方式 top/center/bottom</span><br><span class="line"> - 5-nowrap:nowrap=&quot;nowrap&quot;设置单元格文字行末不断行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【表格的跨行与跨列】</span><br><span class="line"> - 1-跨列：colspan，某单元格跨N列，则该单元格右边的N-1个td就不需要了。</span><br><span class="line"> - 2-跨行：rowspan，某单元格跨N行，则该单元格下边的N-1个td就不需要了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5.表格标签</span><br><span class="line">---------</span><br><span class="line"></span><br><span class="line"> - 【form两个重要属性】</span><br><span class="line"> </span><br><span class="line"> - action：表单需要提交的服务器地址</span><br><span class="line"> - method：表单提交数据使用的方法，get/post</span><br><span class="line"> - `&gt;&gt;&gt;`get和post的区别</span><br><span class="line"> - ① get传参使用URL传递，所有参数在地址栏可见，不安全；get传参数据量有限。</span><br><span class="line"> - ② post传参使用http请求传递，比较安全；post可以传递大量数据。</span><br><span class="line"> - 但是，get请求的传输速率比post快。</span><br><span class="line"> - `&gt;&gt;&gt;`URL传参的形式：链接URL地址?name1=value1&amp;name2=value2</span><br><span class="line"> </span><br><span class="line"> - 【input的常用属性】</span><br><span class="line"> </span><br><span class="line"> - ① type：设置input的输入类型</span><br><span class="line"> - ② name：给input输入框命名。一般情况下，name属性必不可少。因为，传递数据时，使用name=value（输入内容）的形式传递。</span><br><span class="line"> - ③ value：input输入框的默认值</span><br><span class="line"> - ④ placeholder：输入框的提示内容。当input有默认的value或输入值时，placeholder消失</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【input-type属性的常用属性值】</span><br><span class="line"> </span><br><span class="line"> - ① text：文本输入框</span><br><span class="line"> - ② password：密码输入框，输入内容默认显示小黑点</span><br><span class="line"> - ③ radio：单选框 checkbox：复选框</span><br><span class="line"> - `&gt;&gt;&gt;`使用radio/checkbox时，value属性必填。提交时，提交的为value中的默认值；</span><br><span class="line"> - `&gt;&gt;&gt;`radio/checkbox凭借name属性，确定是否属于同一组，name相同为同组，只能选一个</span><br><span class="line"> - `&gt;&gt;&gt;`使用checked=&quot;checked&quot;属性，设置默认选中项</span><br><span class="line"> - ④ file：文件上传</span><br><span class="line"> - `&gt;&gt;&gt;`使用accept=&quot;类型&quot;，设置只能上传的文件类型，如 accept=image/* 表示任意格式图片</span><br><span class="line"> - ⑤ submit：提交按钮，将所有表单数据提交至后台服务器</span><br><span class="line"> - ⑥ reset： 重置表单数据</span><br><span class="line"> - ⑦ image：图形提交按钮，跟submit一样，具有表单提交功能</span><br><span class="line"> - `&gt;&gt;&gt;`使用src属性确定图片路径</span><br><span class="line"> - ⑧ button：普通按钮，没有屌用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【属性名=属性值的情况】</span><br><span class="line"> </span><br><span class="line"> - ① checked=&quot;checked&quot; 设置radio</span><br><span class="line"> - ② multiple=&quot;multiple&quot; 设置select控件为多选，可在界面使用Ctrl+鼠标，进行多选。一般不用。</span><br><span class="line"> - ③ selected=&quot;selected&quot; 设置select控件，默认选中的option选项</span><br><span class="line"> - ④ readonly=&quot;readonly&quot;</span><br><span class="line"> - ⑤ disabled=&quot;disabled&quot;</span><br><span class="line"> - 当input被disabled时，该input的name和value数据将无法向后台传送</span><br><span class="line"> - ⑥ hidden=&quot;hidden&quot; 隐藏控件。等效于`&lt;input type=&quot;hiden&quot; /&gt;`</span><br><span class="line"> - ⑦ nowrap=nowrap</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【下拉选择控件 select】</span><br><span class="line"> </span><br><span class="line"> - ① 写法：`&lt;select&gt;`</span><br><span class="line"> - `&lt;option&gt;&lt;/option&gt;` option可以有N多个</span><br><span class="line"> - `&lt;/select&gt;`</span><br><span class="line"> - ② name属性，应该写在`&lt;select&gt;`上，所有选项只有一个name</span><br><span class="line"> - ③ multiple=&quot;multiple&quot; 设置select控件为多选，可在界面使用Ctrl+鼠标，进行多选。一般 不用。</span><br><span class="line"> - ④ option常用属性：</span><br><span class="line"> - value=&quot;&quot;:当option没有value属性时，往后台传递的是&lt;option&gt;&lt;/option&gt;标签中的文字；</span><br><span class="line"> - 当option有value属性时，往后台传递的是value属性的值。</span><br><span class="line"> - title=&quot;&quot;:鼠标指上后显示的文字。</span><br><span class="line"> - selected=&quot;selected&quot;:默认选中。</span><br><span class="line"> - ⑤ `&lt;optgroup label=&quot;山东省&quot;&gt;&lt;/optgroup&gt; :`用于将option标签进行分组，label属性表示分组名。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - 【文本域 textarea】</span><br><span class="line"> </span><br><span class="line"> - ① 写法：`&lt;textarea&gt;&lt;/textarea&gt;`</span><br><span class="line"> - ② 设置宽高style=&quot;width: 200px; height: 150px;&quot; 自身有cols=&quot;&quot; rows=&quot;&quot;两个属性，但不常用</span><br><span class="line"> - ③ readonly=&quot;readonly&quot; 设置为只读模式，不允许编辑。</span><br><span class="line"> - ④ style=&quot;resize: none;&quot; 设置为宽高不允许修改。</span><br><span class="line"> - ⑤ style=&quot;overflow: ;&quot; 设置当文字超出区域时，如何处理。</span><br><span class="line"> - `&gt;&gt;&gt;` 也可以通过overflow-x/overflow-y分别设置水平垂直方向的显示方式。</span><br><span class="line"> - `&gt;&gt;&gt;` 常用属性值:hidden 超出区域的文字，隐藏无法显示</span><br><span class="line"> - scroll 无论文字多少，均会显示滚动</span><br><span class="line"> - auto 自动，根据文字多少自动决定是否显示滚动条（默认样式）</span><br><span class="line"> </span><br><span class="line">【表格的边框与标题】</span><br><span class="line"></span><br><span class="line">`&lt;fieldset&gt;` 表格的边框</span><br><span class="line">`&lt;legend&gt;`边框标题`&lt;/legend&gt;`</span><br><span class="line">...若干个表单元素</span><br></pre></td></tr></table></figure>
+<p><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**【HTML5智能表单】**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> - ① H5新增input的form属性，用于指定特定form表单的id，实现input无需放在form标签之中，即可通过表单提交。</span><br><span class="line"> - `&lt;form id=foo&gt;`</span><br><span class="line"> - ...</span><br><span class="line"> - `&lt;/form&gt;`</span><br><span class="line"> - `&lt;input ... form=&quot;foo&quot;/&gt;`</span><br><span class="line"> - ② 新增很多个type新属性，详见表格</span><br><span class="line"> - ![这里写图片描述](http://img.blog.csdn.net/20180412201641439?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2VpeGluXzQxOTY3OTAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">**空标签：（没有闭合元素的标签）**</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><area></li>
+<li><base></li>
+<li><br></li>
+<li><col></li>
+<li><colgroup> when the span is present</colgroup></li>
+<li><command></li>
+<li><embed></li>
+<li><hr></li>
+<li><img></li>
+<li><input></li>
+<li><keygen></li>
+<li><link></li>
+<li><meta></li>
+<li><param></li>
+<li><source></li>
+<li><track></li>
+<li><wbr></li>
+</ul>
+<p><code>`</code></p>
+<p><strong>可替换标签：</strong></p>
+<ul>
+<li><p>CSS 里，可替换元素（replaced element）的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。<br>典型的可替换元素有 <code>&lt;img&gt;、 &lt;object&gt;、 &lt;video&gt;</code> 和 表单元素，如<code>&lt;textarea&gt;、 &lt;input&gt;</code> 。<br>某些元素只在一些特殊情况下表现为可替换元素，例如 <code>&lt;audio&gt; 和 &lt;canvas&gt; 。</code> 通过 CSS content 属性来插入的对象<br>被称作 匿名可替换元素（anonymous replaced elements）。</p>
+</li>
+<li><p>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。</p>
+</li>
+<li><p>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像vertical-align之类的一些 CSS属性用到。</p>
+</li>
+</ul>
+<p><strong>ififrame标签的用法：<code>&lt;iframe src=&quot;https://www.baidu.com&quot; name=&quot;xxx&quot;&gt;&lt;/iframe&gt;</code> （让你的html页面中，再嵌套页面）</strong></p>
+<p><strong><a>标签属性的特殊用法：</a></strong></p>
+<ul>
+<li>1.download ：让链接可用于下载文件</li>
+<li>2.traget=”_blank”(在新页面打开)   </li>
+<li>traget=”_self”（在当前页面打开） </li>
+<li>traget=”_parnet” （在父元素页面打开，需要结合iframe结合使用）</li>
+<li>traget=”_top”（在最顶层页面打开，结合几个html页面文件使用）</li>
+<li>3.&lt;a. href=”//qq.com”&gt; 可以使:</li>
+<li>浏览器根据当前协议，补全无协议的链接</li>
+<li>如果使用file://协议浏览页面，就会访问到file://qq.com ，这是一个不存在的路径</li>
+<li>4.伪协议：&lt;a href=”javascript: alert(1);&gt;qq  (点开a标签可以使用javascript语法</li>
+<li>&lt;a href=”javascript: ;&gt;qq (可以使a链接点开之后不做任何的事情，满足某些奇葩要求）</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/编写一个server服务器/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/16/css布局/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2018/04/12/HTML入门/"
+           data-title="" data-url="http://yoursite.com/2018/04/12/HTML入门/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML入门基础"><span class="nav-number">1.</span> <span class="nav-text">HTML入门基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html的常用标签元素："><span class="nav-number">2.</span> <span class="nav-text">html的常用标签元素：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML5头部结构"><span class="nav-number">2.1.</span> <span class="nav-text">1.HTML5头部结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-常见的块级标签"><span class="nav-number">2.2.</span> <span class="nav-text">2.常见的块级标签</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"db1e7f005cb04ad2dcc8367fcdcd0569"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
