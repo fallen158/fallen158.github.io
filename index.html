@@ -1,110 +1,468 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <title>记昨日书</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   
-    <meta name="author" content="敢看破不敢在乎">
-  
-  
-  <meta property="og:type" content="website">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="哪里会有人喜欢孤独，不过是不喜欢失望">
+<meta property="og:type" content="website">
 <meta property="og:title" content="记昨日书">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="记昨日书">
-<meta property="og:locale" content="default">
+<meta property="og:description" content="哪里会有人喜欢孤独，不过是不喜欢失望">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记昨日书">
+<meta name="twitter:description" content="哪里会有人喜欢孤独，不过是不喜欢失望">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>记昨日书</title>
   
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
+
+
+
+
+
+
+
+
 </head>
 
-<body>
-  <div class="wrapper">
-    <header id="header">
-  <div class="title">
-    <h1><a href="/">记昨日书</a></h1>
-    <p><a href="/"></a></p>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <nav class="nav">
-    <ul>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
       
-        <li><a href="/archives">Archives</a></li>
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
       
-        <li><a href="/reading">Reading</a></li>
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
       
-        <li><a href="/about">About</a></li>
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
       
     </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
-</header>
-    <div class="content">
-
-
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/05/16/第一篇博客/">
-  <time datetime="2018-05-16T10:10:35.000Z">
-    2018-05-16
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/05/16/第一篇博客/">第一篇博客</a></h1>
   
 
-  </header>
   
-  <div class="entry">
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/python学习之旅/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/16/python学习之旅/" itemprop="url">python学习之旅</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T19:21:30+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/16/python学习之旅/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/16/python学习之旅/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/jQuery设计思想/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/06/jQuery设计思想/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T14:44:03+08:00">
+                2018-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/06/jQuery设计思想/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/06/jQuery设计思想/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/05/06/jQuery设计思想/">
-  <time datetime="2018-05-06T06:44:03.000Z">
-    2018-05-06
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/05/06/jQuery设计思想/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="jQuery设计原理"><a href="#jQuery设计原理" class="headerlink" title="jQuery设计原理"></a>jQuery设计原理</h2><p>jQuery实质上是一个构造函数，该构造函数接受一个参数，jQuery通过这个参数利用原生API找到节点，之后返回一个方法对象，该方法对象上的方法对节点进行操作(方法使用了闭包)。</p>
+      
+        
+          
+            <h2 id="jQuery设计原理"><a href="#jQuery设计原理" class="headerlink" title="jQuery设计原理"></a>jQuery设计原理</h2><p>jQuery实质上是一个构造函数，该构造函数接受一个参数，jQuery通过这个参数利用原生API找到节点，之后返回一个方法对象，该方法对象上的方法对节点进行操作(方法使用了闭包)。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(parameter)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if( typeof parameter === &apos;string&apos; )&#123;</span><br><span class="line">    let temp = document.querySelectorAll(parameter)</span><br><span class="line">    for(let i = 0;i &lt; temp.length;i++)&#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.length = temp.length</span><br><span class="line">  &#125; else if(parameter instanceof Node) &#123;</span><br><span class="line">    nodes[i] = parameter</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    addClass: function(className)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(className)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setText: function(text)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
 <p> jQuery简单API实现思想</p>
 <h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ul&gt;li&#123;id=item$&#125;*5</span><br><span class="line">window.wcdom =&#123;&#125;</span><br><span class="line">wcdom.getSilbing = function(node)&#123;</span><br><span class="line">   var allchildren = node.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== node)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">wcdom.addclass = function(node,classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">       var methoName = value ? &apos;add&apos; : &apos;remove&apos;   </span><br><span class="line">        node.classList[methoName](key)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">wcdom.getSilbing(item3)</span><br><span class="line">wcdom.addclass(item3,&#123;a:true,b:true,c:false&#125;)</span><br></pre></td></tr></table></figure>
@@ -115,39 +473,135 @@
 <p> 这种方法的优点是「无侵入」。jQuery构造函数生成一个新的对象，并给对象封装方法，不会修改节点上的原生Node对象。</p>
 <p>闭包：如果一个函数用到啦外面声明的变量，那么这个变量加函数就叫做闭包。</p>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/JS小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/24/JS小技巧/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T11:34:56+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/24/JS小技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/24/JS小技巧/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/24/JS小技巧/">
-  <time datetime="2018-04-24T03:34:56.000Z">
-    2018-04-24
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/24/JS小技巧/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="JavaScript小技巧"><a href="#JavaScript小技巧" class="headerlink" title="JavaScript小技巧"></a>JavaScript小技巧</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>1.nubmer（数值）<br>2.null（空值）<br>3.boolean（布尔值）<br>4.string（字符串）<br>5.undefined（未定义的值）<br>6.symblo（ES）<br>7.object（对象）</p>
+      
+        
+          
+            <h1 id="JavaScript小技巧"><a href="#JavaScript小技巧" class="headerlink" title="JavaScript小技巧"></a>JavaScript小技巧</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>1.nubmer（数值）<br>2.null（空值）<br>3.boolean（布尔值）<br>4.string（字符串）<br>5.undefined（未定义的值）<br>6.symblo（ES）<br>7.object（对象）</p>
 <h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p><strong>string字符的转法</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">数值</span><br><span class="line">var n = 1 \\undefined</span><br><span class="line">n.toString()</span><br><span class="line">&quot;1&quot;</span><br><span class="line"></span><br><span class="line">布尔值</span><br><span class="line">var b = true \\undefined</span><br><span class="line">n.toString()</span><br><span class="line">&quot;1&quot;</span><br><span class="line"></span><br><span class="line">对象(可以转，但结果不是我们想要的</span><br><span class="line">var object = &#123;name:&apos;frank&apos;&#125; \\undefined</span><br><span class="line">object.toString()</span><br><span class="line">&quot;[object Object]&quot;</span><br><span class="line"></span><br><span class="line">null,undefined不能转（报错，不能读没有toString这个API）</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.toString(1) \\ &quot;1&quot;</span><br></pre></td></tr></table></figure>
@@ -177,39 +631,135 @@
 <p><img src="http://img.blog.csdn.net/20180424113305675?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2VpeGluXzQxOTY3OTAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p><img src="//img-blog.csdn.net/20180425102622750?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk2NzkwMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/算法与数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/18/算法与数据结构/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T21:34:37+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/18/算法与数据结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/18/算法与数据结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/18/算法与数据结构/">
-  <time datetime="2018-04-18T13:34:37.000Z">
-    2018-04-18
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/18/算法与数据结构/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="算法与数据结构入门"><a href="#算法与数据结构入门" class="headerlink" title="算法与数据结构入门"></a>算法与数据结构入门</h1><h2 id="什么是算法"><a href="#什么是算法" class="headerlink" title="什么是算法"></a>什么是算法</h2><p>以下是高德纳在他的著作《计算机程序设计艺术》里对算法的特征归纳：</p>
+      
+        
+          
+            <h1 id="算法与数据结构入门"><a href="#算法与数据结构入门" class="headerlink" title="算法与数据结构入门"></a>算法与数据结构入门</h1><h2 id="什么是算法"><a href="#什么是算法" class="headerlink" title="什么是算法"></a>什么是算法</h2><p>以下是高德纳在他的著作《计算机程序设计艺术》里对算法的特征归纳：</p>
 <p>输入：一个算法必须有零个或以上输入量。<br>输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。<br>明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，通常要求实际运行结果是确定的。<br>有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。<br>有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。</p>
 <h2 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h2><p>就是数据的结构。</p>
 <p>一般来说是这样的：</p>
@@ -250,39 +800,135 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">入桶：</span><br><span class="line">index哈希的过程</span><br><span class="line">0 2 56 4 67 3 2</span><br><span class="line">hash = &#123;&#125;</span><br><span class="line">index == 0</span><br><span class="line">number = 0</span><br><span class="line">hash = &#123;&apos;0&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 1</span><br><span class="line">number = 2</span><br><span class="line">hash = &#123;&apos;0&apos;:1,;&apos;2&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 2</span><br><span class="line">number = 56</span><br><span class="line">hash = &#123;&apos;0&apos;:1,&apos;2&apos;:1,&apos;56&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 3</span><br><span class="line">number = 4</span><br><span class="line">hash = &#123;&apos;0&apos;:1,&apos;2&apos;:1,&apos;4&apos;:1,&apos;56&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 4</span><br><span class="line">number = 67</span><br><span class="line">hash = &#123;&apos;0&apos;:1,&apos;2&apos;:1,&apos;4&apos;:1,&apos;56&apos;:1,&apos;67&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 5</span><br><span class="line">number = 3</span><br><span class="line">hash = &#123;&apos;0&apos;:1,&apos;2&apos;:1,&apos;3&apos;:1,&apos;4&apos;:1,&apos;56&apos;:1,&apos;67&apos;:1&#125;</span><br><span class="line">--------------------</span><br><span class="line">index == 6</span><br><span class="line">number = 2</span><br><span class="line">hash = &#123;</span><br><span class="line">     &apos;0&apos;:1,</span><br><span class="line">     &apos;2&apos;:2,</span><br><span class="line">     &apos;3&apos;:1,</span><br><span class="line">     &apos;4&apos;:1,</span><br><span class="line">     &apos;56&apos;:1,</span><br><span class="line">     &apos;67&apos;:1</span><br><span class="line">&#125;</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">出桶：</span><br><span class="line">index2哈希的过程：</span><br><span class="line">index2 = 0</span><br><span class="line">newArr = [0]</span><br><span class="line">index2 = 1</span><br><span class="line">//没有，就什么也不做</span><br><span class="line">index2 = 2</span><br><span class="line">newArr = [0,2,2]</span><br><span class="line">index2 = 3</span><br><span class="line">newArr = [0,1,2,2]</span><br><span class="line">index2 = 4</span><br><span class="line">newArr = [0,1,2,2,4]</span><br><span class="line">.....</span><br><span class="line">.....</span><br><span class="line">index2 = 56</span><br><span class="line">newArr = [0,1,2,2,4,56]</span><br><span class="line">.....</span><br><span class="line">.....</span><br><span class="line">index2 = 67</span><br><span class="line">newArr = [0,1,2,2,4,56,67]</span><br></pre></td></tr></table></figure>
 <p>流程图：<br><img src="http://img.blog.csdn.net/20180418212736349?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2VpeGluXzQxOTY3OTAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/16/css布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/16/css布局/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T23:24:39+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/16/css布局/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/16/css布局/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/16/css布局/">
-  <time datetime="2018-04-16T15:24:39.000Z">
-    2018-04-16
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/16/css布局/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="CSS自适应常用布局"><a href="#CSS自适应常用布局" class="headerlink" title="CSS自适应常用布局"></a>CSS自适应常用布局</h2><p> <strong>单列布局：水平居中</strong></p>
+      
+        
+          
+            <h2 id="CSS自适应常用布局"><a href="#CSS自适应常用布局" class="headerlink" title="CSS自适应常用布局"></a>CSS自适应常用布局</h2><p> <strong>单列布局：水平居中</strong></p>
 <p> <strong>1.使用inline-block 和 text-align实现</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;text-align: center;&#125;</span><br><span class="line">.child&#123;display: inline-block;&#125;</span><br></pre></td></tr></table></figure>
 <p>优点：兼容性好；<br>不足：需要同时设置子元素和父元素</p>
@@ -347,39 +993,135 @@
 <p>1.清楚浮动：<br>给子元素设置浮动后，只需要简单的把它们的爸爸父元素设置clearfix，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;card clearfix&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;card__message&quot;&gt;&lt;/div&gt;</span><br><span class="line">   &lt;div class=&quot;card__staturer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">.clearfix:after&#123;</span><br><span class="line">  content:&apos;&apos;;</span><br><span class="line">  display: block;</span><br><span class="line">  clear: both;</span><br><span class="line">&#125;</span><br><span class="line">.card__message&#123;</span><br><span class="line">  float:left;</span><br><span class="line">&#125;</span><br><span class="line">.card__staturer&#123;</span><br><span class="line">  float:left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/HTML入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/HTML入门/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T21:36:57+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/12/HTML入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/12/HTML入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/12/HTML入门/">
-  <time datetime="2018-04-12T13:36:57.000Z">
-    2018-04-12
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/12/HTML入门/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="HTML入门基础"><a href="#HTML入门基础" class="headerlink" title="HTML入门基础"></a>HTML入门基础</h1><p><strong>html版本（由w3c组织制定规范）：</strong></p>
+      
+        
+          
+            <h1 id="HTML入门基础"><a href="#HTML入门基础" class="headerlink" title="HTML入门基础"></a>HTML入门基础</h1><p><strong>html版本（由w3c组织制定规范）：</strong></p>
 <ul>
 <li>HTML 4.01 </li>
 <li>XHTML </li>
@@ -555,39 +1297,135 @@
 <li>&lt;a href=”javascript: ;&gt;qq (可以使a链接点开之后不做任何的事情，满足某些奇葩要求）</li>
 </ul>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/编写一个server服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/12/编写一个server服务器/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T09:35:22+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/12/编写一个server服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/12/编写一个server服务器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/12/编写一个server服务器/">
-  <time datetime="2018-04-12T01:35:22.000Z">
-    2018-04-12
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/12/编写一个server服务器/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="利用node-js编写一个简单的server服务器"><a href="#利用node-js编写一个简单的server服务器" class="headerlink" title="利用node.js编写一个简单的server服务器"></a>利用node.js编写一个简单的server服务器</h1><p> <strong>服务器分为硬件服务器，和软件服务器。</strong></p>
+      
+        
+          
+            <h1 id="利用node-js编写一个简单的server服务器"><a href="#利用node-js编写一个简单的server服务器" class="headerlink" title="利用node.js编写一个简单的server服务器"></a>利用node.js编写一个简单的server服务器</h1><p> <strong>服务器分为硬件服务器，和软件服务器。</strong></p>
 <ul>
 <li>硬件服务器就是:<br><img src="http://img.blog.csdn.net/20180412085144334?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2VpeGluXzQxOTY3OTAx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="硬件服务器"></li>
 <li>软件服务器你已经有了，你使用的电脑就是服务器。</li>
@@ -652,39 +1490,135 @@ process.exit(1)
 </li>
 </ul>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/HTTP协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/10/HTTP协议/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T21:46:42+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/10/HTTP协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/10/HTTP协议/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/10/HTTP协议/">
-  <time datetime="2018-04-10T13:46:42.000Z">
-    2018-04-10
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/10/HTTP协议/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h1 id="HTTP协议入门"><a href="#HTTP协议入门" class="headerlink" title="HTTP协议入门"></a>HTTP协议入门</h1><h2 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="-HTTP简介"></a>-HTTP简介</h2><ul>
+      
+        
+          
+            <h1 id="HTTP协议入门"><a href="#HTTP协议入门" class="headerlink" title="HTTP协议入门"></a>HTTP协议入门</h1><h2 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="-HTTP简介"></a>-HTTP简介</h2><ul>
 <li></li>
 <li><p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World<br>Wide Web ）服务器传输超文本到本地浏览器的传送协议。    HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件,<br>图片文件, 查询结果等）。</p>
 </li>
@@ -850,39 +1784,135 @@ process.exit(1)
 </ol>
 <p><strong>更多命令用法请参考<a href="https://man.linuxde.net/curl" target="_blank" rel="noopener">https://man.linuxde.net/curl</a> 或curl.haxx.se/docs/manpage.html</strong></p>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/命令行/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/08/命令行/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T21:50:21+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/08/命令行/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/08/命令行/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/08/命令行/">
-  <time datetime="2018-04-08T13:50:21.000Z">
-    2018-04-08
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/08/命令行/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="命令行基础"><a href="#命令行基础" class="headerlink" title="命令行基础"></a>命令行基础</h2><p>命令行是什么</p>
+      
+        
+          
+            <h2 id="命令行基础"><a href="#命令行基础" class="headerlink" title="命令行基础"></a>命令行基础</h2><p>命令行是什么</p>
 <ul>
 <li><p>实际上是先有命令行，后有的图形界面。</p>
 <p>最开始的游戏也是在命令行上的（想不到吧？），那时的游戏长这样：</p>
@@ -916,39 +1946,135 @@ process.exit(1)
 </li>
 </ul>
 
+          
+        
+      
+    </div>
     
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer class="end-sep">
+  
+  
+  
+  </article>
+
+
     
       
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/搭建Hexo博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/08/搭建Hexo博客/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T21:05:02+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/08/搭建Hexo博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/08/搭建Hexo博客/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
+      
 
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2018/04/08/搭建Hexo博客/">
-  <time datetime="2018-04-08T13:05:02.000Z">
-    2018-04-08
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2018/04/08/搭建Hexo博客/"></a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="mac搭建hexo基于github的博客"><a href="#mac搭建hexo基于github的博客" class="headerlink" title="mac搭建hexo基于github的博客"></a>mac搭建hexo基于github的博客</h2><p>环境配置</p>
+      
+        
+          
+            <h2 id="mac搭建hexo基于github的博客"><a href="#mac搭建hexo基于github的博客" class="headerlink" title="mac搭建hexo基于github的博客"></a>mac搭建hexo基于github的博客</h2><p>环境配置</p>
 <ol>
 <li>先安装node.js <a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 按着官网的步骤一步步安装即可。</li>
 <li>安装git：先安装Homebrew(<a href="https://brew.sh)，然后输入brew" target="_blank" rel="noopener">https://brew.sh)，然后输入brew</a> install git，安装git。</li>
@@ -987,66 +2113,324 @@ process.exit(1)
 <li>接着在你博客站点文件夹下右键空白处，选择Git Bash Here，输入：hexo generate，回车，生成静态页面，<br>再输入：hexo server，回车，到localhost:4000预览博客效果，  最后输入：hexo<br>deploy，回车，同步到github上去就行了。</li>
 </ol>
 
+          
+        
+      
+    </div>
     
-  </div>
-  <footer class="end-sep">
     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
       
       
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
-
-</div>
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <footer id="footer"><div class="copyright">
   
-  &copy; 2018 <a href="/">敢看破不敢在乎</a>
   
-</div>
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
-   | 
-  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
-</div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  
+  </article>
 
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
 
 <script type="text/javascript">
-  var duoshuoQuery = { short_name: 'buru' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
-</script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"db1e7f005cb04ad2dcc8367fcdcd0569"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
