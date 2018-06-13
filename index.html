@@ -280,6 +280,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/python/python读取和保存文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/13/python/python读取和保存文件/" itemprop="url">python读取和保存文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T21:08:17+08:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><p>1.新建一个sketch.txt文件 写入数据。</p>
+<p>2.进入IDE会话</p>
+<ul>
+<li>import  os          从标准库导入os</li>
+<li>os.getcwd()        查看当前工作目录</li>
+<li>os.chdir(‘xxx/xxx/xxx’)   进入到包含sketch,txt文件目录下</li>
+<li>os.getcwd()         确认是否在当前目录</li>
+</ul>
+<p>3.读取文件并在屏幕显示出来</p>
+<ul>
+<li>data =open(’sketch.txt’)</li>
+<li>print(data.readline())       就会显示数据第一行内容</li>
+<li>data.seek(0)                  返回文件的第0行</li>
+<li>print(data.readlines())     显示所有内容（显示的内容不美观）</li>
+<li>也可以使用for in方法：</li>
+<li>for  each in data：print(each)    注意：要返回文件第0行</li>
+<li>data.write（’I linke apple’） 将i linke  apple  写入文件</li>
+<li>data.close()                      关闭文件</li>
+</ul>
+<p>文件打开后，一定要记得关闭.</p>
+<p>4.使用open（）打开文件，可以指定访问模式，默认r模式（读）例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = open(’sketch.txt’,’w’)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>W写(访问模式)python会创建指定文件来写，如果这个文件已经存在，会请空它现有的内容。</li>
+<li>r 读模式</li>
+<li>要追加到一个文件，使用访问模式a</li>
+<li>要打开一个文件完成写和读，用w+</li>
+</ul>
+<h2 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h2><p>以访问(写)模式W保存，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">man = []</span><br><span class="line">other = []</span><br><span class="line">try:</span><br><span class="line">    data = open(&apos;sketch.txt&apos;)</span><br><span class="line"></span><br><span class="line">    for each_line in data:</span><br><span class="line">        try:</span><br><span class="line">            (role,line_spoken) = each_line.split(&apos;:&apos;,1)</span><br><span class="line">            line_spoken = line_spoken.strip()</span><br><span class="line">            if role == &apos;Man&apos;:</span><br><span class="line">                man.append(line_spoken)</span><br><span class="line">            elif role == &apos;Other Man&apos;:</span><br><span class="line">                other.append(line_spoken)          </span><br><span class="line">        except ValueError:</span><br><span class="line">            pass</span><br><span class="line">            </span><br><span class="line">    data.close()</span><br><span class="line">except IOError:</span><br><span class="line">    print(&apos;The data file is missing!&apos;)</span><br><span class="line">    </span><br><span class="line">try:</span><br><span class="line">    with open(&apos;man_data.txt&apos;, &apos;w&apos;) as man_file:</span><br><span class="line">        print(man,file =man_file)</span><br><span class="line">    with open(&apos;other_data.txt&apos;, &apos;w&apos;) as other_file:</span><br><span class="line">        print(other,file=other_file)</span><br><span class="line"></span><br><span class="line">except IOError:</span><br><span class="line">    print(&apos;File error:&apos; + str(err))</span><br></pre></td></tr></table></figure>
+<p>这段代码中，新建啦两个空数组，然后打开原有的sketch.txt文件，筛选出，man和other的对话，放入man_data.txt和other_data.txt两个文件当中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/javaScript/ES6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -827,7 +1001,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/23/javaScript/留言功能/" itemprop="url">留言</a></h1>
+                <a class="post-title-link" href="/2018/05/23/javaScript/留言功能/" itemprop="url">实现一个简单的留言功能</a></h1>
         
 
         <div class="post-meta">
@@ -901,8 +1075,7 @@
       
         
           
-            <p>实现一个简单的留言功能</p>
-<p>1.再<a href="https://leancloud.cn/" target="_blank" rel="noopener">leancloud</a>上注册一个账户，leancloud是一个自带数据库和增删改查（CRUD）功能的后台系统,开发者在上面有免费的存储空间。</p>
+            <p>1.再<a href="https://leancloud.cn/" target="_blank" rel="noopener">leancloud</a>上注册一个账户，leancloud是一个自带数据库和增删改查（CRUD）功能的后台系统,开发者在上面有免费的存储空间。</p>
 <p>2.创建一个应用，选择开发版本，然在其官网sdk帮助文档下引存储服务<code>&lt;script src=&quot;//cdn1.lncld.net/static/js/3.6.8/av-min.js&quot;&gt;&lt;/script&gt;</code>也可以通过npm下载到本地。</p>
 <p>3.文档下面初始化和测试代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var APP_ID = &apos;azCYcJRXw9TguSshv1fEDPMt-gzGzoHsz&apos;;</span><br><span class="line">var APP_KEY = &apos;M9H3H2NXG4PiP52qAtKKzf4R&apos;;</span><br><span class="line">//每个人的ID都是不同的</span><br><span class="line">AV.init(&#123;</span><br><span class="line">  appId: APP_ID,</span><br><span class="line">  appKey: APP_KEY</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//创建 TestObject元素</span><br><span class="line">var TestObject = AV.Object.extend(&apos;TestObject&apos;);</span><br><span class="line">//在表中创建一行数据</span><br><span class="line">var testObject = new TestObject();</span><br><span class="line">//数据的内容是words：hello，world</span><br><span class="line">//如果成功就运行alert</span><br><span class="line">testObject.save(&#123;</span><br><span class="line">  words: &apos;Hello World!&apos;</span><br><span class="line">&#125;).then(function(object) &#123;</span><br><span class="line">  alert(&apos;LeanCloud Rocks!&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -1572,149 +1745,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/19/javaScript/AJAX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/19/javaScript/AJAX/" itemprop="url">AJAX</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T20:17:02+08:00">
-                2018-05-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1765,7 +1795,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
