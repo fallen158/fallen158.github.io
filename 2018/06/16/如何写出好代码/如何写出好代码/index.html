@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习之前，可以先学习一下如何写出无法维护的代码：变量命名 容易输入的名字。比如：Fred，asdf，a,b,c, x,y,z。  有创意地拼写错误。比如：SetPintleOpening， SetPintalClosing。这样可以让人很难搜索代码。  抽象。比如：ProcessData, DoIt, GetData… 抽象到就跟什么都没说一样。  缩写。比如：WTF，RTFSC ……   随机大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何写出好代码">
+<meta property="og:url" content="http://yoursite.com/2018/06/16/如何写出好代码/如何写出好代码/index.html">
+<meta property="og:site_name" content="记昨日书">
+<meta property="og:description" content="学习之前，可以先学习一下如何写出无法维护的代码：变量命名 容易输入的名字。比如：Fred，asdf，a,b,c, x,y,z。  有创意地拼写错误。比如：SetPintleOpening， SetPintalClosing。这样可以让人很难搜索代码。  抽象。比如：ProcessData, DoIt, GetData… 抽象到就跟什么都没说一样。  缩写。比如：WTF，RTFSC ……   随机大">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-16T03:16:11.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何写出好代码">
+<meta name="twitter:description" content="学习之前，可以先学习一下如何写出无法维护的代码：变量命名 容易输入的名字。比如：Fred，asdf，a,b,c, x,y,z。  有创意地拼写错误。比如：SetPintleOpening， SetPintalClosing。这样可以让人很难搜索代码。  抽象。比如：ProcessData, DoIt, GetData… 抽象到就跟什么都没说一样。  缩写。比如：WTF，RTFSC ……   随机大">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/16/如何写出好代码/如何写出好代码/"/>
+
+
+
+
+
+  <title>如何写出好代码 | 记昨日书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/fallen158" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/如何写出好代码/如何写出好代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何写出好代码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T10:49:47+08:00">
+                2018-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/重构代码/" itemprop="url" rel="index">
+                    <span itemprop="name">重构代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="学习之前，可以先学习一下如何写出无法维护的代码："><a href="#学习之前，可以先学习一下如何写出无法维护的代码：" class="headerlink" title="学习之前，可以先学习一下如何写出无法维护的代码："></a>学习之前，可以先学习一下如何写出无法维护的代码：</h2><h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><ul>
+<li><p><strong>容易输入的名字</strong>。比如：Fred，asdf，a,b,c, x,y,z。</p>
+</li>
+<li><p><strong>有创意地拼写错误</strong>。比如：SetPintleOpening， SetPintalClosing。这样可以让人很难搜索代码。</p>
+</li>
+<li><p><strong>抽象</strong>。比如：ProcessData, DoIt, GetData… 抽象到就跟什么都没说一样。</p>
+</li>
+<li><p><strong>缩写</strong>。比如：WTF，RTFSC …… </p>
+</li>
+<li><p><strong>随机大写字母</strong>。比如：gEtnuMbER..</p>
+</li>
+<li><p><strong>使用不同的语言</strong>。比如混用英语，德语，或是中文拼音。</p>
+</li>
+<li><p><strong>使用重音字母</strong>。比如：int  ínt</p>
+</li>
+<li><p><strong>使用下划线</strong>。比如：_, <strong>, _</strong>。</p>
+</li>
+<li><p><strong>使用字符命名</strong>。比如：slash, asterix, comma…</p>
+</li>
+<li><p><strong>使用无关的单词</strong>。比如：god, superman, iloveu….</p>
+</li>
+<li><p><strong>混淆l和1</strong>。字母l和数字1有时候是看不出来的。</p>
+</li>
+<li><p><strong>表里不一</strong>。比如你的界面显示叫postal code，但是代码里确叫 zipcode.</p>
+</li>
+<li><p><strong>把注释和代码交织在一起</strong>。</p>
+</li>
+<li><p><strong>在注释中撒谎</strong>。你不用真的去撒谎，只需在改代码的时候不要更新注释就可以了。</p>
+</li>
+</ul>
+<h3 id="bad-smell（坏味道）"><a href="#bad-smell（坏味道）" class="headerlink" title="bad smell（坏味道）"></a>bad smell（坏味道）</h3><p>有些代码可以用，但是很「臭」。哪些代码是有坏味道的</p>
+<ul>
+<li>表里不一的代码</li>
+<li>过时的注释</li>
+<li>逻辑很简单，但是看起来很复杂的代码</li>
+<li>重复的代码</li>
+<li>相似的代码</li>
+<li>总是一起出现的代码</li>
+<li></li>
+</ul>
+<h2 id="代码优化的基本原则"><a href="#代码优化的基本原则" class="headerlink" title="代码优化的基本原则"></a>代码优化的基本原则</h2><ol>
+<li>易读性优先</li>
+<li>如果不是性能瓶颈，就不要为了性能而改写代码</li>
+<li>复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的</li>
+<li>推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。</li>
+</ol>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ol>
+<li>词性</li>
+</ol>
+<ul>
+<li><p>普通变量/属性用「名词」</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">     name: &apos;Frank&apos;</span><br><span class="line"> &#125;</span><br><span class="line"> var student = &#123;</span><br><span class="line">     grade: 3,</span><br><span class="line">     class: 2</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>bool变量/属性用「形容词」或者「be动词」或者「情态动词」或者「hasX」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">     dead: false, // 如果是形容词，前面就没必要加 is，比如isDead 就很废话</span><br><span class="line">     canSpeak: true, //情态动词有 can、should、will、need 等，情态动词后面接动词</span><br><span class="line">     isVip: true, // be 动词有 is、was 等，后面一般接名词</span><br><span class="line">     hasChildren: true, // has 加名词</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>普通函数/方法用「动词」开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">      run()&#123;&#125;, // 不及物动词</span><br><span class="line">      drinkWater()&#123;&#125;, // 及物动词</span><br><span class="line">      eat(foo)&#123;&#125;, // 及物动词加参数（参数是名词）</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>回调、钩子函数用「介词」开头，或用「动词的现在完成时态」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    beforeDie()&#123;&#125;,</span><br><span class="line">    afterDie()&#123;&#125;,</span><br><span class="line">    // 或者</span><br><span class="line">    willDie()&#123;&#125;</span><br><span class="line">    dead()&#123;&#125; // 这里跟 bool 冲突，你只要不同时暴露 bool dead 和函数 dead 就行，怕冲突就用上面的 afterDie</span><br><span class="line">&#125;</span><br><span class="line">button.addEventListener(&apos;click&apos;, onButtonClick)</span><br><span class="line">var component = &#123;</span><br><span class="line">    beforeCreate()&#123;&#125;,</span><br><span class="line">    created()&#123;&#125;,</span><br><span class="line">    beforeMount()&#123;&#125;,</span><br><span class="line">    mounted()&#123;&#125;,</span><br><span class="line">    beforeUpdate()&#123;&#125;,</span><br><span class="line">    updated()&#123;&#125;,</span><br><span class="line">    activated()&#123;&#125;,</span><br><span class="line">    deactivated()&#123;&#125;,</span><br><span class="line">    beforeDestroy()&#123;&#125;,</span><br><span class="line">    destroyed()&#123;&#125;,</span><br><span class="line">    errorCaptured()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>容易混淆的地方加前缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div1.classList.add(&apos;active&apos;) // DOM 对象</span><br><span class="line"> div2.addClass(&apos;active&apos;) // jQuery 对象</span><br><span class="line"> 不如改成</span><br><span class="line"> domDiv1 或 elDiv1.classList.add(&apos;active&apos;)</span><br><span class="line"> $div2.addClass(&apos;active&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>属性访问器函数可以用名词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$div.text() // 其实是 $div.getText()</span><br><span class="line">$div.text(&apos;hi&apos;) // 其实是 $div.setText(&apos;hi&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li><p>一致性</p>
+<ul>
+<li><p>介词一致性</p>
+<p>如果你使用了 before + after，那么就在代码的所有地方都坚持使用</p>
+<p>如果你使用了 before + 完成时，那么就坚持使用</p>
+<p>如果你改来改去，就「不一致」了，不一致将导致「不可预测」</p>
+</li>
+<li><p>顺序一致性</p>
+<p>比如 updateContainerWidth 和 updateHeightOfContainer 的顺序就令人很别扭，同样会引发「不可预测」</p>
+<p>表里一致性</p>
+<p>函数名必须完美体现函数的功能，既不能多也不能少。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getSongs()&#123;</span><br><span class="line">    return $.get(&apos;/songs).then((response)&#123;</span><br><span class="line">        div.innerText = response.songs</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就违背了表里一致性，getSongs 表示获取歌曲，并没有暗示这个函数会更新页面，但是实际上函数更新了 div，这就是表里不一，正确的写法是</p>
+<p>要么纠正函数名:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getSongsAndUpdateDiv()&#123;</span><br><span class="line">      return $.get(&apos;/songs).then((response)&#123;</span><br><span class="line">          div.innerText = response.songs</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>要么写成两个函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getSongs()&#123;</span><br><span class="line">    return $.get(&apos;/songs)</span><br><span class="line">&#125;</span><br><span class="line">function updateDiv(songs)&#123;</span><br><span class="line">    div.innerText = response.songs</span><br><span class="line">&#125;</span><br><span class="line">getSongs().then((response)=&gt;&#123;</span><br><span class="line">    updateDiv(response.songs)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间一致性</p>
+<p>有可能随着代码的变迁，一个变量的含义已经不同于它一开始的含义了，这个时候你需要及时改掉这个变量的名字。</p>
+<p>有可能随着代码的变迁，一个变量的含义已经不同于它一开始的含义了，这个时候你需要及时改掉这个变量的名字。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>如果你的代码有单元测试，那么改起来就很放心。如果没有单元测试，就需要用「小步快跑」的策略来修改。小步快跑的意思是说，每次只修改一点点，测试通过后，再修改一点点，再测试，再修改一点点……如此反复。《重构》这本书介绍了很多方法，我这里只说两个经久不衰的方法。</p>
+<h3 id="一、使用函数来改代码"><a href="#一、使用函数来改代码" class="headerlink" title="一、使用函数来改代码"></a>一、使用函数来改代码</h3><ol>
+<li><p>将一坨代码放到一个函数里</p>
+</li>
+<li><p>将代码依赖的外部变量作为参数</p>
+</li>
+<li><p>将代码的输出作为函数的返回值</p>
+</li>
+<li><p>给函数取一个合适的名字</p>
+</li>
+<li><p>调用这个函数并传入参数</p>
+</li>
+<li><p>这个函数里的代码如果超过 5 行，则依然有优化的空间，请回到第 1 步</p>
+<p>例如轮播图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">let currentIndex = 0</span><br><span class="line">let $silides = $(&apos;.sildes&apos;)</span><br><span class="line">let $lindeWindow = $(&apos;.slidesWindow&apos;)</span><br><span class="line">let timerId</span><br><span class="line">let playNext = () =&gt; &#123;</span><br><span class="line">    playSlide(currentIndex + 1)</span><br><span class="line">&#125;</span><br><span class="line">let playPrevious = () =&gt; &#123;</span><br><span class="line">    playSlide(currentIndex - 1)</span><br><span class="line">&#125;</span><br><span class="line">let clearTimer = () =&gt; &#123;</span><br><span class="line">    window.clearInterval(timerId)</span><br><span class="line">&#125;</span><br><span class="line">let resetTimer = () =&gt; &#123;</span><br><span class="line">    timerId = autoPlay()</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function bindEvents() &#123;</span><br><span class="line">    let events = [&#123;</span><br><span class="line">        el: buttonNext,</span><br><span class="line">        event: &apos;click&apos;,</span><br><span class="line">        fn: playNext</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: buttonPrevious,</span><br><span class="line">        event: &apos;click&apos;,</span><br><span class="line">        fn: playPrevious</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: $slidesWindow,</span><br><span class="line">        event: &apos;mouseenter&apos;,</span><br><span class="line">        fn: clearTimer</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: $slidesWindow,</span><br><span class="line">        event: &apos;mouseleave&apos;,</span><br><span class="line">        fn: resetTimer</span><br><span class="line">    &#125;]</span><br><span class="line">   </span><br><span class="line">    events.forEach((eventObjet) =&gt; &#123;</span><br><span class="line">        $(eventObjet.el).on(eventObjet.event, eventObjet.fn)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function playSlide(index) &#123;</span><br><span class="line">    index = fixIndex(index)</span><br><span class="line">    $slides.css(&#123;</span><br><span class="line">        transform: `translateX($&#123;-400*(index)&#125;px)`</span><br><span class="line">    &#125;)</span><br><span class="line">    currentIndex = index</span><br><span class="line">    return index</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function fixIndex(index) &#123;</span><br><span class="line">    if (inde &lt; 0) &#123;</span><br><span class="line">        index = 4</span><br><span class="line">    &#125; else if (index &gt; 4) &#123;</span><br><span class="line">        index = 0</span><br><span class="line">    &#125;</span><br><span class="line">    return index</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function autoPlay() &#123;</span><br><span class="line">    return setInterval(() =&gt; &#123;</span><br><span class="line">        playSlide(currentIndex + 1)</span><br><span class="line">    &#125;, 3000)</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">bindEvents()</span><br><span class="line">timerId = autoPlay()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="二、使用对象来改代码"><a href="#二、使用对象来改代码" class="headerlink" title="二、使用对象来改代码"></a>二、使用对象来改代码</h3><p>如果使用了函数改造法改造后，发现有太多的小函数，则可以使用对象讲这个函数串起来。</p>
+<p>「this 是函数和对象的桥梁」，我们会用 this 来串联这个对象和所有函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">let slide = &#123;</span><br><span class="line">        currentIndex: 0,</span><br><span class="line">        $slides: $(&apos;.slides&apos;),</span><br><span class="line">        timerId: undefined,</span><br><span class="line">        events: [&#123;</span><br><span class="line">            el: &apos;#buttonNext&apos;,</span><br><span class="line">            event: &apos;click&apos;,</span><br><span class="line">            fn: &apos;playNext&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;#buttonPrevious&apos;,</span><br><span class="line">            event: &apos;click&apos;,</span><br><span class="line">            fn: &apos;playPrevious&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;.slidesWindow&apos;,</span><br><span class="line">            event: &apos;mouseenter&apos;,</span><br><span class="line">            fn: &apos;clearTimer&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;.slidesWindow&apos;,</span><br><span class="line">            event: &apos;mouseleave&apos;,</span><br><span class="line">            fn: &apos;resetTimer&apos;</span><br><span class="line">        &#125;],</span><br><span class="line">        init() &#123;</span><br><span class="line">            this.bindEvents()</span><br><span class="line">            this.timerId = this.autoPlay()</span><br><span class="line">        &#125;,</span><br><span class="line">        playNext: () =&gt; &#123;</span><br><span class="line">            this.playSlide(this.currentIndex + 1)</span><br><span class="line">        &#125;,</span><br><span class="line">        playPrevious: () =&gt; &#123;</span><br><span class="line">            this.playSlide(this.currentIndex - 1)</span><br><span class="line">        &#125;,</span><br><span class="line">        playSlide(index) &#123;</span><br><span class="line">            index = fixIndex(index)</span><br><span class="line">            this.$slides.css(&#123;</span><br><span class="line">                transform: `translateX($&#123;-400*(index)&#125;px)`</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            this.currentIndex = index</span><br><span class="line">            return index</span><br><span class="line">        &#125;,</span><br><span class="line">        clearTimer: () =&gt; &#123;</span><br><span class="line">            window.clearInterval(this.timerId)</span><br><span class="line">        &#125;,</span><br><span class="line">        resetTimer: () =&gt; &#123;</span><br><span class="line">            this.timerId = this.autoPlay()</span><br><span class="line">        &#125;,</span><br><span class="line">        bindEvents() &#123;</span><br><span class="line">            this.events.forEach((eventObject) =&gt; &#123;</span><br><span class="line">                $(eventObject.el).on(</span><br><span class="line">                    eventObject.event,</span><br><span class="line">                    () =&gt; &#123;</span><br><span class="line">                        this[eventObject.fn].call(this)</span><br><span class="line">                    &#125;</span><br><span class="line">                )</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fixIndex(index) &#123;</span><br><span class="line">            if (index &lt; 0) &#123;</span><br><span class="line">                index = 4</span><br><span class="line">            &#125; else if (index &gt; 4) &#123;</span><br><span class="line">                index = 0</span><br><span class="line">            &#125;</span><br><span class="line">            return index</span><br><span class="line">        &#125;,</span><br><span class="line">        autoPlay() &#123;</span><br><span class="line">            //this === slide</span><br><span class="line">            return setInterval(() =&gt; &#123;</span><br><span class="line">                this.playSlide(this.currentIndex + 1)</span><br><span class="line">            &#125;, 3000)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    slide.init() // slide.init.call(slide)</span><br></pre></td></tr></table></figure>
+<h3 id="二、一些固定的套路"><a href="#二、一些固定的套路" class="headerlink" title="二、一些固定的套路"></a>二、一些固定的套路</h3><ul>
+<li><p>表驱动编程</p>
+<p>例如一个求一年有多少月的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function howManDanys(month) &#123;</span><br><span class="line">        if (mouth === 1 ||</span><br><span class="line">            mouth === 3 ||</span><br><span class="line">            mouth === 5 ||</span><br><span class="line">            mouth === 7 ||</span><br><span class="line">            mouth === 10 ||</span><br><span class="line">            mouth === 11</span><br><span class="line">        ) &#123;</span><br><span class="line">            return 31</span><br><span class="line">        &#125; else if (mouth === 2) &#123;</span><br><span class="line">            return 28</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return 30</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>代码看起很正常是吧，如果用表编程呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">       let table = &#123;</span><br><span class="line">           10: &apos;A&apos;,</span><br><span class="line">           9: &apos;A&apos;,</span><br><span class="line">           8: &apos;B&apos;,</span><br><span class="line">           7: &apos;C&apos;,</span><br><span class="line">           6: &apos;D&apos;,</span><br><span class="line">           others: &apos;E&apos;</span><br><span class="line">       &#125;</span><br><span class="line">       let level = parseInt(score / 10, 10)</span><br><span class="line">       return table[score] || table[&apos;others&apos;]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>一个根据分数评分的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">        if (score &gt;= 90) &#123;</span><br><span class="line">            return &apos;A&apos;</span><br><span class="line">        &#125; else if (score &gt;= 80) &#123;</span><br><span class="line">            return &apos;B&apos;</span><br><span class="line">        &#125; else if (score &gt;= 70) &#123;</span><br><span class="line">            return &apos;C&apos;</span><br><span class="line">        &#125; else if (score &gt;= 60) &#123;</span><br><span class="line">            return &apos;D&apos;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;E&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>用表编程呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">       let table = &#123;</span><br><span class="line">           10: &apos;A&apos;,</span><br><span class="line">           9: &apos;A&apos;,</span><br><span class="line">           8: &apos;B&apos;,</span><br><span class="line">           7: &apos;C&apos;,</span><br><span class="line">           6: &apos;D&apos;,</span><br><span class="line">           others: &apos;E&apos;</span><br><span class="line">       &#125;</span><br><span class="line">       let level = parseInt(score / 10, 10)</span><br><span class="line">       return table[level] || table[&apos;others&apos;]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+     <div>
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/14/调试/WEB手机页面调试/" rel="next" title="WEB手机页面调试">
+                <i class="fa fa-chevron-left"></i> WEB手机页面调试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+  
+       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2154941443&auto=0&height=430">
+       </iframe>
+
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习之前，可以先学习一下如何写出无法维护的代码："><span class="nav-number">1.</span> <span class="nav-text">学习之前，可以先学习一下如何写出无法维护的代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量命名"><span class="nav-number">1.1.</span> <span class="nav-text">变量命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bad-smell（坏味道）"><span class="nav-number">1.2.</span> <span class="nav-text">bad smell（坏味道）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码优化的基本原则"><span class="nav-number">2.</span> <span class="nav-text">代码优化的基本原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名规范"><span class="nav-number">2.1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重构代码"><span class="nav-number">2.2.</span> <span class="nav-text">重构代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、使用函数来改代码"><span class="nav-number">2.3.</span> <span class="nav-text">一、使用函数来改代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用对象来改代码"><span class="nav-number">2.4.</span> <span class="nav-text">二、使用对象来改代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、一些固定的套路"><span class="nav-number">2.5.</span> <span class="nav-text">二、一些固定的套路</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
