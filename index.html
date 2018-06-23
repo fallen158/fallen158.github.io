@@ -260,6 +260,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/浅谈jQuery实现原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/javaScript/浅谈jQuery实现原理/" itemprop="url">浅谈jQuery实现原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T23:23:00+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="jQuery设计原理"><a href="#jQuery设计原理" class="headerlink" title="jQuery设计原理"></a>jQuery设计原理</h2><p>jQuery实质上是一个构造函数，该构造函数接受一个参数，jQuery通过这个参数利用原生API找到节点，之后返回一个方法对象，该方法对象上的方法对节点进行操作(方法使用了闭包)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(parameter)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if( typeof parameter === &apos;string&apos; )&#123;</span><br><span class="line">    let temp = document.querySelectorAll(parameter)</span><br><span class="line">    for(let i = 0;i &lt; temp.length;i++)&#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.length = temp.length</span><br><span class="line">  &#125; else if(parameter instanceof Node) &#123;</span><br><span class="line">    nodes[i] = parameter</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    addClass: function(className)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(className)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setText: function(text)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
+<p> jQuery简单API实现思想</p>
+<h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ul&gt;li&#123;id=item$&#125;*5</span><br><span class="line">window.wcdom =&#123;&#125;</span><br><span class="line">wcdom.getSilbing = function(node)&#123;</span><br><span class="line">   var allchildren = node.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== node)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">wcdom.addclass = function(node,classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">       var methoName = value ? &apos;add&apos; : &apos;remove&apos;   </span><br><span class="line">        node.classList[methoName](key)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">wcdom.getSilbing(item3)</span><br><span class="line">wcdom.addclass(item3,&#123;a:true,b:true,c:false&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="命令空间"><a href="#命令空间" class="headerlink" title="命令空间"></a>命令空间</h2><p>i. 扩展 Node 对象接口<br> 直接在 Node 对象上添加封装函数，修改Node.protorype对象，在Node.prototype对象上新增方法。  缺点： 修改 Node 对象的原型，可能无意识覆盖原生API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSilbing = function()&#123;</span><br><span class="line">   var allchildren = this.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== this)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function(classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">      &#125; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">item3.getSilbing()</span><br><span class="line">item3.addClass(&#123;a:true,b:true,c:false,d:true&#125;)</span><br><span class="line"></span><br><span class="line">也可以选择加入call，加啦call，this就是call第一个参数</span><br><span class="line">item3.getSilbing.call(item3)</span><br><span class="line">item3.addClass.call(item3,&#123;a:true,b:true,c:false,d:true&#125;)</span><br></pre></td></tr></table></figure>
+<p>ii.  创建一个新的接口  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">window.Node2 = function(node)&#123;</span><br><span class="line">  return&#123;</span><br><span class="line">    getSilbing:function()&#123;</span><br><span class="line">      var allchildren = node.parentNode.children</span><br><span class="line">        var array=&#123;</span><br><span class="line">           length:0</span><br><span class="line">        &#125;</span><br><span class="line">      for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">         if(allchildren[i] !== node)&#123;</span><br><span class="line">           array[array.length] = allchildren[i]</span><br><span class="line">           array.length += 1</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">        return array</span><br><span class="line">  &#125;,</span><br><span class="line">   addClass:function(classes)&#123;</span><br><span class="line">      for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">        &#125; </span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var node2 = Node2(item3)</span><br><span class="line">console.log(node2.getSilbing())</span><br><span class="line">node2.addClass(&#123;&apos;a&apos;:true,&apos;b&apos;:true,&apos;c&apos;:false&#125;)</span><br></pre></td></tr></table></figure>
+<p> 这种方法的优点是「无侵入」。jQuery构造函数生成一个新的对象，并给对象封装方法，不会修改节点上的原生Node对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/Vue组件通信/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1764,162 +1916,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/javaScript/留言功能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/23/javaScript/留言功能/" itemprop="url">实现一个简单的留言功能</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T21:40:36+08:00">
-                2018-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.再<a href="https://leancloud.cn/" target="_blank" rel="noopener">leancloud</a>上注册一个账户，leancloud是一个自带数据库和增删改查（CRUD）功能的后台系统,开发者在上面有免费的存储空间。</p>
-<p>2.创建一个应用，选择开发版本，然在其官网sdk帮助文档下引存储服务<code>&lt;script src=&quot;//cdn1.lncld.net/static/js/3.6.8/av-min.js&quot;&gt;&lt;/script&gt;</code>也可以通过npm下载到本地。</p>
-<p>3.文档下面初始化和测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var APP_ID = &apos;azCYcJRXw9TguSshv1fEDPMt-gzGzoHsz&apos;;</span><br><span class="line">var APP_KEY = &apos;M9H3H2NXG4PiP52qAtKKzf4R&apos;;</span><br><span class="line">//每个人的ID都是不同的</span><br><span class="line">AV.init(&#123;</span><br><span class="line">  appId: APP_ID,</span><br><span class="line">  appKey: APP_KEY</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//创建 TestObject元素</span><br><span class="line">var TestObject = AV.Object.extend(&apos;TestObject&apos;);</span><br><span class="line">//在表中创建一行数据</span><br><span class="line">var testObject = new TestObject();</span><br><span class="line">//数据的内容是words：hello，world</span><br><span class="line">//如果成功就运行alert</span><br><span class="line">testObject.save(&#123;</span><br><span class="line">  words: &apos;Hello World!&apos;</span><br><span class="line">&#125;).then(function(object) &#123;</span><br><span class="line">  alert(&apos;LeanCloud Rocks!&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>成功啦你的leancloud数据里会如下图：<img src="/Users/admin/Documents/myblog/blog/source/_posts/javaScript/留言功能/1.png" alt=""></p>
-<p>4.创建form标签，并遍历form的submit事件，把填写内容存入存储库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;section id=&quot;MessageAll&quot;&gt;</span><br><span class="line">    &lt;h2&gt;留言&lt;/h2&gt;</span><br><span class="line">    &lt;ol&gt;&lt;/ol&gt;</span><br><span class="line">    &lt;form id=&quot;postMessageForm&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; name=&quot;content&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/section&gt;    </span><br><span class="line"></span><br><span class="line">JS：    </span><br><span class="line">let myForm = document.querySelector(&apos;#postMessageForm&apos;)</span><br><span class="line">myForm.addEventListener(&apos;submit&apos;,function(e)&#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    let content = myForm.querySelector(&apos;input[name=content]&apos;).value;</span><br><span class="line">    var message = AV.Object.extend(&apos;Message&apos;);</span><br><span class="line">    var Messages = new message();</span><br><span class="line">    Messages.save(&#123;</span><br><span class="line">        content: content</span><br><span class="line">    &#125;).then(function(object) &#123;</span><br><span class="line">      alert(&apos;存入成功&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>5.把数据展现在你的网页上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var query = new AV.Query(&apos;Message&apos;);//存储的数据库</span><br><span class="line">query.find().then</span><br><span class="line">(function (messages) &#123;</span><br><span class="line">    //遍历存储的地方</span><br><span class="line">    var array = messages.map((item)=&gt;item.attributes)</span><br><span class="line">    array.forEach((item)=&gt;&#123; //遍历创建一个li,把content的值显示出来</span><br><span class="line">        let li = document.createElement(&apos;li&apos;)</span><br><span class="line">        li.innerHTML = item.content</span><br><span class="line">        MessageList.append(li)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#125;, function () &#123;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//点击提交不刷新页面，只是增加内容</span><br><span class="line">.then(function(object) &#123;</span><br><span class="line"> 	let li = document.createElement(&apos;li&apos;)</span><br><span class="line">    li.innerHTML = `$&#123;object.attributes.content&#125; : $&#123;object.attributes.name&#125;`</span><br><span class="line">    myForm.querySelector(&apos;input[name=content]&apos;).value =&apos;&apos;</span><br><span class="line">    name = myForm.querySelector(&apos;input[name=name]&apos;).value= &apos;&apos;</span><br><span class="line">    let messageList = document.querySelector(&apos;#MessageList&apos;)</span><br><span class="line">    MessageList.append(li)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
-<p>还可以再添加数据列表：<img src="/留言功能/1.png" alt="Alt text"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> &lt;form id=&quot;postMessageForm&quot;&gt;</span><br><span class="line">        &lt;label&gt;姓名:</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;content&quot;&gt;</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;label&gt;内容:</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  </span><br><span class="line">  Js:</span><br><span class="line">let myForm = document.querySelector(&apos;#postMessageForm&apos;)</span><br><span class="line">myForm.addEventListener(&apos;submit&apos;,function(e)&#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">  let content = myForm.querySelector(&apos;input[name=content]&apos;).value;</span><br><span class="line">  let name = myForm.querySelector(&apos;input[name=name]&apos;).value</span><br><span class="line">    var message = AV.Object.extend(&apos;Message&apos;);</span><br><span class="line">    var Messages = new message();</span><br><span class="line">    Messages.save(&#123;</span><br><span class="line">        content: content,</span><br><span class="line">        name:name //添加一个name列表</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">   li.innerHTML = `$&#123;item.content&#125; : $&#123;item.name&#125;`</span><br></pre></td></tr></table></figure></p>
-<p>到这就已经完成啦，但我们可以优化一下代码。</p>
-<p>6.利用MVC思想优化代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line">先加入VC:</span><br><span class="line">!function()&#123;</span><br><span class="line">    var view = document.querySelector(&apos;section.message&apos;)</span><br><span class="line"></span><br><span class="line">    var controller = &#123;</span><br><span class="line">        view: null,</span><br><span class="line">        messageList: null,</span><br><span class="line">        init: function () &#123;</span><br><span class="line">            this.view = null</span><br><span class="line">            this.initAV()</span><br><span class="line">            this.loadMessages()</span><br><span class="line">            this.messageList = view.querySelector(&apos;#MessageList&apos;)</span><br><span class="line">            this.from = view.querySelector(&apos;#postMessageForm&apos;)</span><br><span class="line">            this.blindEvents()</span><br><span class="line">        &#125;,</span><br><span class="line">        initAV: function () &#123;</span><br><span class="line">            var APP_ID = &apos;azCYcJRXw9TguSshv1fEDPMt-gzGzoHsz&apos;;</span><br><span class="line">            var APP_KEY = &apos;M9H3H2NXG4PiP52qAtKKzf4R&apos;;</span><br><span class="line"></span><br><span class="line">            AV.init(&#123;</span><br><span class="line">                appId: APP_ID,</span><br><span class="line">                appKey: APP_KEY</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        loadMessages: function () &#123;</span><br><span class="line">            var query = new AV.Query(&apos;Message&apos;);//存储的数据库</span><br><span class="line">            query.find()</span><br><span class="line">                .then(</span><br><span class="line">                     function (messages)&#123;</span><br><span class="line">                        var array = messages.map((item) =&gt; item.attributes)//编译存储的地方</span><br><span class="line">                        array.forEach((item) =&gt; &#123;         //遍历创建一个li,把content的值显示出来</span><br><span class="line">                            let li = document.createElement(&apos;li&apos;)</span><br><span class="line">                            li.innerHTML = `$&#123;item.content&#125; : $&#123;item.name&#125;`</span><br><span class="line">                        this.MessageList.append(li)</span><br><span class="line">                    &#125;)</span><br><span class="line">                    &#125;</span><br><span class="line">                )</span><br><span class="line">        &#125;,</span><br><span class="line">        blindEvents: function()&#123;</span><br><span class="line">            this.from.addEventListener(&apos;submit&apos;,(e)=&gt;&#123;</span><br><span class="line">                e.preventDefault();</span><br><span class="line">                this.saveMessage()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        saveMessage: function () &#123;</span><br><span class="line">            let myForm = this.from</span><br><span class="line">            let content = myForm.querySelector(&apos;input[name=content]&apos;).value;</span><br><span class="line">            let name = myForm.querySelector(&apos;input[name=name]&apos;).value</span><br><span class="line">            var message = AV.Object.extend(&apos;Message&apos;);</span><br><span class="line">            var Messages = new message();</span><br><span class="line">            Messages.save(&#123;</span><br><span class="line">                content: content,</span><br><span class="line">                name:name</span><br><span class="line">            &#125;).then(function(object) &#123;</span><br><span class="line">                let li = document.createElement(&apos;li&apos;)</span><br><span class="line">                li.innerHTML = `$&#123;object.attributes.content&#125; : $&#123;object.attributes.name&#125;`</span><br><span class="line">                myForm.querySelector(&apos;input[name=content]&apos;).value = &apos;&apos;</span><br><span class="line">                name = myForm.querySelector(&apos;input[name=name]&apos;).value = &apos;&apos;</span><br><span class="line">                let messageList = document.querySelector(&apos;#MessageList&apos;)</span><br><span class="line">                MessageList.append(li)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    controller.init(view)</span><br><span class="line"></span><br><span class="line">&#125;.call()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MVC:</span><br><span class="line">!function () &#123;</span><br><span class="line">    var view = document.querySelector(&apos;section.message&apos;)</span><br><span class="line"></span><br><span class="line">    var model = &#123;</span><br><span class="line">        //初始化</span><br><span class="line">        init: function () &#123;</span><br><span class="line">            var APP_ID = &apos;azCYcJRXw9TguSshv1fEDPMt-gzGzoHsz&apos;;</span><br><span class="line">            var APP_KEY = &apos;M9H3H2NXG4PiP52qAtKKzf4R&apos;;</span><br><span class="line">            AV.init(&#123; appId: APP_ID, appKey: APP_KEY &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        //获取数据</span><br><span class="line">        fetch: function () &#123;</span><br><span class="line">            var query = new AV.Query(&apos;Message&apos;);</span><br><span class="line">            return query.find() // Promise 对象</span><br><span class="line">        &#125;,</span><br><span class="line">        // 创建数据</span><br><span class="line">        save: function (name, content) &#123;</span><br><span class="line">            var Message = AV.Object.extend(&apos;Message&apos;);</span><br><span class="line">            var message = new Message();</span><br><span class="line">            return message.save(&#123;  // Promise 对象</span><br><span class="line">                &apos;name&apos;: name,</span><br><span class="line">                &apos;content&apos;: content</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var controller = &#123;</span><br><span class="line">        view: null,</span><br><span class="line">        model: null,</span><br><span class="line">        messageList: null,</span><br><span class="line">        init: function (view, model) &#123;</span><br><span class="line">            this.view = view</span><br><span class="line">            this.model = model</span><br><span class="line"></span><br><span class="line">            this.messageList = view.querySelector(&apos;#messageList&apos;)</span><br><span class="line">            this.form = view.querySelector(&apos;form&apos;)</span><br><span class="line">            this.model.init()</span><br><span class="line">            this.loadMessages()</span><br><span class="line">            this.bindEvents()</span><br><span class="line">        &#125;,</span><br><span class="line">        loadMessages: function () &#123;</span><br><span class="line">            this.model.fetch().then(</span><br><span class="line">                (messages) =&gt; &#123;</span><br><span class="line">                    let array = messages.map((item) =&gt; item.attributes)</span><br><span class="line">                    array.forEach((item) =&gt; &#123;</span><br><span class="line">                        let li = document.createElement(&apos;li&apos;)</span><br><span class="line">                        li.innerText = `$&#123;item.name&#125;: $&#123;item.content&#125;`</span><br><span class="line">                        this.messageList.appendChild(li)</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            )</span><br><span class="line">        &#125;,</span><br><span class="line">        bindEvents: function () &#123;</span><br><span class="line">            this.form.addEventListener(&apos;submit&apos;, (e) =&gt; &#123;</span><br><span class="line">                e.preventDefault()</span><br><span class="line">                this.saveMessage()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        saveMessage: function () &#123;</span><br><span class="line">            let myForm = this.form</span><br><span class="line">            let content = myForm.querySelector(&apos;input[name=content]&apos;).value</span><br><span class="line">            let name = myForm.querySelector(&apos;input[name=name]&apos;).value</span><br><span class="line">            this.model.save(name, content).then(function (object) &#123;</span><br><span class="line">                let li = document.createElement(&apos;li&apos;)</span><br><span class="line">                li.innerText = `$&#123;object.attributes.name&#125;: $&#123;object.attributes.content&#125;`</span><br><span class="line">                let messageList = document.querySelector(&apos;#messageList&apos;)</span><br><span class="line">                messageList.appendChild(li)</span><br><span class="line">                myForm.querySelector(&apos;input[name=content]&apos;).value = &apos;&apos;</span><br><span class="line">                myForm.querySelector(&apos;input[name=name]&apos;).value = &apos;&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    controller.init(view, model)</span><br><span class="line"></span><br><span class="line">&#125;.call()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1970,7 +1966,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1992,7 +1988,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
