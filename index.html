@@ -260,6 +260,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/javaScript/浅谈面对对象编程-opp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/28/javaScript/浅谈面对对象编程-opp/" itemprop="url">浅谈面对对象编程(opp)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T22:34:54+08:00">
+                2018-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>与其他语言不同，JavaScript 是一种基于原型的编程语言，并没有 类（class ）语句，而是把函数用作类。类这一概念在 JavaScript 通过对象原型（object prototype）得到延续，ES6中引入的类实质上是JavaScript 现有的基于原型的继承的语法糖。 </p>
+<h3 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h3><p>以一个简单的例子来说明，让我们看看普通的函数是如何定义一个人：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">   var obj =&#123;&#125;;</span><br><span class="line">   obj.name = name</span><br><span class="line">   obj.run = function ()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos;+ this.name + &apos;正在跑!&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    return obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用这个函数并创建一个Join的人。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var Join = Human(&apos;Join’)</span><br><span class="line">Join.name</span><br><span class="line">Join.run()</span><br></pre></td></tr></table></figure>
+<p>上面的代码看起来没有任何的问题，就是有点冗长，如果我们知道如何创建一个对象，就没有必要创建一个新的空对象并且返回它。 </p>
+<p>接下来，试试用构建函数来定义这个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.run = function()&#123;</span><br><span class="line">        console.log(&apos;我叫 &apos;+ this.name + &apos;正在跑!&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个构建函数是 js版本的类。它只定义了对象的属性和方法，除了没有明确创建一个对象和返回任何值和之外，它有了您期待的函数所拥有的全部功能。</p>
+<p>那么如何创建一个函数实例呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Join = new Human(&apos;Join’)</span><br><span class="line">var Bob  = new Human(&apos;Bob&apos;)</span><br></pre></td></tr></table></figure>
+<p>这种方法看起来是不是更简单，酷一点。</p>
+<p>在控制台输入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Join.name</span><br><span class="line">Join.run()</span><br><span class="line">Bob.name</span><br><span class="line">Bob.run()</span><br></pre></td></tr></table></figure>
+<p>您现在在页面看到的两个对象，尽管它们有着相同的name属性和run方法，但它们是各自独立的，所以他们相互的功能不会冲突，注意它们使用的是自己的 name 值，这也是使用 this 关键字的原因。</p>
+<p>需要注意的，上面代码中有一个new关键字，它是Js的语法糖，用于告知浏览器我们想要创建一个对象实例,它的作用：</p>
+<ul>
+<li>帮你创建一个临时对象</li>
+<li>帮你绑定原型</li>
+<li>再帮你把这个对象个 给return出去</li>
+</ul>
+<p>例如，我们可以通过原型给Human类添加方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Human.prototype.fight = function()&#123;</span><br><span class="line">    console.log(this.name + &apos;糊你一脸&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var Join = new Human(&apos;Join’)</span><br></pre></td></tr></table></figure>
+<p>这时，我们调用Join会发现它的原型链上增加啦一个fight方法</p>
+<p><img src="http://pa3otstvm.bkt.clouddn.com/18-6-28/21735027.jpg" alt=""></p>
+<p>调用用fight方法： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Join.fight() </span><br><span class="line"></span><br><span class="line">//Join糊你一脸</span><br></pre></td></tr></table></figure>
+<h3 id="继承是什么"><a href="#继承是什么" class="headerlink" title="继承是什么"></a>继承是什么</h3><p>  在Javascript中，继承通过赋予子类一个父类的实例并专门化子类来实现。简单来说：继承就是让子类别具有父类别的各种属性和方法。 </p>
+<p>以一个例子为说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line">var object = new Person(&apos;Join&apos;)</span><br></pre></td></tr></table></figure>
+<p>如何让person类拥有Human的run方法呢？</p>
+<p>（1）直接让Person的原型指向Human</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.__proto__ = Human.prototype</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;)</span><br><span class="line"></span><br><span class="line">object.run()</span><br><span class="line">//我叫 Join正在跑</span><br></pre></td></tr></table></figure>
+<p>这种方法是简单暴力，但是兼容性不太友好，不推荐使用</p>
+<p>（2）使用一个函数做过渡</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name,seler)&#123;</span><br><span class="line">    Human.call(this,name) //调用Human函数，使&quot;this&quot; 在调用过程中设置正确</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name,seler)&#123;</span><br><span class="line">    Human.call(this,name)</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这三句话等用于上面一句话</span><br><span class="line"> var f = function()&#123;&#125;  </span><br><span class="line"> f.prototype = Human.prototype</span><br><span class="line"> Person.prototype = new f()</span><br><span class="line"> </span><br><span class="line"> var object = new Person(&apos;Join&apos;,&apos;faimly&apos;)</span><br><span class="line"> object // 打开原型就会发现指向Human有一个run方法</span><br><span class="line"> </span><br><span class="line"> //当然我们还可以修改run方法或添加Person类方法</span><br><span class="line"> </span><br><span class="line"> Person.prototype.sayHello = function()&#123;</span><br><span class="line">    console.log(&apos;Hi &apos;+ this.seler + &apos; !&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我和 &apos;+  this.seler  + this.name + &apos; 正在跑步&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;,&apos;family&apos;)</span><br><span class="line">object.run()</span><br><span class="line">//我和 family Join 正在跑步</span><br><span class="line">object.sayHello()</span><br><span class="line">Hi family !</span><br></pre></td></tr></table></figure>
+<p>这种方法兼容性蛮好的，也是目前比较流行的方法</p>
+<p>（3）使用Object.create</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name，seler)&#123;</span><br><span class="line">    Human.call(this,name) //调用Human函数，使&quot;this&quot; 在调用过程中设置正确</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = Object.create(Human.prototype)</span><br><span class="line"></span><br><span class="line">Person.prototype.constructor = Person;</span><br><span class="line"></span><br><span class="line"> Person.prototype.sayHello = function()&#123;</span><br><span class="line">    console.log(&apos;Hi &apos;+ this.seler + &apos; !&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我和 &apos;+  this.seler  + this.name + &apos; 正在跑步&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;,&apos;family&apos;)</span><br><span class="line">object.run()</span><br><span class="line">//我和 family Join 正在跑步</span><br><span class="line">object.sayHello()</span><br><span class="line">Hi family !</span><br></pre></td></tr></table></figure>
+<p>这个还不太熟，正在学习中</p>
+<p>（4）使用ES6类class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Human&#123;</span><br><span class="line">    constructor(name)&#123;  //本身属性放在constructor</span><br><span class="line">        this.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    run()&#123; </span><br><span class="line">        console.log(&quot;我叫&quot;+this.name+&quot;，我在跑&quot;)</span><br><span class="line">        return undefined</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//extends用于创建一个类作为另一个类的一个子类。</span><br><span class="line">class Person extends Human&#123; </span><br><span class="line">    constructor(name,subject)&#123;</span><br><span class="line">        super(name) //等同于上面的call</span><br><span class="line">        this.subject = subject</span><br><span class="line">    &#125;</span><br><span class="line">    fight()&#123;</span><br><span class="line">        console.log(&apos;糊你熊脸&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"> speak()&#123; //</span><br><span class="line">	 console.log(&apos;Hi,&apos;+ this.subject)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object =new Person(&apos;Join&apos;,&apos;faye&apos;)</span><br><span class="line"></span><br><span class="line">object //打开原型链可以看到Person的两个方法和指向Human的run方法</span><br><span class="line"></span><br><span class="line">object.fight()</span><br><span class="line">//糊你熊脸</span><br><span class="line">object.speak()</span><br><span class="line">//Hi,faye</span><br><span class="line">object.run()</span><br><span class="line">//我叫Join，我在跑</span><br></pre></td></tr></table></figure>
+<p>这种方法是源于Java类的。</p>
+<p>第二种和第四种方法是目前前端用的最多的，强力推荐。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/浅谈jQuery实现原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1728,127 +1915,6 @@
                 
               
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/24/javaScript/面对对象编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/24/javaScript/面对对象编程/" itemprop="url">面对对象编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T13:43:55+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
           
 
           
