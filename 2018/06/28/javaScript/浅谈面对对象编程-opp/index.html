@@ -95,7 +95,7 @@
 <meta property="og:description" content="与其他语言不同，JavaScript 是一种基于原型的编程语言，并没有 类（class ）语句，而是把函数用作类。类这一概念在 JavaScript 通过对象原型（object prototype）得到延续，ES6中引入的类实质上是JavaScript 现有的基于原型的继承的语法糖。  什么是类以一个简单的例子来说明，让我们看看普通的函数是如何定义一个人： 12345678function Hum">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pa3otstvm.bkt.clouddn.com/18-6-28/21735027.jpg">
-<meta property="og:updated_time" content="2018-06-28T15:05:15.218Z">
+<meta property="og:updated_time" content="2018-06-29T12:32:11.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈面对对象编程(opp)">
 <meta name="twitter:description" content="与其他语言不同，JavaScript 是一种基于原型的编程语言，并没有 类（class ）语句，而是把函数用作类。类这一概念在 JavaScript 通过对象原型（object prototype）得到延续，ES6中引入的类实质上是JavaScript 现有的基于原型的继承的语法糖。  什么是类以一个简单的例子来说明，让我们看看普通的函数是如何定义一个人： 12345678function Hum">
@@ -367,9 +367,10 @@
 <p>在控制台输入如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Join.name</span><br><span class="line">Join.run()</span><br><span class="line">Bob.name</span><br><span class="line">Bob.run()</span><br></pre></td></tr></table></figure>
 <p>您现在在页面看到的两个对象，尽管它们有着相同的name属性和run方法，但它们是各自独立的，所以他们相互的功能不会冲突，注意它们使用的是自己的 name 值，这也是使用 this 关键字的原因。</p>
-<p>需要注意的，上面代码中有一个new关键字，它是Js的语法糖，用于告知浏览器我们想要创建一个对象实例,它的作用：</p>
+<p>需要注意的，上面代码中有一个new关键字，它是JS的语法糖，用于告知浏览器我们想要创建一个对象实例,它的作用：</p>
 <ul>
-<li>帮你创建一个临时对象</li>
+<li>帮你创建一个空对象</li>
+<li>this就等于空对象</li>
 <li>帮你绑定原型</li>
 <li>再帮你把这个对象个 给return出去</li>
 </ul>
