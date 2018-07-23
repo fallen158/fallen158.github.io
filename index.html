@@ -868,17 +868,29 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">readFile(&apos;c:\\1.txt&apos;,function(error,data)&#123;</span><br><span class="line">	if(error)&#123;</span><br><span class="line">		console.log(&apos;成功&apos;)</span><br><span class="line">		console.log(data.toString())</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		console.log(&apos;读取文件失败&apos;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//node.js是根据函数第一个参数是不是空，来决定成功失败的 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ajax(&#123;</span><br><span class="line">	url:&apos;/2.txt&apos;,</span><br><span class="line">	success: function(response)&#123;</span><br><span class="line">		console.log(&apos;成功&apos;)</span><br><span class="line">	&#125;,</span><br><span class="line">	error: function()&#123;</span><br><span class="line">		console.log(&apos;失败&apos;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//jquery是根据给我传一个对象，如果成功啦就调用success函数，失败就调用error函数</span><br></pre></td></tr></table></figure>
 <p>为什么要了解回调呢？因为promise就是为了回调地狱而出现的</p>
-<h4 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h4><p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用（proxy），充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。</p>
+<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><p>Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供统一接口。它起到代理作用（proxy），充当异步操作与回调函数之间的中介，使得异步操作具备同步操作的接口。Promise 可以让异步操作写起来，就像在写同步操作的流程，而不必一层层地嵌套回调函数。</p>
 <p>promise的解决方法:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">readFilePromise(&apos;c&quot;\\1.txt&apos;)</span><br><span class="line">.then(function()&#123;&#125;,function()&#123;&#125;)</span><br></pre></td></tr></table></figure>
 <p>它给我们提供啦一个then，如果成功就调用第一个函数，失败则调用第二个函数，如果回调里还有回调，就继续then，就不存在嵌套的问题。</p>
 <p>例如回调地狱的问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function 获取用户信息() &#123;</span><br><span class="line">           return new Promise(function(resolve, reject) &#123;</span><br><span class="line">               console.log(&apos;第一次获取用户信息&apos;)</span><br><span class="line">               resolve(&apos;姓名：Join&apos;)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印用户信息(用户信息) &#123;</span><br><span class="line">           return new Promise(function(resolve, reject) &#123;</span><br><span class="line">               console.log(用户信息)</span><br><span class="line">               resolve()</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 获取另一个用户信息() &#123;</span><br><span class="line">           return new Promise(function(resolve, reject) &#123;</span><br><span class="line">               console.log(&apos;第二次获取用户信息&apos;)</span><br><span class="line">               resolve(&apos;姓名：你好&apos;)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       获取用户信息()</span><br><span class="line">           .then(打印用户信息)</span><br><span class="line">           .then(获取另一个用户信息)</span><br><span class="line">           .then(打印用户信息)</span><br></pre></td></tr></table></figure>
+<p>所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</p>
+<ol>
+<li>对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</li>
+<li>一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从pending变为fulfilled和从pending变为rejected。</li>
+</ol>
 <h4 id="promise的基本用法"><a href="#promise的基本用法" class="headerlink" title="promise的基本用法"></a>promise的基本用法</h4><p><code>Promise</code>构造函数接受一个函数作为参数，该函数的两个参数分别是<code>resolve</code>和<code>reject</code>。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。</p>
-<p><code>resolve</code>函数的作用是,在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；<code>reject</code>函数的作用是，在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function 获取用户信息(name) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               if (name === &apos;方方&apos;) &#123;</span><br><span class="line">                   console.log(&apos;我认识方方&apos;)</span><br><span class="line">                   resolve([&apos;方方&apos;, &apos;是个胖子&apos;])</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   console.log(&apos;不认识&apos;)</span><br><span class="line">                   reject(&apos;不认识&apos;)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印信息(data) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               console.log(data)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印失败理由(理由) &#123;</span><br><span class="line">           console.log(&apos;失败的理由是&apos; + 理由)</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       获取用户信息(&apos;方方12&apos;)</span><br><span class="line">           .then(打印信息, 打印失败理由)</span><br></pre></td></tr></table></figure>
+<p>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function 获取用户信息(name)&#123;</span><br><span class="line">    return new Promise(function(resolve,reject)&#123;</span><br><span class="line">        if(name === &apos;Jack&apos;)&#123;</span><br><span class="line">            console.log(&apos;我认识Jack&apos;)</span><br><span class="line">            resolve([&apos;Jack&apos;, &apos;是个胖子&apos;])</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            console.log(&apos;不认识&apos;)</span><br><span class="line">            reject(&apos;不认识这个人&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>promise实例生成后，就可以使用then方法指定回调函数。</p>
-<p>then方法可以接受两个回调函数作为参数。第一个函数是promise对象成功时调用，第二个函数是promise对象失败时调用，第二个函数是可选，不一定要提供。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function 获取用户信息(name) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               if (name === &apos;Jack&apos;) &#123;</span><br><span class="line">                   console.log(&apos;我认识Jack&apos;)</span><br><span class="line">                   resolve([&apos;Jack&apos;, &apos;是个胖子&apos;])</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   console.log(&apos;不认识&apos;)</span><br><span class="line">                   reject(&apos;不认识这个人&apos;)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印信息(data) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               console.log(data)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印失败理由(理由) &#123;</span><br><span class="line">           console.log(&apos;失败的理由是&apos; + 理由)</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       获取用户信息(&apos;方方12&apos;)</span><br><span class="line">           .then(打印信息, 打印失败理由)</span><br></pre></td></tr></table></figure>
+<p>then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为resolved时调用，第二个回调函数是Promise对象的状态变为rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。</p>
+<h4 id="catch方法"><a href="#catch方法" class="headerlink" title="catch方法"></a>catch方法</h4><p>catcj方法用户捕捉promise在运行中抛出的错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">       function 获取用户信息(name) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               if (name === &apos;方方&apos;) &#123;</span><br><span class="line">                   console.log(&apos;我认识方方&apos;)</span><br><span class="line">                   resolve([&apos;方方&apos;, &apos;是个胖子&apos;])</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   console.log(&apos;不认识&apos;)</span><br><span class="line">                   reject(&apos;不认识这个人&apos;)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       function 打印信息(data) &#123;</span><br><span class="line">           return new Promise(function (resolve, reject) &#123;</span><br><span class="line">               console.log(data)</span><br><span class="line">                resolve()</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br><span class="line">获取用户信息(&apos;方方1&apos;)</span><br><span class="line">.then(打印信息)</span><br><span class="line">.catch(error=&gt;console.log(&apos;打印失败理由&apos;+ error))</span><br><span class="line">//不认识</span><br><span class="line">//打印失败理由不认识这个人</span><br></pre></td></tr></table></figure>
+<p>上面代码中，获取用户信息方法返回一个 Promise 对象，如果该对象状态变为resolved，则会调用then方法指定的回调函数；如果异步操作抛出错误，状态就会变为rejected，就会调用catch方法指定的回调函数，处理这个错误。另外，then方法指定的回调函数，如果运行中抛出错误，也会被catch方法捕获。</p>
+<h4 id="finally方法"><a href="#finally方法" class="headerlink" title="finally方法"></a>finally方法</h4><p>finally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">获取用户信息(&apos;方方&apos;)</span><br><span class="line">.then(打印信息)</span><br><span class="line">.catch(error=&gt;console.log(&apos;打印失败理由&apos;+ error))</span><br><span class="line">.finally(()=&gt;console.log(&apos;不管promise的状态，都会执行的操作’))</span><br></pre></td></tr></table></figure>
+<p>上面代码中，不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数。</p>
 
           
         
@@ -1668,6 +1680,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/AJAX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/javaScript/AJAX/" itemprop="url">AJAX和JSON</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T20:17:02+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="为什么需要AJAX？"><a href="#为什么需要AJAX？" class="headerlink" title="为什么需要AJAX？"></a>为什么需要AJAX？</h3><p>回顾下以前是如何发送请求的：</p>
+<ul>
+<li>用 form 可以发请求，但是会刷新页面或新开页面</li>
+<li>用 a 可以发 get 请求，但是也会刷新页面或新开页面</li>
+<li>用 img 可以发 get 请求，但是只能以图片的形式展示</li>
+<li>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</li>
+<li>用 script 可以发 get 请求，但是只能以脚本的形式运行</li>
+</ul>
+<p>看上面请求方式，都有很明显的缺点，那么有没有什么方式可以实现：</p>
+<ol>
+<li>get、post、put、delete 请求都行</li>
+<li>想以什么形式展示就以什么形式展示</li>
+</ol>
+<p>就是<strong>AJAX</strong>。</p>
+<h3 id="AJAX的历史"><a href="#AJAX的历史" class="headerlink" title="AJAX的历史"></a>AJAX的历史</h3><p>Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML。</p>
+<p>AJAX的核心是<code>XMLHttpRequest</code> (XHR) API。XHR 是一种用于在 Web 浏览器和 Web 服务器间传输数据消息的 JavaScript API。它支持浏览器使用 HTTP <code>POST</code>（将数据传到服务器）或 <code>GET</code> 请求（从后台服务器访问数据）。</p>
+<p>在 2000 年，XHR 最先出现于 IE 5 中。最初是由 Alex Hopmann 编写的 Microsoft ® ActiveX® 控件，创建 XHR 是为了处理 Microsoft Outlook® Web Access，旨在解决高级（当时）前端接口和 Microsoft Exchange Server 间的交互。</p>
+<p>IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发起 HTTP 请求。随后 Mozilla、 Safari、 Opera 也跟进（抄袭）了，取名 XMLHttpRequest，并被纳入 W3C 规范。</p>
+<p>真正的变化是几年后谷歌的Gmail服务，这一项Ajax 技术的使用使得 Web 开发界沸腾起来。它的响应能力和交互性对公众而言是全新的。</p>
+<h3 id="如何使用AJAX"><a href="#如何使用AJAX" class="headerlink" title="如何使用AJAX"></a>如何使用AJAX</h3><p>早期的AJAX使用必须满足以下几个条件：</p>
+<ol>
+<li>使用 XMLHttpRequest 发请求</li>
+<li>服务器返回 XML 格式的字符串</li>
+<li>JS 解析 XML，并更新局部页面</li>
+</ol>
+<p>一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;myButton&quot;&gt;点我&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    myButton.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(&apos;get&apos;,&apos;/xxx&apos;)</span><br><span class="line">        request.send()</span><br><span class="line">        console.log(request) //浏览器会返回一个XML对象，可以看到所有属性</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/html&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &lt;note&gt;</span><br><span class="line">      &lt;to&gt;Jack&lt;/to&gt;</span><br><span class="line">      &lt;from&gt;小谷&lt;/from&gt;</span><br><span class="line">      &lt;heading&gt;打招呼&lt;/heading&gt;</span><br><span class="line">      &lt;body&gt;Hello AJAX!&lt;/body&gt;</span><br><span class="line">    &lt;/note&gt;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印出的XML对象，其中的readyState需要注意</p>
+<h4 id="readState对象有5种状态"><a href="#readState对象有5种状态" class="headerlink" title="readState对象有5种状态"></a>readState对象有5种状态</h4><ul>
+<li><strong>0: UNSENT。</strong>表示对象已创建</li>
+<li><strong>1: OPENED。</strong>表示 <code>open()</code> 方法已成功调用</li>
+<li><strong>2: HEADERS_RECEIVED。</strong>表示来send()方法已经被调用, 响应头和响应状态已经返回.</li>
+<li><strong>3: LOADING。</strong>表示响应体正在下载中，responseText中已经获取了部分数据.</li>
+<li><strong>4: DONE</strong> 。整个请求下载过程已经完毕.</li>
+</ul>
+<p><strong>我们只需要记住其第4部分就好。</strong></p>
+<p>request.onreadystatechange可以监听readyState从1变成4的过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange=()=&gt;&#123;</span><br><span class="line">    console.log(request.readyState)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们就可以利用readState为4做一点事啦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">console.log(request)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        console.log(&apos;请求响应都完毕了&apos;)</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            console.log(&apos;说明请求成功啦&apos;)</span><br><span class="line">            console.log(request.responseText)</span><br><span class="line">            let parser = new DOMParser()</span><br><span class="line">            let xmlDoc = parser.parseFromString(request.responseText,&apos;text/xml&apos;)</span><br><span class="line">            let title = xmlDoc.getElementsByTagName(&apos;body&apos;)[0].textContent</span><br><span class="line">            console.log(title) // Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
+<p>上面代码中，request.responseText表示的就是后端传过来的XML语法字符串，下面三行代码就是解析后端传过来的XML语法，并把body标签的文本打印出来。</p>
+<p>XML这种反人类的语法格式，直到JSON的出现。</p>
+<h4 id="AJAX可以任意设置请求header部分"><a href="#AJAX可以任意设置请求header部分" class="headerlink" title="AJAX可以任意设置请求header部分"></a>AJAX可以任意设置请求header部分</h4><ul>
+<li><code>open()</code> 发起服务器连接。可以带参数：<ol>
+<li><strong>method。</strong>将要使用的 HTTP 方法（可以是 <code>POST</code> 或者 <code>GET</code>）</li>
+<li><strong>url。</strong>请求的 URL</li>
+<li><strong>async。</strong> 可选布尔参数，表明请求是否异步（该参数的默认值为 Ture）</li>
+<li><strong>user。</strong>一个可选用户名，供认证使用</li>
+<li><strong>password。</strong>一个可选密码，供认证使用</li>
+</ol>
+</li>
+<li><code>setRequestHeader()</code> 设置请求头，带有两个参数：报头及其相关值</li>
+<li><code>send()</code> 发送请求。该方法带有一个可选参数，包含 <code>POST</code> 请求的正文</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.setRequestHeader(&apos;content-type&apos;,&apos;x-www-form-urlencoded&apos;)</span><br><span class="line">request.setRequestHeader(&apos;Jack&apos;,20)</span><br></pre></td></tr></table></figure>
+<h4 id="AJAX可以获取任意响应的header部分"><a href="#AJAX可以获取任意响应的header部分" class="headerlink" title="AJAX可以获取任意响应的header部分"></a>AJAX可以获取任意响应的header部分</h4><ul>
+<li><strong>status。</strong>请求的标准 HTTP 状态（例如，成功请求将返回 <code>200</code>）</li>
+<li><strong>statusText。</strong>包括 Web 服务器返回的完整响应字符串，其中包括响应文本（例如，<code>304 Not Modified</code>）</li>
+<li><strong>getResponseHeader()。</strong>返回响应头内容；请求报头名称是其惟一参数</li>
+<li><strong>getAllResponseHeaders()。</strong>返回所有响应头的文本</li>
+<li><strong>responseXML。</strong>响应文本的 XML 表示，一个包含 DOM 和所有相关 DOM 方法的文档片段</li>
+<li><strong>responseText。</strong>响应文本的字符串表示</li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JSON是道格拉斯借鉴抄袭js语言发明的一种新的语言，JSON是一种基于文本的数据交换协议。</p>
+<p>特性：</p>
+<p><img src="http://pa3otstvm.bkt.clouddn.com/18-7-23/30030126.jpg" alt=""></p>
+<p>方法：</p>
+<ol>
+<li>JSON.parse：方法用于将 JSON 字符串转换成对应的值。</li>
+<li>JSON.stringify：用于将一个值转为 JSON 字符串，还可以接受一个数组，作为第二个参数，指定需要转成字符串的属性。还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</li>
+</ol>
+<p>因为JSON这门语言的出现，后端传递数据改用JSON传递数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;COntent-Type&apos;,&apos;text/json;charset=utf-8&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;note&quot;:&#123;</span><br><span class="line">        &quot;to&quot;: &quot;Jack&quot;,</span><br><span class="line">        &quot;from&quot;: &quot;小谷&quot;,</span><br><span class="line">        &quot;heading&quot;: &quot;打招呼&quot;,</span><br><span class="line">        &quot;body&quot;: &quot;Hello AJAX!&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>需要注意的是：无论xml还是JSON返回的都是一个字符串，httpttp第4部分永远都是返回字符串，只不过这个刚好符合JSON对象语法的结构。</strong></p>
+<p>前端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            let string = request.responseText</span><br><span class="line">            let object = window.JSON.parse(string) //返回一个对象</span><br><span class="line">            console.log(object.note.body) //Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
+<p>上面的代码对比XML操作是不是很简洁。</p>
+<p><strong>需要注意的AJAX是不能跨域的，它需要遵守同源政策，只有协议+端口+域名 一摸一样才允许发AJAX请求。</strong></p>
+<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a>CORS跨域</h3><p>CORS全称——Cross-Origin Resource Sharing</p>
+<p>只需要简单的给后端服务器配置加上一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&apos;Access-Control-Allow-Origin&apos;,&apos;http://frank.com:8001’)</span><br></pre></td></tr></table></figure>
+<p>这句话就会告诉浏览器frank网站是自家兄弟，可以访问我的网站。</p>
+<h3 id="封装一个jQuery-AJAX"><a href="#封装一个jQuery-AJAX" class="headerlink" title="封装一个jQuery.AJAX"></a>封装一个jQuery.AJAX</h3><p>首先，先看一下jQuery是如何写AJAX的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    method:&apos;get&apos;,</span><br><span class="line">    url:&apos;/xxx&apos;</span><br><span class="line">&#125;).then((response)=&gt;&#123;</span><br><span class="line">    console.log(response.note.body)</span><br><span class="line">&#125;,(erroer)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>jQuery返回promise对象，接收then函数，then函数接收两个参数成功或失败。</p>
+<p>尝试封装AJAX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = () =&gt; &#123; &#125;</span><br><span class="line"></span><br><span class="line">window.$ = window.jQuery</span><br><span class="line"></span><br><span class="line">window.jQuery.ajax = function (&#123;method, url,headers, body, successFn, faillFn&#125;) &#123;</span><br><span class="line">    let request = new XMLHttpRequest</span><br><span class="line">    request.open(method, url)</span><br><span class="line">    for(let key in headers)&#123;</span><br><span class="line">        let value = headers[key]</span><br><span class="line">        request.setRequestHeader(key,value)</span><br><span class="line">    &#125;</span><br><span class="line">    request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">        if (request.readyState === 4) &#123;</span><br><span class="line">            if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                successFn(request.responseText)</span><br><span class="line">            &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                faillFn(request)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    request.send(body)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers:&#123;</span><br><span class="line">            &apos;Jack&apos;:20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">        successFn: (response) =&gt; &#123;</span><br><span class="line">            console.log(response)</span><br><span class="line">        &#125;,</span><br><span class="line">        faillFn: (error) =&gt; &#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当然啦，还少了一个promise,继续改进。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery.ajax = function (&#123; method, url, headers, body,&#125;) &#123;</span><br><span class="line">    return new Promise(function (resolve, reject) &#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(method, url)</span><br><span class="line">        for (let key in headers) &#123;</span><br><span class="line">            let value = headers[key]</span><br><span class="line">            request.setRequestHeader(key, value)</span><br><span class="line">        &#125;</span><br><span class="line">        request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">            if (request.readyState === 4) &#123;</span><br><span class="line">                if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                    resolve(request.responseText)</span><br><span class="line">                &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                    reject(request)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        request.send(body)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &apos;Jack&apos;: 20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">    &#125;).then((text)=&gt;&#123;</span><br><span class="line">        console.log(text)</span><br><span class="line">    &#125;,(erroer)=&gt;&#123;</span><br><span class="line">        console.log(erroer)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>搞定。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/Vue组件通信/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1805,186 +2056,6 @@
 <li><a href="https://segmentfault.com/a/1190000010527064" target="_blank" rel="noopener">深刻理解Vue中的组件</a></li>
 <li><a href="https://www.cnblogs.com/Leo_wl/p/5702359.html" target="_blank" rel="noopener">Vue组件化</a></li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/路由/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/javaScript/路由/" itemprop="url">路由</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T17:41:14+08:00">
-                2018-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="什么是路由"><a href="#什么是路由" class="headerlink" title="什么是路由"></a>什么是路由</h3><p>传统的路由指的是：当用户访问一个URL时，对应的服务器会接收这个请求，然后解析url中的路径，从而执行对应的处理逻辑。这样就完成啦一次路由并发。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if  path === /xxx&#123;</span><br><span class="line">    就执行yyy</span><br><span class="line">&#125;elsei if  path === /xxx2&#123;</span><br><span class="line">    就执行yyy</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>简单距举例说明：假如我们有一台提供Web服务的地址是：http:/127.0.0.1，而该Web服务又提供了三个可供用户访问页面，其URL是：</p>
-<ul>
-<li>http:/127.0.0.1/</li>
-<li>http:/127.0.0.1/tab1</li>
-<li>http:/127.0.0.1/tab2</li>
-</ul>
-<p>那么其路径就分别是 /，/tab1，/tab2。</p>
-<p>当用户使用  http:/127.0.0.1/tab1 来访问该页面时，Web 服务会接收到这个请求，然后会解析 URL 中的路径 /tab1，在 Web 服务的程序中，该路径对应着相应的处理逻辑，程序会把请求交给路径所对应的处理逻辑，这样就完成了一次「路由分发」，这个分发就是通过「路由」来完成的。 </p>
-<p>以前路由都是后台做的，通过用户请求的url导航到具体的html页面，前端路由就是通过配置js文件，把这个工作拿到前端来做。</p>
-<p>简单的说，就是你给我一个路径，我给你返回一个页面（后端路由）</p>
-<p>你给我一个路径，我给你返回一个状态（前端路由）</p>
-<h3 id="前端路由"><a href="#前端路由" class="headerlink" title="前端路由"></a>前端路由</h3><p>前端的路由和后端的路由在实现技术上不一样，但是原理都是一样的。在 HTML5 的 history API 出现之前，前端的路由都是通过 hash 来实现的。</p>
-<p>前端路由主要做的就是两点：</p>
-<ul>
-<li>在页面不刷新的情况下实现url的变化</li>
-<li>捕捉url的变化，根据url更改页面内容</li>
-</ul>
-<p>例如：我们做一个状态切换，怎样能让我们的页面状态在刷新以后不改变呢</p>
-<ul>
-<li>使用hash保存当前页面状态信息，使用<a href="#0"></a>。缺点：容易受到其他a标签影响</li>
-<li>用HTML5 history API  使用路径代替锚点表示状态，例如 <a href="/xxx"></a></li>
-<li>使用路径的话肯定会跳转页面，但我们可以使用事件阻止其默认事件，使其不能跳转页面，而且不会受到其他a标签锚点的影响。</li>
-</ul>
-<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><p>hash是url中#后面的部分，服务器会自动忽略这部分，但是前端可以通过location.hash来获取。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let index = location.hash || &apos;#0&apos;</span><br><span class="line">index = index.substring(1)</span><br><span class="line">$(&apos;x-tab &gt;.nav&gt;li&apos;).eq(index).addClass(&apos;active&apos;)</span><br><span class="line">.siblings().removeClass(&apos;active&apos;)</span><br><span class="line"></span><br><span class="line">$(&apos;x-tab &gt; .content&gt;li&apos;).eq(index).addClass(&apos;active&apos;)</span><br><span class="line">.siblings().removeClass(&apos;active&apos;)</span><br><span class="line"></span><br><span class="line">$(&apos;x-tab&apos;).on(&apos;click&apos;, &apos;.nav&gt;li&apos;, (e) =&gt; &#123;</span><br><span class="line">let $li = $(e.currentTarget)</span><br><span class="line">$li.addClass(&apos;active&apos;).siblings().removeClass(&apos;active&apos;)</span><br><span class="line">let index = $li.index()</span><br><span class="line">location.hash = index</span><br><span class="line">$li.closest(&apos;x-tab&apos;).find(&apos;.content&gt;li&apos;).eq(index).addClass(&apos;active&apos;)</span><br><span class="line">.siblings().removeClass(&apos;active&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这是一个tab点击高亮事件，通过hash#，记录值，分享给其他用户，就可以得到同样的页面</p>
-<p>Web 服务并不会解析 hash，也就是说 # 后的内容 Web 服务都会自动忽略，但是 JavaScript 是可以通过 window.location.hash 读取到的，读取到路径加以解析之后就可以响应不同路径的逻辑处理。</p>
-<h4 id="history-API"><a href="#history-API" class="headerlink" title="history API"></a>history API</h4><p>history 是 HTML5 才有的新 API，可以允许我们操作浏览器的会话历史记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">surrenTab()</span><br><span class="line">$(&apos;x-tab&apos;).on(&apos;click&apos;, &apos;.nav&gt;li&gt;a&apos;, (e) =&gt; &#123;</span><br><span class="line">e.preventDefault()</span><br><span class="line">let a = e.currentTarget</span><br><span class="line">let path = a.getAttribute(&apos;href&apos;)</span><br><span class="line">window.history.pushState(&#123;&#125;, &apos;xxx&apos;, path)</span><br><span class="line">surrenTab()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">function surrenTab() &#123;</span><br><span class="line">let index = location.pathname || &apos;./tab1&apos;</span><br><span class="line">index = index.substring(4)</span><br><span class="line">$(&apos;x-tab &gt;.nav&gt;li&apos;).eq(index - 1).addClass(&apos;active&apos;)</span><br><span class="line">.siblings().removeClass(&apos;active&apos;)</span><br><span class="line">$(&apos;x-tab &gt; .content&gt;li&apos;).eq(index - 1).addClass(&apos;active&apos;)</span><br><span class="line">.siblings().removeClass(&apos;active&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="vue路由"><a href="#vue路由" class="headerlink" title="vue路由"></a>vue路由</h3><p>简单来说就是把所有Ul做成组件，由路由根据URL跳转。</p>
-<ul>
-<li>安装vue Router 并引入它</li>
-</ul>
-<h5 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Hello App!&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;router-link to=&quot;/tab1&quot;&gt;Go to tab1&lt;/router-link&gt;</span><br><span class="line">    &lt;router-link to=&quot;/tab2&quot;&gt;Go to tab2&lt;/router-link&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const Foo = &#123; template: &apos;&lt;div&gt;foo&lt;/div&gt;&apos; &#125;</span><br><span class="line">const Bar = &#123; template: &apos;&lt;div&gt;bar&lt;/div&gt;&apos; &#125;</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">  &#123; path: &apos;/tab1&apos;, component: Foo &#125;,</span><br><span class="line">  &#123; path: &apos;/tab2&apos;, component: Bar &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">  router: router,</span><br><span class="line">  el:&apos;#app&apos;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 现在，应用已经启动了！</span><br></pre></td></tr></table></figure>
 
           
         

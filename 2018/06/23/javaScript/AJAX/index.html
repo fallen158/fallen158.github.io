@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="为什么需要AJAX？回顾下以前是如何发送请求的：  用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script 可以发 get 请求，但是只能以脚本的形式运行  看上面请求方式，都有很明显">
+<meta name="keywords" content="javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX和JSON">
+<meta property="og:url" content="http://yoursite.com/2018/06/23/javaScript/AJAX/index.html">
+<meta property="og:site_name" content="记昨日书">
+<meta property="og:description" content="为什么需要AJAX？回顾下以前是如何发送请求的：  用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script 可以发 get 请求，但是只能以脚本的形式运行  看上面请求方式，都有很明显">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pa3otstvm.bkt.clouddn.com/18-7-23/30030126.jpg">
+<meta property="og:updated_time" content="2018-07-23T06:32:26.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX和JSON">
+<meta name="twitter:description" content="为什么需要AJAX？回顾下以前是如何发送请求的：  用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script 可以发 get 请求，但是只能以脚本的形式运行  看上面请求方式，都有很明显">
+<meta name="twitter:image" content="http://pa3otstvm.bkt.clouddn.com/18-7-23/30030126.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/javaScript/AJAX/"/>
+
+
+
+
+
+  <title>AJAX和JSON | 记昨日书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/fallen158" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/AJAX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AJAX和JSON</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T20:17:02+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="为什么需要AJAX？"><a href="#为什么需要AJAX？" class="headerlink" title="为什么需要AJAX？"></a>为什么需要AJAX？</h3><p>回顾下以前是如何发送请求的：</p>
+<ul>
+<li>用 form 可以发请求，但是会刷新页面或新开页面</li>
+<li>用 a 可以发 get 请求，但是也会刷新页面或新开页面</li>
+<li>用 img 可以发 get 请求，但是只能以图片的形式展示</li>
+<li>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</li>
+<li>用 script 可以发 get 请求，但是只能以脚本的形式运行</li>
+</ul>
+<p>看上面请求方式，都有很明显的缺点，那么有没有什么方式可以实现：</p>
+<ol>
+<li>get、post、put、delete 请求都行</li>
+<li>想以什么形式展示就以什么形式展示</li>
+</ol>
+<p>就是<strong>AJAX</strong>。</p>
+<h3 id="AJAX的历史"><a href="#AJAX的历史" class="headerlink" title="AJAX的历史"></a>AJAX的历史</h3><p>Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML。</p>
+<p>AJAX的核心是<code>XMLHttpRequest</code> (XHR) API。XHR 是一种用于在 Web 浏览器和 Web 服务器间传输数据消息的 JavaScript API。它支持浏览器使用 HTTP <code>POST</code>（将数据传到服务器）或 <code>GET</code> 请求（从后台服务器访问数据）。</p>
+<p>在 2000 年，XHR 最先出现于 IE 5 中。最初是由 Alex Hopmann 编写的 Microsoft ® ActiveX® 控件，创建 XHR 是为了处理 Microsoft Outlook® Web Access，旨在解决高级（当时）前端接口和 Microsoft Exchange Server 间的交互。</p>
+<p>IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发起 HTTP 请求。随后 Mozilla、 Safari、 Opera 也跟进（抄袭）了，取名 XMLHttpRequest，并被纳入 W3C 规范。</p>
+<p>真正的变化是几年后谷歌的Gmail服务，这一项Ajax 技术的使用使得 Web 开发界沸腾起来。它的响应能力和交互性对公众而言是全新的。</p>
+<h3 id="如何使用AJAX"><a href="#如何使用AJAX" class="headerlink" title="如何使用AJAX"></a>如何使用AJAX</h3><p>早期的AJAX使用必须满足以下几个条件：</p>
+<ol>
+<li>使用 XMLHttpRequest 发请求</li>
+<li>服务器返回 XML 格式的字符串</li>
+<li>JS 解析 XML，并更新局部页面</li>
+</ol>
+<p>一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;myButton&quot;&gt;点我&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    myButton.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(&apos;get&apos;,&apos;/xxx&apos;)</span><br><span class="line">        request.send()</span><br><span class="line">        console.log(request) //浏览器会返回一个XML对象，可以看到所有属性</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/html&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &lt;note&gt;</span><br><span class="line">      &lt;to&gt;Jack&lt;/to&gt;</span><br><span class="line">      &lt;from&gt;小谷&lt;/from&gt;</span><br><span class="line">      &lt;heading&gt;打招呼&lt;/heading&gt;</span><br><span class="line">      &lt;body&gt;Hello AJAX!&lt;/body&gt;</span><br><span class="line">    &lt;/note&gt;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印出的XML对象，其中的readyState需要注意</p>
+<h4 id="readState对象有5种状态"><a href="#readState对象有5种状态" class="headerlink" title="readState对象有5种状态"></a>readState对象有5种状态</h4><ul>
+<li><strong>0: UNSENT。</strong>表示对象已创建</li>
+<li><strong>1: OPENED。</strong>表示 <code>open()</code> 方法已成功调用</li>
+<li><strong>2: HEADERS_RECEIVED。</strong>表示来send()方法已经被调用, 响应头和响应状态已经返回.</li>
+<li><strong>3: LOADING。</strong>表示响应体正在下载中，responseText中已经获取了部分数据.</li>
+<li><strong>4: DONE</strong> 。整个请求下载过程已经完毕.</li>
+</ul>
+<p><strong>我们只需要记住其第4部分就好。</strong></p>
+<p>request.onreadystatechange可以监听readyState从1变成4的过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange=()=&gt;&#123;</span><br><span class="line">    console.log(request.readyState)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们就可以利用readState为4做一点事啦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">console.log(request)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        console.log(&apos;请求响应都完毕了&apos;)</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            console.log(&apos;说明请求成功啦&apos;)</span><br><span class="line">            console.log(request.responseText)</span><br><span class="line">            let parser = new DOMParser()</span><br><span class="line">            let xmlDoc = parser.parseFromString(request.responseText,&apos;text/xml&apos;)</span><br><span class="line">            let title = xmlDoc.getElementsByTagName(&apos;body&apos;)[0].textContent</span><br><span class="line">            console.log(title) // Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
+<p>上面代码中，request.responseText表示的就是后端传过来的XML语法字符串，下面三行代码就是解析后端传过来的XML语法，并把body标签的文本打印出来。</p>
+<p>XML这种反人类的语法格式，直到JSON的出现。</p>
+<h4 id="AJAX可以任意设置请求header部分"><a href="#AJAX可以任意设置请求header部分" class="headerlink" title="AJAX可以任意设置请求header部分"></a>AJAX可以任意设置请求header部分</h4><ul>
+<li><code>open()</code> 发起服务器连接。可以带参数：<ol>
+<li><strong>method。</strong>将要使用的 HTTP 方法（可以是 <code>POST</code> 或者 <code>GET</code>）</li>
+<li><strong>url。</strong>请求的 URL</li>
+<li><strong>async。</strong> 可选布尔参数，表明请求是否异步（该参数的默认值为 Ture）</li>
+<li><strong>user。</strong>一个可选用户名，供认证使用</li>
+<li><strong>password。</strong>一个可选密码，供认证使用</li>
+</ol>
+</li>
+<li><code>setRequestHeader()</code> 设置请求头，带有两个参数：报头及其相关值</li>
+<li><code>send()</code> 发送请求。该方法带有一个可选参数，包含 <code>POST</code> 请求的正文</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.setRequestHeader(&apos;content-type&apos;,&apos;x-www-form-urlencoded&apos;)</span><br><span class="line">request.setRequestHeader(&apos;Jack&apos;,20)</span><br></pre></td></tr></table></figure>
+<h4 id="AJAX可以获取任意响应的header部分"><a href="#AJAX可以获取任意响应的header部分" class="headerlink" title="AJAX可以获取任意响应的header部分"></a>AJAX可以获取任意响应的header部分</h4><ul>
+<li><strong>status。</strong>请求的标准 HTTP 状态（例如，成功请求将返回 <code>200</code>）</li>
+<li><strong>statusText。</strong>包括 Web 服务器返回的完整响应字符串，其中包括响应文本（例如，<code>304 Not Modified</code>）</li>
+<li><strong>getResponseHeader()。</strong>返回响应头内容；请求报头名称是其惟一参数</li>
+<li><strong>getAllResponseHeaders()。</strong>返回所有响应头的文本</li>
+<li><strong>responseXML。</strong>响应文本的 XML 表示，一个包含 DOM 和所有相关 DOM 方法的文档片段</li>
+<li><strong>responseText。</strong>响应文本的字符串表示</li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JSON是道格拉斯借鉴抄袭js语言发明的一种新的语言，JSON是一种基于文本的数据交换协议。</p>
+<p>特性：</p>
+<p><img src="http://pa3otstvm.bkt.clouddn.com/18-7-23/30030126.jpg" alt=""></p>
+<p>方法：</p>
+<ol>
+<li>JSON.parse：方法用于将 JSON 字符串转换成对应的值。</li>
+<li>JSON.stringify：用于将一个值转为 JSON 字符串，还可以接受一个数组，作为第二个参数，指定需要转成字符串的属性。还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</li>
+</ol>
+<p>因为JSON这门语言的出现，后端传递数据改用JSON传递数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;COntent-Type&apos;,&apos;text/json;charset=utf-8&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;note&quot;:&#123;</span><br><span class="line">        &quot;to&quot;: &quot;Jack&quot;,</span><br><span class="line">        &quot;from&quot;: &quot;小谷&quot;,</span><br><span class="line">        &quot;heading&quot;: &quot;打招呼&quot;,</span><br><span class="line">        &quot;body&quot;: &quot;Hello AJAX!&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>需要注意的是：无论xml还是JSON返回的都是一个字符串，httpttp第4部分永远都是返回字符串，只不过这个刚好符合JSON对象语法的结构。</strong></p>
+<p>前端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            let string = request.responseText</span><br><span class="line">            let object = window.JSON.parse(string) //返回一个对象</span><br><span class="line">            console.log(object.note.body) //Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
+<p>上面的代码对比XML操作是不是很简洁。</p>
+<p><strong>需要注意的AJAX是不能跨域的，它需要遵守同源政策，只有协议+端口+域名 一摸一样才允许发AJAX请求。</strong></p>
+<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a>CORS跨域</h3><p>CORS全称——Cross-Origin Resource Sharing</p>
+<p>只需要简单的给后端服务器配置加上一句话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&apos;Access-Control-Allow-Origin&apos;,&apos;http://frank.com:8001’)</span><br></pre></td></tr></table></figure>
+<p>这句话就会告诉浏览器frank网站是自家兄弟，可以访问我的网站。</p>
+<h3 id="封装一个jQuery-AJAX"><a href="#封装一个jQuery-AJAX" class="headerlink" title="封装一个jQuery.AJAX"></a>封装一个jQuery.AJAX</h3><p>首先，先看一下jQuery是如何写AJAX的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    method:&apos;get&apos;,</span><br><span class="line">    url:&apos;/xxx&apos;</span><br><span class="line">&#125;).then((response)=&gt;&#123;</span><br><span class="line">    console.log(response.note.body)</span><br><span class="line">&#125;,(erroer)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>jQuery返回promise对象，接收then函数，then函数接收两个参数成功或失败。</p>
+<p>尝试封装AJAX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = () =&gt; &#123; &#125;</span><br><span class="line"></span><br><span class="line">window.$ = window.jQuery</span><br><span class="line"></span><br><span class="line">window.jQuery.ajax = function (&#123;method, url,headers, body, successFn, faillFn&#125;) &#123;</span><br><span class="line">    let request = new XMLHttpRequest</span><br><span class="line">    request.open(method, url)</span><br><span class="line">    for(let key in headers)&#123;</span><br><span class="line">        let value = headers[key]</span><br><span class="line">        request.setRequestHeader(key,value)</span><br><span class="line">    &#125;</span><br><span class="line">    request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">        if (request.readyState === 4) &#123;</span><br><span class="line">            if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                successFn(request.responseText)</span><br><span class="line">            &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                faillFn(request)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    request.send(body)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers:&#123;</span><br><span class="line">            &apos;Jack&apos;:20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">        successFn: (response) =&gt; &#123;</span><br><span class="line">            console.log(response)</span><br><span class="line">        &#125;,</span><br><span class="line">        faillFn: (error) =&gt; &#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当然啦，还少了一个promise,继续改进。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery.ajax = function (&#123; method, url, headers, body,&#125;) &#123;</span><br><span class="line">    return new Promise(function (resolve, reject) &#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(method, url)</span><br><span class="line">        for (let key in headers) &#123;</span><br><span class="line">            let value = headers[key]</span><br><span class="line">            request.setRequestHeader(key, value)</span><br><span class="line">        &#125;</span><br><span class="line">        request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">            if (request.readyState === 4) &#123;</span><br><span class="line">                if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                    resolve(request.responseText)</span><br><span class="line">                &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                    reject(request)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        request.send(body)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &apos;Jack&apos;: 20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">    &#125;).then((text)=&gt;&#123;</span><br><span class="line">        console.log(text)</span><br><span class="line">    &#125;,(erroer)=&gt;&#123;</span><br><span class="line">        console.log(erroer)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>搞定。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+     <div>
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/23/javaScript/Vue组件通信/" rel="next" title="Vue组件通信">
+                <i class="fa fa-chevron-left"></i> Vue组件通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/23/javaScript/浅谈jQuery实现原理/" rel="prev" title="浅谈jQuery实现原理">
+                浅谈jQuery实现原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+  
+       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2154941443&auto=0&height=430">
+       </iframe>
+
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要AJAX？"><span class="nav-number">1.</span> <span class="nav-text">为什么需要AJAX？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX的历史"><span class="nav-number">2.</span> <span class="nav-text">AJAX的历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用AJAX"><span class="nav-number">3.</span> <span class="nav-text">如何使用AJAX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#readState对象有5种状态"><span class="nav-number">3.1.</span> <span class="nav-text">readState对象有5种状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AJAX可以任意设置请求header部分"><span class="nav-number">3.2.</span> <span class="nav-text">AJAX可以任意设置请求header部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AJAX可以获取任意响应的header部分"><span class="nav-number">3.3.</span> <span class="nav-text">AJAX可以获取任意响应的header部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">4.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS跨域"><span class="nav-number">5.</span> <span class="nav-text">CORS跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装一个jQuery-AJAX"><span class="nav-number">6.</span> <span class="nav-text">封装一个jQuery.AJAX</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
