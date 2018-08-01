@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTTPS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是Https？​    简单来说，就是HTTP + SSL/TLS。HTTP都知道吧，就是我们平时上网时，浏览器和服务器之间传递数据的一项协议。普通情况下，浏览器发送的请求会经过若干个网络中间节点，最后到达服务器；然后服务器又将请求的数据经过若干个网络中间节点发送回给浏览器，这时候浏览器就能够显示我们想要看到的页面。 ​    这个过程中，其实并没有存在什么太大的问题。问题出在，如果我们需要在">
+<meta name="keywords" content="HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Https原理">
+<meta property="og:url" content="http://yoursite.com/2018/08/01/HTTP/Https原理/index.html">
+<meta property="og:site_name" content="记昨日书">
+<meta property="og:description" content="什么是Https？​    简单来说，就是HTTP + SSL/TLS。HTTP都知道吧，就是我们平时上网时，浏览器和服务器之间传递数据的一项协议。普通情况下，浏览器发送的请求会经过若干个网络中间节点，最后到达服务器；然后服务器又将请求的数据经过若干个网络中间节点发送回给浏览器，这时候浏览器就能够显示我们想要看到的页面。 ​    这个过程中，其实并没有存在什么太大的问题。问题出在，如果我们需要在">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-1/87868813.jpg">
+<meta property="og:updated_time" content="2018-08-01T06:13:25.614Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Https原理">
+<meta name="twitter:description" content="什么是Https？​    简单来说，就是HTTP + SSL/TLS。HTTP都知道吧，就是我们平时上网时，浏览器和服务器之间传递数据的一项协议。普通情况下，浏览器发送的请求会经过若干个网络中间节点，最后到达服务器；然后服务器又将请求的数据经过若干个网络中间节点发送回给浏览器，这时候浏览器就能够显示我们想要看到的页面。 ​    这个过程中，其实并没有存在什么太大的问题。问题出在，如果我们需要在">
+<meta name="twitter:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-1/87868813.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/01/HTTP/Https原理/"/>
+
+
+
+
+
+  <title>Https原理 | 记昨日书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/fallen158" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/HTTP/Https原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Https原理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T12:11:06+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="什么是Https？"><a href="#什么是Https？" class="headerlink" title="什么是Https？"></a>什么是Https？</h2><p>​    简单来说，就是HTTP + SSL/TLS。HTTP都知道吧，就是我们平时上网时，浏览器和服务器之间传递数据的一项协议。普通情况下，浏览器发送的请求会经过若干个网络中间节点，最后到达服务器；然后服务器又将请求的数据经过若干个网络中间节点发送回给浏览器，这时候浏览器就能够显示我们想要看到的页面。</p>
+<p>​    这个过程中，其实并没有存在什么太大的问题。问题出在，如果我们需要在网页上输入一些敏感信息，如我们的银行卡账号和密码，发送给服务器，就会在中间节点中存在泄漏的风险。HTTPS就是为了保障传输过程中的安全目的而生的。</p>
+<p>HTTPS其实是有两部分组成：HTTP + SSL / TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。</p>
+<h2 id="HTTPS的故事"><a href="#HTTPS的故事" class="headerlink" title="HTTPS的故事"></a>HTTPS的故事</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>  有两个大师，他们需要经常交流研究心得，因此需要频繁地进行相互信件往来。在信件往来的过程中，我们假设发送方是大师A，而目的方是大师B。A想告诉B一些研究的最新成果，于是将相关的研究成果写成了一封信，从邮局邮寄给B。这封信通过邮局的若干个快递员，最终到达了B的手里。这样就形成了一个最典型的数据传输过程。</p>
+<h3 id="加密、解密、密钥、加密算法"><a href="#加密、解密、密钥、加密算法" class="headerlink" title="加密、解密、密钥、加密算法"></a>加密、解密、密钥、加密算法</h3><p>  现在，大师A觉得，我写的这封信，要是哪个快递员打开看过了，我的最新研究成果不就泄漏了吗？要是这个快递员拿去卖钱我半辈子努力不就白费了？于是乎大师A就想了个办法，在书写的过程中，每个字符都加4。如字符A就写成E，字符B就写成F，以此类推。大师B收到了信件后，再把每个字符都减去4，这样就可以正确得到大师A想传递的研究成果的内容。而最重要的是，即使快递员在中间拆开信件，如果不知道4这个数字，是无法正确的到信件内容的。<br>   我们将大师A每个字符加4的过程，叫做“加密”；大师B每个字符减4的过程，叫做“解密”；而数字4，就是我们常说的密钥。而这种加密算法，名为凯撒算法。</p>
+<h3 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h3><p>  就这样，平安地度过了一段时间，直到突然有一天大师B收到一封来自于大师A的信，但是大师B使用之前的方式怎么也明白不了大师A说的是什么。于是电话询问大师A关于这封信的内容。结果大师A说，这不是我写的啊。这才发现，大师B收到的是一封伪造大师A的来信。为防止以上事情再次发生，大师A与大师B商量说，以后每封信上，我都会签上自己特有的签名，并带上相关内容的HASH值。<br>   HASH值用来校验这封信是否有被篡改过，而签名类似于指纹，用来标示这封信是否真实来自于指纹上所指向的人。一般来说，签名的内容中会包含这封信的发件方地址等信息。大师B收到信件后第一时间通过内容的HASH值来校验信件的内容长度；通过签名来校验发件方地址和指纹信息是否匹配。只有全部匹配才继续用之前的密钥进行解密操作。<br>   这些标明了大师A身份信息等信息的签名，就是我们常说的证书。<br>   经过以上的故事，我们大致明白了密钥、加密解密、算法等必要的知识了。而HTTPS的过程其实和这个类似，只不过多了一些数学的描述。</p>
+<h2 id="HTTPS工作原理"><a href="#HTTPS工作原理" class="headerlink" title="HTTPS工作原理"></a>HTTPS工作原理</h2><p>  HTTPS工作在客户端和服务器端之间。以上故事中，客户端可以看作为大师A，服务器端可以看作为大师B。客户端和服务器本身都会自带一些加密的算法，用于双方协商加密的选择项。 </p>
+<ol>
+<li><p>客户端首先会将自己支持的加密算法，打个包告诉服务器端。</p>
+</li>
+<li><p>服务器端从客户端发来的加密算法中，选出一组加密算法和HASH算法（注，HASH也属于加密），并将自己的身份信息以证书的形式发回给客户端。而证书中包含了网站的地址，加密用的公钥，以及证书的颁发机构等。</p>
+<p>这里有提到公钥的概念是故事中没有的。我们常见的加密算法一般是一些对称的算法，如凯撒加密；对称算法即加密用的密钥和解密用的密钥是一个。如故事中的密钥是4。还有一种加密解密算法称之为非对称算法。这种算法加密用的密钥（公钥）和解密用的密钥（私钥）是两个不同的密钥；通过公钥加密的内容一定要使用私钥才能够解密。</p>
+<p>这里，服务器就将自己用来加密用的公钥一同发还给客户端，而私钥则服务器保存着，用户解密客户端加密过后的内容。</p>
+</li>
+<li><p>客户端收到了服务器发来的数据包后，会做这么几件事情：</p>
+<ul>
+<li><p>验证一下证书是否合法。一般来说，证书是用来标示一个站点是否合法的标志。如果说该证书由权威的第三方颁发和签名的，则说明证书合法。</p>
+</li>
+<li><p>果说该证书由权威的第三方颁发和签名的，则说明证书合法。</p>
+</li>
+<li>最后使用服务器挑选的HASH算法，将刚才的消息使用刚才的随机数进行加密，生成相应的消息校验值，与刚才的消息一同发还给服务器。</li>
+</ul>
+</li>
+<li><p>服务器接受到客户端发来的消息后，会做这么几件事情：</p>
+<ul>
+<li>使用私钥解密上面第2）中公钥加密的消息，得到客户端产生的随机序列号。</li>
+<li>使用该随机序列号，对该消息进行加密，验证的到的校验值是否与客户端发来的一致。如果一致则说明消息未被篡改，可以信任。</li>
+<li>最后，使用该随机序列号，加上之前第2步中选择的加密算法，加密一段握手消息，发还给客户端。同时HASH值也带上。</li>
+</ul>
+</li>
+<li><p>客户端收到服务器端的消息后，接着做这么几件事情：</p>
+<ul>
+<li>计算HASH值是否与发回的消息一致</li>
+<li>检查消息是否为握手消息</li>
+</ul>
+</li>
+<li><p>握手结束后，客户端和服务器端使用握手阶段产生的随机数以及挑选出来的算法进行对称加解密的传输。</p>
+<p>为什么不直接全程使用非对称加密算法进行数据传输？这个问题的答案是因为非对称算法的效率对比起对称算法来说，要低得多得多；因此往往只用在HTTPS的握手阶段。</p>
+</li>
+</ol>
+<p>   以下是我们一些经常使用的加密算法：</p>
+<ul>
+<li>非对称加密算法：RSA, DSA/DSS    </li>
+<li>对称加密算法： AES, 3DES    </li>
+<li>HASH算法：MD5, SHA1, SHA256</li>
+</ul>
+<h2 id="图解HTTPS"><a href="#图解HTTPS" class="headerlink" title="图解HTTPS"></a>图解HTTPS</h2><p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-1/87868813.jpg" alt=""></p>
+<h3 id="1-客户端发起HTTPS请求"><a href="#1-客户端发起HTTPS请求" class="headerlink" title="1. 客户端发起HTTPS请求"></a>1. 客户端发起HTTPS请求</h3><p>这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。</p>
+<h3 id="2-服务端的配置"><a href="#2-服务端的配置" class="headerlink" title="2. 服务端的配置"></a>2. 服务端的配置</h3><p>采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。</p>
+<h3 id="3-传送证书"><a href="#3-传送证书" class="headerlink" title="3. 传送证书"></a>3. 传送证书</h3><p>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。</p>
+<h3 id="4-客户端解析证书"><a href="#4-客户端解析证书" class="headerlink" title="4. 客户端解析证书"></a>4. 客户端解析证书</h3><p>这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。</p>
+<h3 id="5-传送加密信息"><a href="#5-传送加密信息" class="headerlink" title="5. 传送加密信息"></a>5. 传送加密信息</h3><p>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。</p>
+<h3 id="6-服务段解密信息"><a href="#6-服务段解密信息" class="headerlink" title="6. 服务段解密信息"></a>6. 服务段解密信息</h3><p>服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。</p>
+<h3 id="7-传输加密后的信息"><a href="#7-传输加密后的信息" class="headerlink" title="7. 传输加密后的信息"></a>7. 传输加密后的信息</h3><p>这部分信息是服务段用私钥加密后的信息，可以在客户端被还原</p>
+<h3 id="8-客户端解密信息"><a href="#8-客户端解密信息" class="headerlink" title="8. 客户端解密信息"></a>8. 客户端解密信息</h3><p>客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+     <div>
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/01/浏览器/Web性能优化/" rel="next" title="Web性能优化">
+                <i class="fa fa-chevron-left"></i> Web性能优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+  
+       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2154941443&auto=0&height=430">
+       </iframe>
+
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Https？"><span class="nav-number">1.</span> <span class="nav-text">什么是Https？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS的故事"><span class="nav-number">2.</span> <span class="nav-text">HTTPS的故事</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">2.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密、解密、密钥、加密算法"><span class="nav-number">2.2.</span> <span class="nav-text">加密、解密、密钥、加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书"><span class="nav-number">2.3.</span> <span class="nav-text">证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS工作原理"><span class="nav-number">3.</span> <span class="nav-text">HTTPS工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图解HTTPS"><span class="nav-number">4.</span> <span class="nav-text">图解HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-客户端发起HTTPS请求"><span class="nav-number">4.1.</span> <span class="nav-text">1. 客户端发起HTTPS请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-服务端的配置"><span class="nav-number">4.2.</span> <span class="nav-text">2. 服务端的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-传送证书"><span class="nav-number">4.3.</span> <span class="nav-text">3. 传送证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-客户端解析证书"><span class="nav-number">4.4.</span> <span class="nav-text">4. 客户端解析证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-传送加密信息"><span class="nav-number">4.5.</span> <span class="nav-text">5. 传送加密信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-服务段解密信息"><span class="nav-number">4.6.</span> <span class="nav-text">6. 服务段解密信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-传输加密后的信息"><span class="nav-number">4.7.</span> <span class="nav-text">7. 传输加密后的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-客户端解密信息"><span class="nav-number">4.8.</span> <span class="nav-text">8. 客户端解密信息</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
