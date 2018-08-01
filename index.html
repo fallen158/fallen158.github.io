@@ -260,6 +260,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/常见的浏览器内核/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/01/常见的浏览器内核/" itemprop="url">常见的浏览器内核</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T10:15:32+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/浏览器/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="常见的浏览器内核"><a href="#常见的浏览器内核" class="headerlink" title="常见的浏览器内核"></a>常见的浏览器内核</h2><p>浏览器内核可以分成两部分：渲染引擎(layout engineer 或者 Rendering Engine)和 JS 引擎。最开始渲染引擎和 JS 引擎并没有区分的很明确，后来 JS 引擎越来越独立，内核就倾向于只指渲染引擎。所以现在讲浏览器内核主要说的就是渲染引擎。</p>
+<p>那渲染引擎又是什么呢，简单来说就是把html、css的代码变成你现在看到的页面的样子。常见的浏览器内核可以分这四种：Trident，Gecko，Webkit，Chromium/Bink。看着都很陌生，那么换个样子：IE，Mozilla FireFox，Safari，Chrome 是不是一下子觉得熟悉多了。</p>
+<h3 id="Trident"><a href="#Trident" class="headerlink" title="Trident"></a>Trident</h3><p>说起Trident，很多人都会感到陌生，但提起IE（Internet Explorer）则无人不知无人不晓，由于其被包含在全世界使用率最高的操作系统Windows中，得到了极高的市场占有率，从而使得Trident内核的长期一家独大。微软很长时间都并没有更新Trident内核，这导致了两个后果：一是Trident内核曾经几乎与W3C标准脱节（2005年），二是Trident内核的大量 Bug等安全性问题没有得到及时解决，然后加上一些致力于开源的开发者和一些学者们公开自己认为IE浏览器不安全的观点，也有很多用户转向了其他浏览器。</p>
+<p><strong>Trident内核的常见浏览器有</strong></p>
+<ul>
+<li>IE6、IE7、IE8（Trident 4.0）、IE9（Trident 5.0）、IE10（Trident 6.0</li>
+<li>猎豹安全浏览器：1.0-4.2版本为Trident+Webkit，4.3版本为Trident+Blink</li>
+<li>360安全浏览器 ：1.0-5.0为Trident，6.0为Trident+Webkit，7.0为Trident+Blink</li>
+<li>360极速浏览器：7.5之前为Trident+Webkit,7.5为Trident+Blink</li>
+<li>傲游浏览器 ：傲游1.x、2.x为IE内核，3.x为IE与Webkit双核</li>
+<li>搜狗高速浏览器：1.x为Trident，2.0及以后版本为Trident+Webkit</li>
+</ul>
+<h3 id="Gecko"><a href="#Gecko" class="headerlink" title="Gecko"></a>Gecko</h3><p>Netscape6开始采用的内核，后来的Mozilla FireFox (火狐浏览器) 也采用了该内核，现在主要由Mozilla基金会进行维护。Gecko的特点是代码完全公开，因此，其可开发程度很高，全世界的程序员都可以为其编写代码，增加功能。因为这是个开源内核，因此受到许多人的青睐。</p>
+<p> 事实上，Gecko引擎的由来跟IE不无关系，前面说过IE没有使用W3C的标准，这导致了微软内部一些开发人员的不满；他们与当时已经停止更新了的 Netscape的一些员工一起创办了Mozilla，以当时的Mosaic内核为基础重新编写内核，于是开发出了Geckos。不过事实上，Gecko 内核的浏览器仍然还是Firefox (火狐) 用户最多，所以有时也会被称为Firefox内核。此外Gecko也是一个跨平台内核，可以在Windows、 BSD、<a href="https://link.jianshu.com?t=http://lib.csdn.net/base/linux" target="_blank" rel="noopener">Linux</a>和Mac OS X中使用。</p>
+<h3 id="Webkit"><a href="#Webkit" class="headerlink" title="Webkit"></a>Webkit</h3><p>苹果公司的内核，也是苹果的Safari浏览器使用的内核。  Webkit引擎包含WebCore排版引擎及JavaScriptCore解析引擎，均是从KDE的KHTML及KJS引擎衍生而来，它们都是自由软件，在GPL条约下授权，同时支持BSD系统的开发。所以Webkit也是自由软件，同时开放源代码。在安全方面不受IE、Firefox的制约，所以Safari浏览器在国内还是很安全的。</p>
+<blockquote>
+<p>常见的WebKit内核的浏览器：<a href="https://link.jianshu.com/?t=http://www.iplaysoft.com/safari.html" target="_blank" rel="noopener">Apple Safari</a>(Win/Mac/iPhone/iPad)、Symbian手机浏览器、<a href="https://link.jianshu.com/?t=http://www.iplaysoft.com/tag/android" target="_blank" rel="noopener">Android</a>默认浏览器，</p>
+</blockquote>
+<h3 id="Chromium-Bink"><a href="#Chromium-Bink" class="headerlink" title="Chromium/Bink"></a>Chromium/Bink</h3><p>2008 年，谷歌公司发布了 chrome 浏览器，浏览器使用的内核被命名为 chromium。</p>
+<p>chromium fork 自开源引擎 webkit，却把 WebKit 的代码梳理得可读性提高很多，所以以前可能需要一天进行编译的代码，现在只要两个小时就能搞定。因此 Chromium 引擎和其它基于 WebKit 的引擎所渲染页面的效果也是有出入的。所以有些地方会把 chromium 引擎和 webkit 区分开来单独介绍，而有的文章把 chromium 归入 webkit 引擎中，都是有一定道理的。</p>
+<p> 谷歌公司还研发了自己的 Javascript 引擎，V8，极大地提高了 Javascript 的运算速度。</p>
+<p>chromium 问世后，带动了国产浏览器行业的发展。一些基于 chromium 的单核，双核浏览器如雨后春笋般拔地而起，例如 搜狗、360、QQ浏览器等等，无一不是套着不同的外壳用着相同的内核。</p>
+<p>然而 2013 年 4 月 3 日，谷歌在 Chromium Blog 上发表 博客，称将与苹果的开源浏览器核心 Webkit 分道扬镳，在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。</p>
+<p>webkit 用的好好的，为何要投入到一个新的内核中去呢？</p>
+<p>Blink 其实是 WebKit 的分支，如同 WebKit 是 KHTML 的分支。Google 的 Chromium 项目此前一直使用 WebKit(WebCore) 作为渲染引擎，但出于某种原因，并没有将其多进程架构移植入Webkit</p>
+<p>后来，由于苹果推出的 WebKit2 与 Chromium 的沙箱设计存在冲突，所以 Chromium 一直停留在 WebKit，并使用移植的方式来实现和主线 WebKit2 的对接。这增加了 Chromium 的复杂性，且在一定程度上影响了 Chromium 的架构移植工作。</p>
+<p>基于以上原因，Google 决定从 WebKit 衍生出自己的 Blink 引擎（后由 Google 和 Opera Software 共同研发），将在 WebKit 代码的基础上研发更加快速和简约的渲染引擎，并逐步脱离 WebKit 的影响，创造一个完全独立的 Blink 引擎。这样以来，唯一一条维系 Google 和苹果之间技术关系的纽带就这样被切断了。</p>
+<p> 这里顺便介绍下Chrome和Chromium两个浏览器的区别——Chromium浏览器是谷歌为发展自家的浏览器Chrome而开启的计划，所以Chromium相当于Chrome的工程版或称实验版（尽管Chrome自身也有β版阶段），新功能会率先在Chromium上实现，待验证后才会应用在Chrome上。Chromium一天最多可以更新十几二十个版本，实验性的新特性都会现在这里放出，但是Chromium本身其实并不稳定；而Chrome总共有四个更新分支：Canary、Dev、Beta、Stable，稳定性依次增强。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/27/HTTP/Http缓存/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2016,245 +2187,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/AJAX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/javaScript/AJAX/" itemprop="url">AJAX和JSON</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T20:17:02+08:00">
-                2018-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="为什么需要AJAX？"><a href="#为什么需要AJAX？" class="headerlink" title="为什么需要AJAX？"></a>为什么需要AJAX？</h3><p>回顾下以前是如何发送请求的：</p>
-<ul>
-<li>用 form 可以发请求，但是会刷新页面或新开页面</li>
-<li>用 a 可以发 get 请求，但是也会刷新页面或新开页面</li>
-<li>用 img 可以发 get 请求，但是只能以图片的形式展示</li>
-<li>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</li>
-<li>用 script 可以发 get 请求，但是只能以脚本的形式运行</li>
-</ul>
-<p>看上面请求方式，都有很明显的缺点，那么有没有什么方式可以实现：</p>
-<ol>
-<li>get、post、put、delete 请求都行</li>
-<li>想以什么形式展示就以什么形式展示</li>
-</ol>
-<p>就是<strong>AJAX</strong>。</p>
-<h3 id="AJAX的历史"><a href="#AJAX的历史" class="headerlink" title="AJAX的历史"></a>AJAX的历史</h3><p>Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML。</p>
-<p>AJAX的核心是<code>XMLHttpRequest</code> (XHR) API。XHR 是一种用于在 Web 浏览器和 Web 服务器间传输数据消息的 JavaScript API。它支持浏览器使用 HTTP <code>POST</code>（将数据传到服务器）或 <code>GET</code> 请求（从后台服务器访问数据）。</p>
-<p>在 2000 年，XHR 最先出现于 IE 5 中。最初是由 Alex Hopmann 编写的 Microsoft ® ActiveX® 控件，创建 XHR 是为了处理 Microsoft Outlook® Web Access，旨在解决高级（当时）前端接口和 Microsoft Exchange Server 间的交互。</p>
-<p>IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发起 HTTP 请求。随后 Mozilla、 Safari、 Opera 也跟进（抄袭）了，取名 XMLHttpRequest，并被纳入 W3C 规范。</p>
-<p>真正的变化是几年后谷歌的Gmail服务，这一项Ajax 技术的使用使得 Web 开发界沸腾起来。它的响应能力和交互性对公众而言是全新的。</p>
-<h3 id="如何使用AJAX"><a href="#如何使用AJAX" class="headerlink" title="如何使用AJAX"></a>如何使用AJAX</h3><p>早期的AJAX使用必须满足以下几个条件：</p>
-<ol>
-<li>使用 XMLHttpRequest 发请求</li>
-<li>服务器返回 XML 格式的字符串</li>
-<li>JS 解析 XML，并更新局部页面</li>
-</ol>
-<p>一个简单的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;myButton&quot;&gt;点我&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    myButton.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(&apos;get&apos;,&apos;/xxx&apos;)</span><br><span class="line">        request.send()</span><br><span class="line">        console.log(request) //浏览器会返回一个XML对象，可以看到所有属性</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>后端代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/html&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &lt;note&gt;</span><br><span class="line">      &lt;to&gt;Jack&lt;/to&gt;</span><br><span class="line">      &lt;from&gt;小谷&lt;/from&gt;</span><br><span class="line">      &lt;heading&gt;打招呼&lt;/heading&gt;</span><br><span class="line">      &lt;body&gt;Hello AJAX!&lt;/body&gt;</span><br><span class="line">    &lt;/note&gt;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>打印出的XML对象，其中的readyState需要注意</p>
-<h4 id="readState对象有5种状态"><a href="#readState对象有5种状态" class="headerlink" title="readState对象有5种状态"></a>readState对象有5种状态</h4><ul>
-<li><strong>0: UNSENT。</strong>表示对象已创建</li>
-<li><strong>1: OPENED。</strong>表示 <code>open()</code> 方法已成功调用</li>
-<li><strong>2: HEADERS_RECEIVED。</strong>表示来send()方法已经被调用, 响应头和响应状态已经返回.</li>
-<li><strong>3: LOADING。</strong>表示响应体正在下载中，responseText中已经获取了部分数据.</li>
-<li><strong>4: DONE</strong> 。整个请求下载过程已经完毕.</li>
-</ul>
-<p><strong>我们只需要记住其第4部分就好。</strong></p>
-<p>request.onreadystatechange可以监听readyState从1变成4的过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange=()=&gt;&#123;</span><br><span class="line">    console.log(request.readyState)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们就可以利用readState为4做一点事啦</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">console.log(request)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        console.log(&apos;请求响应都完毕了&apos;)</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            console.log(&apos;说明请求成功啦&apos;)</span><br><span class="line">            console.log(request.responseText)</span><br><span class="line">            let parser = new DOMParser()</span><br><span class="line">            let xmlDoc = parser.parseFromString(request.responseText,&apos;text/xml&apos;)</span><br><span class="line">            let title = xmlDoc.getElementsByTagName(&apos;body&apos;)[0].textContent</span><br><span class="line">            console.log(title) // Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
-<p>上面代码中，request.responseText表示的就是后端传过来的XML语法字符串，下面三行代码就是解析后端传过来的XML语法，并把body标签的文本打印出来。</p>
-<p>XML这种反人类的语法格式，直到JSON的出现。</p>
-<h4 id="AJAX可以任意设置请求header部分"><a href="#AJAX可以任意设置请求header部分" class="headerlink" title="AJAX可以任意设置请求header部分"></a>AJAX可以任意设置请求header部分</h4><ul>
-<li><code>open()</code> 发起服务器连接。可以带参数：<ol>
-<li><strong>method。</strong>将要使用的 HTTP 方法（可以是 <code>POST</code> 或者 <code>GET</code>）</li>
-<li><strong>url。</strong>请求的 URL</li>
-<li><strong>async。</strong> 可选布尔参数，表明请求是否异步（该参数的默认值为 Ture）</li>
-<li><strong>user。</strong>一个可选用户名，供认证使用</li>
-<li><strong>password。</strong>一个可选密码，供认证使用</li>
-</ol>
-</li>
-<li><code>setRequestHeader()</code> 设置请求头，带有两个参数：报头及其相关值</li>
-<li><code>send()</code> 发送请求。该方法带有一个可选参数，包含 <code>POST</code> 请求的正文</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.setRequestHeader(&apos;content-type&apos;,&apos;x-www-form-urlencoded&apos;)</span><br><span class="line">request.setRequestHeader(&apos;Jack&apos;,20)</span><br></pre></td></tr></table></figure>
-<h4 id="AJAX可以获取任意响应的header部分"><a href="#AJAX可以获取任意响应的header部分" class="headerlink" title="AJAX可以获取任意响应的header部分"></a>AJAX可以获取任意响应的header部分</h4><ul>
-<li><strong>status。</strong>请求的标准 HTTP 状态（例如，成功请求将返回 <code>200</code>）</li>
-<li><strong>statusText。</strong>包括 Web 服务器返回的完整响应字符串，其中包括响应文本（例如，<code>304 Not Modified</code>）</li>
-<li><strong>getResponseHeader()。</strong>返回响应头内容；请求报头名称是其惟一参数</li>
-<li><strong>getAllResponseHeaders()。</strong>返回所有响应头的文本</li>
-<li><strong>responseXML。</strong>响应文本的 XML 表示，一个包含 DOM 和所有相关 DOM 方法的文档片段</li>
-<li><strong>responseText。</strong>响应文本的字符串表示</li>
-</ul>
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>JSON是道格拉斯借鉴抄袭js语言发明的一种新的语言，JSON是一种基于文本的数据交换协议。</p>
-<p>特性：</p>
-<p><img src="http://pa3otstvm.bkt.clouddn.com/18-7-23/30030126.jpg" alt=""></p>
-<p>方法：</p>
-<ol>
-<li>JSON.parse：方法用于将 JSON 字符串转换成对应的值。</li>
-<li>JSON.stringify：用于将一个值转为 JSON 字符串，还可以接受一个数组，作为第二个参数，指定需要转成字符串的属性。还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。</li>
-</ol>
-<p>因为JSON这门语言的出现，后端传递数据改用JSON传递数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/xxx&apos;)&#123;</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.setHeader(&apos;COntent-Type&apos;,&apos;text/json;charset=utf-8&apos;)</span><br><span class="line">    response.write(`</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;note&quot;:&#123;</span><br><span class="line">        &quot;to&quot;: &quot;Jack&quot;,</span><br><span class="line">        &quot;from&quot;: &quot;小谷&quot;,</span><br><span class="line">        &quot;heading&quot;: &quot;打招呼&quot;,</span><br><span class="line">        &quot;body&quot;: &quot;Hello AJAX!&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    `)</span><br><span class="line">    response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>需要注意的是：无论xml还是JSON返回的都是一个字符串，httpttp第4部分永远都是返回字符串，只不过这个刚好符合JSON对象语法的结构。</strong></p>
-<p>前端：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let request = new XMLHttpRequest</span><br><span class="line">request.open(&apos;get&apos;, &apos;/xxx&apos;)</span><br><span class="line">request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">    if (request.readyState === 4) &#123;</span><br><span class="line">        if (request.status &gt;= 200 &amp;&amp; request.status &lt;= 300) &#123;</span><br><span class="line">            let string = request.responseText</span><br><span class="line">            let object = window.JSON.parse(string) //返回一个对象</span><br><span class="line">            console.log(object.note.body) //Hello AJAX!</span><br><span class="line">        &#125; else if (request.status &gt;= 400)&#123;</span><br><span class="line">            console.log(&apos;说明请求失败了&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">request.send()</span><br></pre></td></tr></table></figure>
-<p>上面的代码对比XML操作是不是很简洁。</p>
-<p><strong>需要注意的AJAX是不能跨域的，它需要遵守同源政策，只有协议+端口+域名 一摸一样才允许发AJAX请求。</strong></p>
-<h3 id="CORS跨域"><a href="#CORS跨域" class="headerlink" title="CORS跨域"></a>CORS跨域</h3><p>CORS全称——Cross-Origin Resource Sharing</p>
-<p>只需要简单的给后端服务器配置加上一句话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&apos;Access-Control-Allow-Origin&apos;,&apos;http://frank.com:8001’)</span><br></pre></td></tr></table></figure>
-<p>这句话就会告诉浏览器frank网站是自家兄弟，可以访问我的网站。</p>
-<h3 id="封装一个jQuery-AJAX"><a href="#封装一个jQuery-AJAX" class="headerlink" title="封装一个jQuery.AJAX"></a>封装一个jQuery.AJAX</h3><p>首先，先看一下jQuery是如何写AJAX的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    method:&apos;get&apos;,</span><br><span class="line">    url:&apos;/xxx&apos;</span><br><span class="line">&#125;).then((response)=&gt;&#123;</span><br><span class="line">    console.log(response.note.body)</span><br><span class="line">&#125;,(erroer)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>jQuery返回promise对象，接收then函数，then函数接收两个参数成功或失败。</p>
-<p>尝试封装AJAX</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = () =&gt; &#123; &#125;</span><br><span class="line"></span><br><span class="line">window.$ = window.jQuery</span><br><span class="line"></span><br><span class="line">window.jQuery.ajax = function (&#123;method, url,headers, body, successFn, faillFn&#125;) &#123;</span><br><span class="line">    let request = new XMLHttpRequest</span><br><span class="line">    request.open(method, url)</span><br><span class="line">    for(let key in headers)&#123;</span><br><span class="line">        let value = headers[key]</span><br><span class="line">        request.setRequestHeader(key,value)</span><br><span class="line">    &#125;</span><br><span class="line">    request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">        if (request.readyState === 4) &#123;</span><br><span class="line">            if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                successFn(request.responseText)</span><br><span class="line">            &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                faillFn(request)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    request.send(body)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers:&#123;</span><br><span class="line">            &apos;Jack&apos;:20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">        successFn: (response) =&gt; &#123;</span><br><span class="line">            console.log(response)</span><br><span class="line">        &#125;,</span><br><span class="line">        faillFn: (error) =&gt; &#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>当然啦，还少了一个promise,继续改进。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery.ajax = function (&#123; method, url, headers, body,&#125;) &#123;</span><br><span class="line">    return new Promise(function (resolve, reject) &#123;</span><br><span class="line">        let request = new XMLHttpRequest</span><br><span class="line">        request.open(method, url)</span><br><span class="line">        for (let key in headers) &#123;</span><br><span class="line">            let value = headers[key]</span><br><span class="line">            request.setRequestHeader(key, value)</span><br><span class="line">        &#125;</span><br><span class="line">        request.onreadystatechange = () =&gt; &#123;</span><br><span class="line">            if (request.readyState === 4) &#123;</span><br><span class="line">                if (request.status &gt;= 200 &amp;&amp; request.status &lt; 300) &#123;</span><br><span class="line">                    resolve(request.responseText)</span><br><span class="line">                &#125; else if (request.status &gt;= 400) &#123;</span><br><span class="line">                    reject(request)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        request.send(body)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">myButton.addEventListener(&apos;click&apos;, (e) =&gt; &#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        method: &apos;GET&apos;,</span><br><span class="line">        url: &apos;/xxx&apos;,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            &apos;Jack&apos;: 20</span><br><span class="line">        &#125;,</span><br><span class="line">        body: &apos;哈哈哈&apos;,</span><br><span class="line">    &#125;).then((text)=&gt;&#123;</span><br><span class="line">        console.log(text)</span><br><span class="line">    &#125;,(erroer)=&gt;&#123;</span><br><span class="line">        console.log(erroer)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>搞定。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2305,7 +2237,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2316,7 +2248,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2327,7 +2259,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
