@@ -260,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/常见的浏览器内核/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="林枫">
@@ -279,7 +279,187 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/01/常见的浏览器内核/" itemprop="url">常见的浏览器内核</a></h1>
+                <a class="post-title-link" href="/2018/08/01/浏览器/浏览器渲染过程/" itemprop="url">浏览器渲染过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T10:37:10+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/浏览器/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg" alt=""></p>
+<p>从上面图中可以看到：</p>
+<p><strong>浏览器会解析三个东西</strong></p>
+<ul>
+<li>一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。</li>
+<li>CSS，解析CSS会产生CSS规则树。</li>
+<li>Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.</li>
+</ul>
+<p><strong>解析完成后</strong></p>
+<ul>
+<li>浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree</li>
+<li>Rendering Tree 渲染树并不等同于DOM树，比如像 head 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 </li>
+<li>通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 reflow 或 Layout </li>
+<li>最终通过调用Native GUI 的 API 绘制网页画面的过程称为 Pain</li>
+</ul>
+<p>当用户在浏览网页时进行交互或通过 js 脚本改变页面结构时，以上的部分操作有可能重复运行，此过程称为 Repaint 或 Reflow。</p>
+<ul>
+<li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变</li>
+<li>当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。（ HTML 使用的是 flow based layout ，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫 Reflow。）</li>
+</ul>
+<blockquote>
+<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。</p>
+</blockquote>
+<p>所以，下面这些动作有很大可能会是成本比较高的</p>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>增加、删除 ‘class’ 属性值</li>
+<li>元素尺寸改变</li>
+<li>文本内容改变</li>
+<li>浏览器窗口改变大小或拖动</li>
+<li>动画效果进行计算和改变 CSS 属性值</li>
+<li>伪类激活（:hover）</li>
+</ul>
+<p>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var bstyle = document.body.style; // cache</span><br><span class="line"> </span><br><span class="line">bstyle.padding = &quot;20px&quot;; // reflow, repaint</span><br><span class="line">bstyle.border = &quot;10px solid red&quot;; //  再一次的 reflow 和 repaint</span><br><span class="line"> </span><br><span class="line">bstyle.color = &quot;blue&quot;; // repaint</span><br><span class="line">bstyle.backgroundColor = &quot;#fad&quot;; // repaint</span><br><span class="line"> </span><br><span class="line">bstyle.fontSize = &quot;2em&quot;; // reflow, repaint</span><br><span class="line"> </span><br><span class="line">// new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(&apos;dude!&apos;));</span><br></pre></td></tr></table></figure>
+<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。<strong>一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow</strong>。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/常见的浏览器内核/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/01/浏览器/常见的浏览器内核/" itemprop="url">常见的浏览器内核</a></h1>
         
 
         <div class="post-meta">
@@ -2035,158 +2215,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/javaScript/浅谈jQuery实现原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/javaScript/浅谈jQuery实现原理/" itemprop="url">浅谈jQuery实现原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T23:23:00+08:00">
-                2018-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="jQuery设计原理"><a href="#jQuery设计原理" class="headerlink" title="jQuery设计原理"></a>jQuery设计原理</h2><p>jQuery实质上是一个构造函数，该构造函数接受一个参数，jQuery通过这个参数利用原生API找到节点，之后返回一个方法对象，该方法对象上的方法对节点进行操作(方法使用了闭包)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">window.jQuery = function(parameter)&#123;</span><br><span class="line">  let nodes = &#123;&#125;</span><br><span class="line">  if( typeof parameter === &apos;string&apos; )&#123;</span><br><span class="line">    let temp = document.querySelectorAll(parameter)</span><br><span class="line">    for(let i = 0;i &lt; temp.length;i++)&#123;</span><br><span class="line">      nodes[i] = temp[i]</span><br><span class="line">    &#125;</span><br><span class="line">    nodes.length = temp.length</span><br><span class="line">  &#125; else if(parameter instanceof Node) &#123;</span><br><span class="line">    nodes[i] = parameter</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    addClass: function(className)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(className)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setText: function(text)&#123;</span><br><span class="line">      for(let i = 0;i &lt; nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].textContent = text</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&apos;red&apos;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
-<p> jQuery简单API实现思想</p>
-<h2 id="封装函数"><a href="#封装函数" class="headerlink" title="封装函数"></a>封装函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ul&gt;li&#123;id=item$&#125;*5</span><br><span class="line">window.wcdom =&#123;&#125;</span><br><span class="line">wcdom.getSilbing = function(node)&#123;</span><br><span class="line">   var allchildren = node.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== node)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">wcdom.addclass = function(node,classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">       var methoName = value ? &apos;add&apos; : &apos;remove&apos;   </span><br><span class="line">        node.classList[methoName](key)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">wcdom.getSilbing(item3)</span><br><span class="line">wcdom.addclass(item3,&#123;a:true,b:true,c:false&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="命令空间"><a href="#命令空间" class="headerlink" title="命令空间"></a>命令空间</h2><p>i. 扩展 Node 对象接口<br> 直接在 Node 对象上添加封装函数，修改Node.protorype对象，在Node.prototype对象上新增方法。  缺点： 修改 Node 对象的原型，可能无意识覆盖原生API</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSilbing = function()&#123;</span><br><span class="line">   var allchildren = this.parentNode.children</span><br><span class="line">  var array=&#123;</span><br><span class="line">    length:0</span><br><span class="line">&#125;</span><br><span class="line">  for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">    if(allchildren[i] !== this)&#123;</span><br><span class="line">      array[array.length] = allchildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function(classes)&#123;</span><br><span class="line">     for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">      &#125; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">item3.getSilbing()</span><br><span class="line">item3.addClass(&#123;a:true,b:true,c:false,d:true&#125;)</span><br><span class="line"></span><br><span class="line">也可以选择加入call，加啦call，this就是call第一个参数</span><br><span class="line">item3.getSilbing.call(item3)</span><br><span class="line">item3.addClass.call(item3,&#123;a:true,b:true,c:false,d:true&#125;)</span><br></pre></td></tr></table></figure>
-<p>ii.  创建一个新的接口  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">window.Node2 = function(node)&#123;</span><br><span class="line">  return&#123;</span><br><span class="line">    getSilbing:function()&#123;</span><br><span class="line">      var allchildren = node.parentNode.children</span><br><span class="line">        var array=&#123;</span><br><span class="line">           length:0</span><br><span class="line">        &#125;</span><br><span class="line">      for(let i=0;i &lt; allchildren.length;i++)&#123;</span><br><span class="line">         if(allchildren[i] !== node)&#123;</span><br><span class="line">           array[array.length] = allchildren[i]</span><br><span class="line">           array.length += 1</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">        return array</span><br><span class="line">  &#125;,</span><br><span class="line">   addClass:function(classes)&#123;</span><br><span class="line">      for(key in classes)&#123;</span><br><span class="line">       var value = classes[key]</span><br><span class="line">        if(value)&#123;</span><br><span class="line">         item3.classList.add(key)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          item3.classList.remove(key)</span><br><span class="line">        &#125; </span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var node2 = Node2(item3)</span><br><span class="line">console.log(node2.getSilbing())</span><br><span class="line">node2.addClass(&#123;&apos;a&apos;:true,&apos;b&apos;:true,&apos;c&apos;:false&#125;)</span><br></pre></td></tr></table></figure>
-<p> 这种方法的优点是「无侵入」。jQuery构造函数生成一个新的对象，并给对象封装方法，不会修改节点上的原生Node对象。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2237,7 +2265,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

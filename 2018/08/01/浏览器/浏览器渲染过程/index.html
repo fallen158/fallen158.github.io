@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="web调试," />
+  <meta name="keywords" content="浏览器," />
 
 
 
@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="第一种：alert大法,因为conlse手机端没用，首先： 新建一个新建一个onerror全局对象，会弹出错误给手机端 12345window.onerror = function(message, file, row)&amp;#123;    alert(message)        alert(file)    alert(row)&amp;#125; onerror：  第一个参数表示：错误信息 第二个">
-<meta name="keywords" content="web调试">
+<meta name="description" content="浏览器渲染 从上面图中可以看到： 浏览器会解析三个东西  一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。 CSS，解析CSS会产生CSS规则树。 Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.  解析完成后  浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rend">
+<meta name="keywords" content="浏览器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WEB手机页面调试">
-<meta property="og:url" content="http://yoursite.com/2018/06/14/调试/WEB手机页面调试/index.html">
+<meta property="og:title" content="浏览器渲染过程">
+<meta property="og:url" content="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/index.html">
 <meta property="og:site_name" content="记昨日书">
-<meta property="og:description" content="第一种：alert大法,因为conlse手机端没用，首先： 新建一个新建一个onerror全局对象，会弹出错误给手机端 12345window.onerror = function(message, file, row)&amp;#123;    alert(message)        alert(file)    alert(row)&amp;#125; onerror：  第一个参数表示：错误信息 第二个">
+<meta property="og:description" content="浏览器渲染 从上面图中可以看到： 浏览器会解析三个东西  一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。 CSS，解析CSS会产生CSS规则树。 Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.  解析完成后  浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rend">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-14T10:13:04.993Z">
+<meta property="og:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg">
+<meta property="og:updated_time" content="2018-08-01T03:01:50.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WEB手机页面调试">
-<meta name="twitter:description" content="第一种：alert大法,因为conlse手机端没用，首先： 新建一个新建一个onerror全局对象，会弹出错误给手机端 12345window.onerror = function(message, file, row)&amp;#123;    alert(message)        alert(file)    alert(row)&amp;#125; onerror：  第一个参数表示：错误信息 第二个">
+<meta name="twitter:title" content="浏览器渲染过程">
+<meta name="twitter:description" content="浏览器渲染 从上面图中可以看到： 浏览器会解析三个东西  一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。 CSS，解析CSS会产生CSS规则树。 Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.  解析完成后  浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rend">
+<meta name="twitter:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/14/调试/WEB手机页面调试/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/"/>
 
 
 
 
 
-  <title>WEB手机页面调试 | 记昨日书</title>
+  <title>浏览器渲染过程 | 记昨日书</title>
   
 
 
@@ -261,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/调试/WEB手机页面调试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="林枫">
@@ -278,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">WEB手机页面调试</h1>
+          <h1 class="post-title" itemprop="name headline">浏览器渲染过程</h1>
         
 
         <div class="post-meta">
@@ -290,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-14T18:08:32+08:00">
-                2018-06-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T10:37:10+08:00">
+                2018-08-01
               </time>
             
 
@@ -313,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web调试/" itemprop="url" rel="index">
-                    <span itemprop="name">web调试</span>
+                  <a href="/categories/浏览器/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
                   </a>
                 </span>
 
@@ -350,31 +352,43 @@
       
 
       
-        <h2 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h2><p>alert大法,因为conlse手机端没用，首先：</p>
-<p>新建一个新建一个onerror全局对象，会弹出错误给手机端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.onerror = function(message, file, row)&#123;</span><br><span class="line">    alert(message)    </span><br><span class="line">    alert(file)</span><br><span class="line">    alert(row)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>onerror：</p>
+        <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg" alt=""></p>
+<p>从上面图中可以看到：</p>
+<p><strong>浏览器会解析三个东西</strong></p>
 <ul>
-<li>第一个参数表示：错误信息</li>
-<li>第二个参数表示：哪个文件发生啦错误</li>
-<li>第三个参数表示：文件多少行发生错误</li>
+<li>一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。</li>
+<li>CSS，解析CSS会产生CSS规则树。</li>
+<li>Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.</li>
 </ul>
-<h2 id="第二种："><a href="#第二种：" class="headerlink" title="第二种："></a>第二种：</h2><p>( 1 ) 自己造一个手机端console：</p>
-<p>首先，新建一个div：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">#consoleOutput &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 150px;</span><br><span class="line">    border: 1px solid;</span><br><span class="line">    background: white;</span><br><span class="line">    overflow: auto;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;consoleOutput&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>再新建一个js文件，创建一个console的全局对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">window.console = &#123;</span><br><span class="line">    log(x) &#123;</span><br><span class="line">        let p = document.createElement(&apos;p&apos;)</span><br><span class="line">            p.innerText = x</span><br><span class="line">            consoleOutput.appendChild(p)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这样，所有的console.log 都会被打出来</span><br><span class="line">//最后，结合第一种方法，把错误信息打出来</span><br><span class="line"></span><br><span class="line">window.onerror = function(message, file, row) &#123;</span><br><span class="line">    console.log(message)</span><br><span class="line">    console.log(file)</span><br><span class="line">    console.log(row)</span><br><span class="line">&#125;:</span><br></pre></td></tr></table></figure>
-<p>( 2 ) 使用腾讯的 vconsole 库:</p>
+<p><strong>解析完成后</strong></p>
 <ul>
-<li><p>npm init vconsole</p>
-</li>
-<li><p>引入 vconsole.main.js</p>
-</li>
-<li><p>初始化：vConsole：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var vConsole = new VConsole()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree</li>
+<li>Rendering Tree 渲染树并不等同于DOM树，比如像 head 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 </li>
+<li>通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 reflow 或 Layout </li>
+<li>最终通过调用Native GUI 的 API 绘制网页画面的过程称为 Pain</li>
 </ul>
-<p>手机页面就会出现一个vconsole的控制台，可以看到报错信息。</p>
+<p>当用户在浏览网页时进行交互或通过 js 脚本改变页面结构时，以上的部分操作有可能重复运行，此过程称为 Repaint 或 Reflow。</p>
+<ul>
+<li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变</li>
+<li>当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。（ HTML 使用的是 flow based layout ，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫 Reflow。）</li>
+</ul>
+<blockquote>
+<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。</p>
+</blockquote>
+<p>所以，下面这些动作有很大可能会是成本比较高的</p>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>增加、删除 ‘class’ 属性值</li>
+<li>元素尺寸改变</li>
+<li>文本内容改变</li>
+<li>浏览器窗口改变大小或拖动</li>
+<li>动画效果进行计算和改变 CSS 属性值</li>
+<li>伪类激活（:hover）</li>
+</ul>
+<p>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var bstyle = document.body.style; // cache</span><br><span class="line"> </span><br><span class="line">bstyle.padding = &quot;20px&quot;; // reflow, repaint</span><br><span class="line">bstyle.border = &quot;10px solid red&quot;; //  再一次的 reflow 和 repaint</span><br><span class="line"> </span><br><span class="line">bstyle.color = &quot;blue&quot;; // repaint</span><br><span class="line">bstyle.backgroundColor = &quot;#fad&quot;; // repaint</span><br><span class="line"> </span><br><span class="line">bstyle.fontSize = &quot;2em&quot;; // reflow, repaint</span><br><span class="line"> </span><br><span class="line">// new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(&apos;dude!&apos;));</span><br></pre></td></tr></table></figure>
+<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。<strong>一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow</strong>。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。</p>
 
       
     </div>
@@ -402,7 +416,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/web调试/" rel="tag"># web调试</a>
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
           
         </div>
       
@@ -415,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/13/python/python读取和保存文件/" rel="next" title="python读取和保存文件">
-                <i class="fa fa-chevron-left"></i> python读取和保存文件
+              <a href="/2018/08/01/浏览器/常见的浏览器内核/" rel="next" title="常见的浏览器内核">
+                <i class="fa fa-chevron-left"></i> 常见的浏览器内核
               </a>
             
           </div>
@@ -424,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/16/如何写出好代码/如何写出好代码/" rel="prev" title="如何写出好代码">
-                如何写出好代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种："><span class="nav-number">1.</span> <span class="nav-text">第一种：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种："><span class="nav-number">2.</span> <span class="nav-text">第二种：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器渲染"><span class="nav-number">1.</span> <span class="nav-text">浏览器渲染</span></a></li></ol></div>
             
 
           </div>
