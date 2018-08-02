@@ -260,6 +260,852 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/javaScript/JSONP跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/22/javaScript/JSONP跨域/" itemprop="url">JSONP跨域请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-22T14:41:28+08:00">
+                2018-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>因为同源策略，我们从不同的域（网站）访问数据需要一个特殊的技术JSONP 。JSONP是 JSON 的一种”使用模式”，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。</p>
+</blockquote>
+<h4 id="在学习JSONP之前，我们先了解下以前是如何请求的。"><a href="#在学习JSONP之前，我们先了解下以前是如何请求的。" class="headerlink" title="在学习JSONP之前，我们先了解下以前是如何请求的。"></a>在学习JSONP之前，我们先了解下以前是如何请求的。</h4><h3 id="from请求"><a href="#from请求" class="headerlink" title="from请求"></a>from请求</h3><p>需求：用户点击付款，金额减1    </p>
+<p>HTML：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;你的账户余额是 &lt;span id=&quot;amount&quot;&gt;&amp;&amp;amount&amp;&amp;&lt;/span&gt;&lt;/h1&gt;</span><br><span class="line">&lt;form action=&quot;/pay&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; value=&quot;付款&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/pay&apos; &amp;&amp; method.toUpperCase() === &apos;POST&apos;)&#123;</span><br><span class="line">    var amount = fs.readFileSync(&apos;./db&apos;,&apos;utf-8&apos;)</span><br><span class="line">    let newNumber = amount - 1</span><br><span class="line">if(Math.random()&gt;0.5)&#123;</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;,newNumber)</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.write(&apos;success&apos;)</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    response.statusCode = 404</span><br><span class="line">    response.write(&apos;fill&apos;)</span><br><span class="line">&#125;</span><br><span class="line">response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2005年之前后端交互请求是通过form来完成的，但是from请求有缺陷，每次成功之后都需要返回一个成功或失败，再后退主页面刷新才能看到结果。from可以get或post请求。</p>
+<h3 id="Img请求"><a href="#Img请求" class="headerlink" title="Img请求"></a>Img请求</h3><p>后来，就有人想到通过img发送请求，但是img  只能发送get请求，无法post请求。</p>
+<p>前端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;h1&gt;你的账户余额是 &lt;span id=&quot;amount&quot;&gt;&amp;&amp;amount&amp;&amp;&lt;/span&gt;&lt;/h1&gt;</span><br><span class="line">&lt;button id=&quot;button&quot;&gt;打钱&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    button.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">        let image = document.createElement(&apos;img&apos;)</span><br><span class="line">        image.src = &apos;./pay&apos;</span><br><span class="line">        image.onload = ()=&gt;&#123;</span><br><span class="line">            alert(&apos;打钱成功&apos;)</span><br><span class="line">            //window.location.reload() 1.用户请求成功我帮用户刷新页面</span><br><span class="line">            amount.innerText = amount.innerText - 1 //2.我直接帮用户把金额-1</span><br><span class="line">        &#125;</span><br><span class="line">        image.onerror = ()=&gt;&#123;</span><br><span class="line">           alert(&apos;打钱失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(Math.random()&gt;0.5)&#123;</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;,newNumber)</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;image/jpg&apos;)</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.write(fs.readFileSync(&apos;./300.jpeg&apos;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>缺点：需要给一个真图片给浏览器，假图片浏览器无法请求成功。</p>
+<h3 id="script请求"><a href="#script请求" class="headerlink" title="script请求"></a>script请求</h3><p>目前的请求方式，实现原理：创建一个scrpt文件，添加给body，会自动发送一次请求。</p>
+<p>前端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;你的账户余额是 &lt;span id=&quot;amount&quot;&gt;&amp;&amp;amount&amp;&amp;&lt;/span&gt;&lt;/h1&gt;</span><br><span class="line">&lt;button id=&quot;button&quot;&gt;打钱&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    cript.src = &apos;/pay&apos;</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">    script.onload= ()=&gt;&#123;</span><br><span class="line">        alert(&apos;打钱成功&apos;)</span><br><span class="line">        amount.innerText = amount.innerText - 1 </span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = ()=&gt;&#123;</span><br><span class="line">       alert(&apos;打钱失败&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(Math.random()&gt;0.5)&#123;</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;,newNumber)</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/javascript&apos;)</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.write(&apos;&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们还可以改进一下，直接后端帮用户减1。</p>
+<p>首先，把script的onload事件，移给后端监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(Math.random()&gt;0.5)&#123;</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;,newNumber)</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/javascript&apos;)</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.write(`amount.innerText = amount.innerText -1`)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，用户每点击一下金额就会减1。</p>
+<p>script请求也有缺点：每次成功页面都会多一个script文件，里面的js文件能执行。</p>
+<p>当然，也有改进方法：</p>
+<p>获取当前元素，把当前script移除，需要注意的是script只是在页面中移除啦，内存中还在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    script.src = &apos;/pay&apos;</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">    script.onload = (e)=&gt;&#123;</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = (e)=&gt;&#123;</span><br><span class="line">        alert(&apos;打钱失败&apos;)</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>那么，就知道请求之后，如果想让两个不同的网站如何交流呢？这就要说到跨域啦。</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p>跨域问题是由于javascript语言安全限制中的同源策略造成的。<strong>同源策略</strong>是由Netscape提出的一个著名的安全策略。 现在所有支持JavaScript 的浏览器都会使用这个策略。同源策略阻止从一个域上加载的脚本去获取或操作另一个域上的文档属性。也就是说，受到请求的 URL 的域必须与当前 Web 页面的域相同。这说明浏览器隔离来自不同源的内容，以防止它们之间的操作。所谓<strong>同源</strong>是指<strong>域名，协议，端口</strong>均相同。</p>
+<p>同源的几种情况：</p>
+<ul>
+<li>不同域名属于跨域，如：<a href="http://www.a.com和www.b.com，另外www.a.com" target="_blank" rel="noopener">www.a.com和www.b.com，另外www.a.com</a> 和<a href="http://www.a.com.cn" target="_blank" rel="noopener">www.a.com.cn</a> 也属于不同域名。</li>
+<li>主域名和子域名（二级域名、三级域名等）跨域，如：<a href="http://www.a.com" target="_blank" rel="noopener">www.a.com</a> 和 sub.a.com属于跨域，sub.a.com 和 sub1.a.com 之间也是跨域。</li>
+<li>协议属于跨域，如：<a href="http://www.a.com" target="_blank" rel="noopener">http://www.a.com</a> 和 <a href="https://www.a.com。" target="_blank" rel="noopener">https://www.a.com。</a></li>
+<li>不同端口，如： <a href="http://www.a.com:80和" target="_blank" rel="noopener">www.a.com:80和</a> <a href="http://www.a.com:81" target="_blank" rel="noopener">www.a.com:81</a> 。</li>
+<li>IP和域名属于跨域，如：123.125.106.16 和<a href="https://link.jianshu.com/?t=http://www.weibo.com/" target="_blank" rel="noopener">www.weibo.com</a>。</li>
+</ul>
+<p>###为什么要跨越？</p>
+<p>我们实际上做项目的时候，不可避免地会根据项目需求进行跨站访问，子域和主域之间数据共享等，受到同源策略的影响，要满足这些需求，就要用跨域技术来实现。</p>
+<p><strong>JSONP就是实现跨域的一种技术。</strong></p>
+<p>以上面代码为例，用JSONP实现跨域。看上面的代码，会发现一个问题，前后端藕合在一起啦。所以首先前后端解耦，再前端通过请求传递一个参数给后端 。</p>
+<p>前端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">window.yyy = function(result)&#123;</span><br><span class="line">    if(result === &apos;success&apos;)&#123;</span><br><span class="line">        amount.innerText = amount.innerText - 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">button.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    script.src = &apos;http://jack.com:8002/pay?callbackName=yyy&apos;</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">    script.onload = (e)=&gt;&#123;</span><br><span class="line">        alert(&apos;打钱成功&apos;)</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = (e)=&gt;&#123;</span><br><span class="line">        alert(&apos;打钱失败&apos;)</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>后端代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(Math.random()&gt;0.5)&#123;</span><br><span class="line">    fs.writeFileSync(&apos;./db&apos;,newNumber)</span><br><span class="line">    response.setHeader(&apos;Content-Type&apos;,&apos;text/javascript&apos;)</span><br><span class="line">    response.statusCode = 200</span><br><span class="line">    response.write(`</span><br><span class="line">        $&#123;query.callbackName&#125;.call(undefined,&apos;success&apos;)</span><br><span class="line">    `)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JSONP行业约定：</p>
+<ul>
+<li>参数名字只能叫做callback</li>
+<li>参数，得传一个随机数字过去</li>
+</ul>
+<p>为啦遵守约定，需要修改一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">button.addEventListener(&apos;click&apos;,(e)=&gt;&#123;</span><br><span class="line">    let script = document.createElement(&apos;script&apos;)</span><br><span class="line">    let functionName = &apos;Frank&apos; + parseInt(Math.random() * 100000,10)</span><br><span class="line">    //Frank212432 随机数</span><br><span class="line">    window[functionName] = function(result)&#123;</span><br><span class="line">        if(result === &apos;success&apos;)&#123;</span><br><span class="line">            amount.innerText = amount.innerText - 1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    script.src = &apos;http://jack.com:8002/pay?callback&apos;+ functionName</span><br><span class="line">    document.body.appendChild(script)</span><br><span class="line">    script.onload = (e)=&gt;&#123;</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">    script.onerror = (e)=&gt;&#123;</span><br><span class="line">        alert(&apos;打钱失败&apos;)</span><br><span class="line">        e.currentTarget.remove()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="用jQuery实现JSONP更简单"><a href="#用jQuery实现JSONP更简单" class="headerlink" title="用jQuery实现JSONP更简单"></a>用jQuery实现JSONP更简单</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &apos;http://jack.com:8002/pay&apos;,</span><br><span class="line">    dataType: &apos;jsonp&apos;,</span><br><span class="line">    success: function (response) &#123;</span><br><span class="line">    amount.innerText = amount.innerText - 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>jquery会帮你做很多事情，callback，随机数等，<strong>注意这里和ajax没有任何关系。</strong> </p>
+<h3 id="JSONP的实现原理"><a href="#JSONP的实现原理" class="headerlink" title="JSONP的实现原理"></a>JSONP的实现原理</h3><p>JSAONP是一种由前端创建一个script请求，指向响应方，同时传一个随机参数。后端根据随机参数响应，填写数据。浏览器接收到响应后就会执行数据，请求方就知道了他要的数据。</p>
+<p>例如上面的代码：</p>
+<p>请求方：frank.com 的前端程序员（浏览器） </p>
+<p>响应方：jack.com 的后端程序员（服务器） </p>
+<ol>
+<li><p>请求方创建script，src指向响应方，同时传一个查询参数？callbackName=yyy </p>
+</li>
+<li><p>响应方根据参数callbackName，构造形如yyy.call(undefined,’你要的数据’) ， yyy(‘你要的数据‘）这样的响应 。</p>
+</li>
+<li><p>浏览器接收到响应，就会执行yyy.call(undefinde,’你要的数据’) </p>
+</li>
+<li>那么请求方就知道了他要的数据 </li>
+</ol>
+<p>这就是JSONP </p>
+<p>JSONP行业约定：</p>
+<ul>
+<li>参数名字只能叫做callback</li>
+<li>参数，得传一个随机数字过去</li>
+</ul>
+<p>JSONP有一个缺点：只能get请求，不能post。</p>
+<p>面试题：</p>
+<h4 id="JSONP-为什么不支持-POST"><a href="#JSONP-为什么不支持-POST" class="headerlink" title="JSONP 为什么不支持 POST"></a>JSONP 为什么不支持 POST</h4><p>因为JSONP是通过动态创建script的，动态创建script的时候只能用get，不能用POST。</p>
+<h3 id="JSON和JSONP的区别"><a href="#JSON和JSONP的区别" class="headerlink" title="JSON和JSONP的区别"></a>JSON和JSONP的区别</h3><p>JSON和JSONP虽然只有一个字母的差别，但其实他们根本不是一回事儿：JSON是一种数据交换格式，而JSONP是一种依靠开发人员的聪明才智创造出的一种非官方跨域数据交互协议。我们拿最近比较火的谍战片来打个比方，JSON是地下党们用来书写和交换情报的“暗号”，而JSONP则是把用暗号书写的情报传递给自己同志时使用的接头方式。看到没？一个是描述信息的格式，一个是信息传递双方约定的方法。</p>
+<p>​            </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/16/如何写出好代码/如何写出好代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/16/如何写出好代码/如何写出好代码/" itemprop="url">如何写出好代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-16T10:49:47+08:00">
+                2018-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/重构代码/" itemprop="url" rel="index">
+                    <span itemprop="name">重构代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="学习之前，可以先学习一下如何写出无法维护的代码："><a href="#学习之前，可以先学习一下如何写出无法维护的代码：" class="headerlink" title="学习之前，可以先学习一下如何写出无法维护的代码："></a>学习之前，可以先学习一下如何写出无法维护的代码：</h2><h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><ul>
+<li><p><strong>容易输入的名字</strong>。比如：Fred，asdf，a,b,c, x,y,z。</p>
+</li>
+<li><p><strong>有创意地拼写错误</strong>。比如：SetPintleOpening， SetPintalClosing。这样可以让人很难搜索代码。</p>
+</li>
+<li><p><strong>抽象</strong>。比如：ProcessData, DoIt, GetData… 抽象到就跟什么都没说一样。</p>
+</li>
+<li><p><strong>缩写</strong>。比如：WTF，RTFSC …… </p>
+</li>
+<li><p><strong>随机大写字母</strong>。比如：gEtnuMbER..</p>
+</li>
+<li><p><strong>使用不同的语言</strong>。比如混用英语，德语，或是中文拼音。</p>
+</li>
+<li><p><strong>使用重音字母</strong>。比如：int  ínt</p>
+</li>
+<li><p><strong>使用下划线</strong>。比如：_, <strong>, _</strong>。</p>
+</li>
+<li><p><strong>使用字符命名</strong>。比如：slash, asterix, comma…</p>
+</li>
+<li><p><strong>使用无关的单词</strong>。比如：god, superman, iloveu….</p>
+</li>
+<li><p><strong>混淆l和1</strong>。字母l和数字1有时候是看不出来的。</p>
+</li>
+<li><p><strong>表里不一</strong>。比如你的界面显示叫postal code，但是代码里确叫 zipcode.</p>
+</li>
+<li><p><strong>把注释和代码交织在一起</strong>。</p>
+</li>
+<li><p><strong>在注释中撒谎</strong>。你不用真的去撒谎，只需在改代码的时候不要更新注释就可以了。</p>
+</li>
+</ul>
+<h3 id="bad-smell（坏味道）"><a href="#bad-smell（坏味道）" class="headerlink" title="bad smell（坏味道）"></a>bad smell（坏味道）</h3><p>有些代码可以用，但是很「臭」。哪些代码是有坏味道的</p>
+<ul>
+<li>表里不一的代码</li>
+<li>过时的注释</li>
+<li>逻辑很简单，但是看起来很复杂的代码</li>
+<li>重复的代码</li>
+<li>相似的代码</li>
+<li>总是一起出现的代码</li>
+<li></li>
+</ul>
+<h2 id="代码优化的基本原则"><a href="#代码优化的基本原则" class="headerlink" title="代码优化的基本原则"></a>代码优化的基本原则</h2><ol>
+<li>易读性优先</li>
+<li>如果不是性能瓶颈，就不要为了性能而改写代码</li>
+<li>复杂性守恒原则：无论你怎么写代码，复杂性都是不会消失的</li>
+<li>推论：如果逻辑很复杂，那么代码看起来就应该是复杂的。如果逻辑很简单，代码看起来就应该是简单的。</li>
+</ol>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><ol>
+<li>词性</li>
+</ol>
+<ul>
+<li><p>普通变量/属性用「名词」</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">     name: &apos;Frank&apos;</span><br><span class="line"> &#125;</span><br><span class="line"> var student = &#123;</span><br><span class="line">     grade: 3,</span><br><span class="line">     class: 2</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>bool变量/属性用「形容词」或者「be动词」或者「情态动词」或者「hasX」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">     dead: false, // 如果是形容词，前面就没必要加 is，比如isDead 就很废话</span><br><span class="line">     canSpeak: true, //情态动词有 can、should、will、need 等，情态动词后面接动词</span><br><span class="line">     isVip: true, // be 动词有 is、was 等，后面一般接名词</span><br><span class="line">     hasChildren: true, // has 加名词</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>普通函数/方法用「动词」开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">      run()&#123;&#125;, // 不及物动词</span><br><span class="line">      drinkWater()&#123;&#125;, // 及物动词</span><br><span class="line">      eat(foo)&#123;&#125;, // 及物动词加参数（参数是名词）</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>回调、钩子函数用「介词」开头，或用「动词的现在完成时态」</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    beforeDie()&#123;&#125;,</span><br><span class="line">    afterDie()&#123;&#125;,</span><br><span class="line">    // 或者</span><br><span class="line">    willDie()&#123;&#125;</span><br><span class="line">    dead()&#123;&#125; // 这里跟 bool 冲突，你只要不同时暴露 bool dead 和函数 dead 就行，怕冲突就用上面的 afterDie</span><br><span class="line">&#125;</span><br><span class="line">button.addEventListener(&apos;click&apos;, onButtonClick)</span><br><span class="line">var component = &#123;</span><br><span class="line">    beforeCreate()&#123;&#125;,</span><br><span class="line">    created()&#123;&#125;,</span><br><span class="line">    beforeMount()&#123;&#125;,</span><br><span class="line">    mounted()&#123;&#125;,</span><br><span class="line">    beforeUpdate()&#123;&#125;,</span><br><span class="line">    updated()&#123;&#125;,</span><br><span class="line">    activated()&#123;&#125;,</span><br><span class="line">    deactivated()&#123;&#125;,</span><br><span class="line">    beforeDestroy()&#123;&#125;,</span><br><span class="line">    destroyed()&#123;&#125;,</span><br><span class="line">    errorCaptured()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>容易混淆的地方加前缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div1.classList.add(&apos;active&apos;) // DOM 对象</span><br><span class="line"> div2.addClass(&apos;active&apos;) // jQuery 对象</span><br><span class="line"> 不如改成</span><br><span class="line"> domDiv1 或 elDiv1.classList.add(&apos;active&apos;)</span><br><span class="line"> $div2.addClass(&apos;active&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>属性访问器函数可以用名词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$div.text() // 其实是 $div.getText()</span><br><span class="line">$div.text(&apos;hi&apos;) // 其实是 $div.setText(&apos;hi&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li><p>一致性</p>
+<ul>
+<li><p>介词一致性</p>
+<p>如果你使用了 before + after，那么就在代码的所有地方都坚持使用</p>
+<p>如果你使用了 before + 完成时，那么就坚持使用</p>
+<p>如果你改来改去，就「不一致」了，不一致将导致「不可预测」</p>
+</li>
+<li><p>顺序一致性</p>
+<p>比如 updateContainerWidth 和 updateHeightOfContainer 的顺序就令人很别扭，同样会引发「不可预测」</p>
+<p>表里一致性</p>
+<p>函数名必须完美体现函数的功能，既不能多也不能少。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getSongs()&#123;</span><br><span class="line">    return $.get(&apos;/songs).then((response)&#123;</span><br><span class="line">        div.innerText = response.songs</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就违背了表里一致性，getSongs 表示获取歌曲，并没有暗示这个函数会更新页面，但是实际上函数更新了 div，这就是表里不一，正确的写法是</p>
+<p>要么纠正函数名:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function getSongsAndUpdateDiv()&#123;</span><br><span class="line">      return $.get(&apos;/songs).then((response)&#123;</span><br><span class="line">          div.innerText = response.songs</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>要么写成两个函数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function getSongs()&#123;</span><br><span class="line">    return $.get(&apos;/songs)</span><br><span class="line">&#125;</span><br><span class="line">function updateDiv(songs)&#123;</span><br><span class="line">    div.innerText = response.songs</span><br><span class="line">&#125;</span><br><span class="line">getSongs().then((response)=&gt;&#123;</span><br><span class="line">    updateDiv(response.songs)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>时间一致性</p>
+<p>有可能随着代码的变迁，一个变量的含义已经不同于它一开始的含义了，这个时候你需要及时改掉这个变量的名字。</p>
+<p>有可能随着代码的变迁，一个变量的含义已经不同于它一开始的含义了，这个时候你需要及时改掉这个变量的名字。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="重构代码"><a href="#重构代码" class="headerlink" title="重构代码"></a>重构代码</h3><p>如果你的代码有单元测试，那么改起来就很放心。如果没有单元测试，就需要用「小步快跑」的策略来修改。小步快跑的意思是说，每次只修改一点点，测试通过后，再修改一点点，再测试，再修改一点点……如此反复。《重构》这本书介绍了很多方法，我这里只说两个经久不衰的方法。</p>
+<h3 id="一、使用函数来改代码"><a href="#一、使用函数来改代码" class="headerlink" title="一、使用函数来改代码"></a>一、使用函数来改代码</h3><ol>
+<li><p>将一坨代码放到一个函数里</p>
+</li>
+<li><p>将代码依赖的外部变量作为参数</p>
+</li>
+<li><p>将代码的输出作为函数的返回值</p>
+</li>
+<li><p>给函数取一个合适的名字</p>
+</li>
+<li><p>调用这个函数并传入参数</p>
+</li>
+<li><p>这个函数里的代码如果超过 5 行，则依然有优化的空间，请回到第 1 步</p>
+<p>例如轮播图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">let currentIndex = 0</span><br><span class="line">let $silides = $(&apos;.sildes&apos;)</span><br><span class="line">let $lindeWindow = $(&apos;.slidesWindow&apos;)</span><br><span class="line">let timerId</span><br><span class="line">let playNext = () =&gt; &#123;</span><br><span class="line">    playSlide(currentIndex + 1)</span><br><span class="line">&#125;</span><br><span class="line">let playPrevious = () =&gt; &#123;</span><br><span class="line">    playSlide(currentIndex - 1)</span><br><span class="line">&#125;</span><br><span class="line">let clearTimer = () =&gt; &#123;</span><br><span class="line">    window.clearInterval(timerId)</span><br><span class="line">&#125;</span><br><span class="line">let resetTimer = () =&gt; &#123;</span><br><span class="line">    timerId = autoPlay()</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function bindEvents() &#123;</span><br><span class="line">    let events = [&#123;</span><br><span class="line">        el: buttonNext,</span><br><span class="line">        event: &apos;click&apos;,</span><br><span class="line">        fn: playNext</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: buttonPrevious,</span><br><span class="line">        event: &apos;click&apos;,</span><br><span class="line">        fn: playPrevious</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: $slidesWindow,</span><br><span class="line">        event: &apos;mouseenter&apos;,</span><br><span class="line">        fn: clearTimer</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        el: $slidesWindow,</span><br><span class="line">        event: &apos;mouseleave&apos;,</span><br><span class="line">        fn: resetTimer</span><br><span class="line">    &#125;]</span><br><span class="line">   </span><br><span class="line">    events.forEach((eventObjet) =&gt; &#123;</span><br><span class="line">        $(eventObjet.el).on(eventObjet.event, eventObjet.fn)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function playSlide(index) &#123;</span><br><span class="line">    index = fixIndex(index)</span><br><span class="line">    $slides.css(&#123;</span><br><span class="line">        transform: `translateX($&#123;-400*(index)&#125;px)`</span><br><span class="line">    &#125;)</span><br><span class="line">    currentIndex = index</span><br><span class="line">    return index</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function fixIndex(index) &#123;</span><br><span class="line">    if (inde &lt; 0) &#123;</span><br><span class="line">        index = 4</span><br><span class="line">    &#125; else if (index &gt; 4) &#123;</span><br><span class="line">        index = 0</span><br><span class="line">    &#125;</span><br><span class="line">    return index</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">function autoPlay() &#123;</span><br><span class="line">    return setInterval(() =&gt; &#123;</span><br><span class="line">        playSlide(currentIndex + 1)</span><br><span class="line">    &#125;, 3000)</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">bindEvents()</span><br><span class="line">timerId = autoPlay()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="二、使用对象来改代码"><a href="#二、使用对象来改代码" class="headerlink" title="二、使用对象来改代码"></a>二、使用对象来改代码</h3><p>如果使用了函数改造法改造后，发现有太多的小函数，则可以使用对象讲这个函数串起来。</p>
+<p>「this 是函数和对象的桥梁」，我们会用 this 来串联这个对象和所有函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">let slide = &#123;</span><br><span class="line">        currentIndex: 0,</span><br><span class="line">        $slides: $(&apos;.slides&apos;),</span><br><span class="line">        timerId: undefined,</span><br><span class="line">        events: [&#123;</span><br><span class="line">            el: &apos;#buttonNext&apos;,</span><br><span class="line">            event: &apos;click&apos;,</span><br><span class="line">            fn: &apos;playNext&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;#buttonPrevious&apos;,</span><br><span class="line">            event: &apos;click&apos;,</span><br><span class="line">            fn: &apos;playPrevious&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;.slidesWindow&apos;,</span><br><span class="line">            event: &apos;mouseenter&apos;,</span><br><span class="line">            fn: &apos;clearTimer&apos;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            el: &apos;.slidesWindow&apos;,</span><br><span class="line">            event: &apos;mouseleave&apos;,</span><br><span class="line">            fn: &apos;resetTimer&apos;</span><br><span class="line">        &#125;],</span><br><span class="line">        init() &#123;</span><br><span class="line">            this.bindEvents()</span><br><span class="line">            this.timerId = this.autoPlay()</span><br><span class="line">        &#125;,</span><br><span class="line">        playNext: () =&gt; &#123;</span><br><span class="line">            this.playSlide(this.currentIndex + 1)</span><br><span class="line">        &#125;,</span><br><span class="line">        playPrevious: () =&gt; &#123;</span><br><span class="line">            this.playSlide(this.currentIndex - 1)</span><br><span class="line">        &#125;,</span><br><span class="line">        playSlide(index) &#123;</span><br><span class="line">            index = fixIndex(index)</span><br><span class="line">            this.$slides.css(&#123;</span><br><span class="line">                transform: `translateX($&#123;-400*(index)&#125;px)`</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            this.currentIndex = index</span><br><span class="line">            return index</span><br><span class="line">        &#125;,</span><br><span class="line">        clearTimer: () =&gt; &#123;</span><br><span class="line">            window.clearInterval(this.timerId)</span><br><span class="line">        &#125;,</span><br><span class="line">        resetTimer: () =&gt; &#123;</span><br><span class="line">            this.timerId = this.autoPlay()</span><br><span class="line">        &#125;,</span><br><span class="line">        bindEvents() &#123;</span><br><span class="line">            this.events.forEach((eventObject) =&gt; &#123;</span><br><span class="line">                $(eventObject.el).on(</span><br><span class="line">                    eventObject.event,</span><br><span class="line">                    () =&gt; &#123;</span><br><span class="line">                        this[eventObject.fn].call(this)</span><br><span class="line">                    &#125;</span><br><span class="line">                )</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        fixIndex(index) &#123;</span><br><span class="line">            if (index &lt; 0) &#123;</span><br><span class="line">                index = 4</span><br><span class="line">            &#125; else if (index &gt; 4) &#123;</span><br><span class="line">                index = 0</span><br><span class="line">            &#125;</span><br><span class="line">            return index</span><br><span class="line">        &#125;,</span><br><span class="line">        autoPlay() &#123;</span><br><span class="line">            //this === slide</span><br><span class="line">            return setInterval(() =&gt; &#123;</span><br><span class="line">                this.playSlide(this.currentIndex + 1)</span><br><span class="line">            &#125;, 3000)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    slide.init() // slide.init.call(slide)</span><br></pre></td></tr></table></figure>
+<h3 id="二、一些固定的套路"><a href="#二、一些固定的套路" class="headerlink" title="二、一些固定的套路"></a>二、一些固定的套路</h3><ul>
+<li><p>表驱动编程</p>
+<p>例如一个求一年有多少月的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function howManDanys(month) &#123;</span><br><span class="line">        if (mouth === 1 ||</span><br><span class="line">            mouth === 3 ||</span><br><span class="line">            mouth === 5 ||</span><br><span class="line">            mouth === 7 ||</span><br><span class="line">            mouth === 10 ||</span><br><span class="line">            mouth === 11</span><br><span class="line">        ) &#123;</span><br><span class="line">            return 31</span><br><span class="line">        &#125; else if (mouth === 2) &#123;</span><br><span class="line">            return 28</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return 30</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>代码看起很正常是吧，如果用表编程呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">       let table = &#123;</span><br><span class="line">           10: &apos;A&apos;,</span><br><span class="line">           9: &apos;A&apos;,</span><br><span class="line">           8: &apos;B&apos;,</span><br><span class="line">           7: &apos;C&apos;,</span><br><span class="line">           6: &apos;D&apos;,</span><br><span class="line">           others: &apos;E&apos;</span><br><span class="line">       &#125;</span><br><span class="line">       let level = parseInt(score / 10, 10)</span><br><span class="line">       return table[score] || table[&apos;others&apos;]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>一个根据分数评分的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">        if (score &gt;= 90) &#123;</span><br><span class="line">            return &apos;A&apos;</span><br><span class="line">        &#125; else if (score &gt;= 80) &#123;</span><br><span class="line">            return &apos;B&apos;</span><br><span class="line">        &#125; else if (score &gt;= 70) &#123;</span><br><span class="line">            return &apos;C&apos;</span><br><span class="line">        &#125; else if (score &gt;= 60) &#123;</span><br><span class="line">            return &apos;D&apos;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;E&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>用表编程呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function calculationMinute(score) &#123;</span><br><span class="line">       let table = &#123;</span><br><span class="line">           10: &apos;A&apos;,</span><br><span class="line">           9: &apos;A&apos;,</span><br><span class="line">           8: &apos;B&apos;,</span><br><span class="line">           7: &apos;C&apos;,</span><br><span class="line">           6: &apos;D&apos;,</span><br><span class="line">           others: &apos;E&apos;</span><br><span class="line">       &#125;</span><br><span class="line">       let level = parseInt(score / 10, 10)</span><br><span class="line">       return table[level] || table[&apos;others&apos;]</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/调试/WEB手机页面调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/14/调试/WEB手机页面调试/" itemprop="url">WEB手机页面调试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-14T18:08:32+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web调试/" itemprop="url" rel="index">
+                    <span itemprop="name">web调试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h2><p>alert大法,因为conlse手机端没用，首先：</p>
+<p>新建一个新建一个onerror全局对象，会弹出错误给手机端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.onerror = function(message, file, row)&#123;</span><br><span class="line">    alert(message)    </span><br><span class="line">    alert(file)</span><br><span class="line">    alert(row)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>onerror：</p>
+<ul>
+<li>第一个参数表示：错误信息</li>
+<li>第二个参数表示：哪个文件发生啦错误</li>
+<li>第三个参数表示：文件多少行发生错误</li>
+</ul>
+<h2 id="第二种："><a href="#第二种：" class="headerlink" title="第二种："></a>第二种：</h2><p>( 1 ) 自己造一个手机端console：</p>
+<p>首先，新建一个div：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">#consoleOutput &#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 150px;</span><br><span class="line">    border: 1px solid;</span><br><span class="line">    background: white;</span><br><span class="line">    overflow: auto;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;consoleOutput&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>再新建一个js文件，创建一个console的全局对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">window.console = &#123;</span><br><span class="line">    log(x) &#123;</span><br><span class="line">        let p = document.createElement(&apos;p&apos;)</span><br><span class="line">            p.innerText = x</span><br><span class="line">            consoleOutput.appendChild(p)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这样，所有的console.log 都会被打出来</span><br><span class="line">//最后，结合第一种方法，把错误信息打出来</span><br><span class="line"></span><br><span class="line">window.onerror = function(message, file, row) &#123;</span><br><span class="line">    console.log(message)</span><br><span class="line">    console.log(file)</span><br><span class="line">    console.log(row)</span><br><span class="line">&#125;:</span><br></pre></td></tr></table></figure>
+<p>( 2 ) 使用腾讯的 vconsole 库:</p>
+<ul>
+<li><p>npm init vconsole</p>
+</li>
+<li><p>引入 vconsole.main.js</p>
+</li>
+<li><p>初始化：vConsole：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var vConsole = new VConsole()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>手机页面就会出现一个vconsole的控制台，可以看到报错信息。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/python/python读取和保存文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/13/python/python读取和保存文件/" itemprop="url">python读取和保存文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T21:08:17+08:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><p>1.新建一个sketch.txt文件 写入数据。</p>
+<p>2.进入IDE会话</p>
+<ul>
+<li>import  os          从标准库导入os</li>
+<li>os.getcwd()        查看当前工作目录</li>
+<li>os.chdir(‘xxx/xxx/xxx’)   进入到包含sketch,txt文件目录下</li>
+<li>os.getcwd()         确认是否在当前目录</li>
+</ul>
+<p>3.读取文件并在屏幕显示出来</p>
+<ul>
+<li>data =open(’sketch.txt’)</li>
+<li>print(data.readline())       就会显示数据第一行内容</li>
+<li>data.seek(0)                  返回文件的第0行</li>
+<li>print(data.readlines())     显示所有内容（显示的内容不美观）</li>
+<li>也可以使用for in方法：</li>
+<li>for  each in data：print(each)    注意：要返回文件第0行</li>
+<li>data.write（’I linke apple’） 将i linke  apple  写入文件</li>
+<li>data.close()                      关闭文件</li>
+</ul>
+<p>文件打开后，一定要记得关闭.</p>
+<p>4.使用open（）打开文件，可以指定访问模式，默认r模式（读）例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = open(’sketch.txt’,’w’)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>W写(访问模式)python会创建指定文件来写，如果这个文件已经存在，会请空它现有的内容。</li>
+<li>r 读模式</li>
+<li>要追加到一个文件，使用访问模式a</li>
+<li>要打开一个文件完成写和读，用w+</li>
+</ul>
+<h2 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h2><p>以访问(写)模式W保存，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">man = []</span><br><span class="line">other = []</span><br><span class="line">try:</span><br><span class="line">    data = open(&apos;sketch.txt&apos;)</span><br><span class="line"></span><br><span class="line">    for each_line in data:</span><br><span class="line">        try:</span><br><span class="line">            (role,line_spoken) = each_line.split(&apos;:&apos;,1)</span><br><span class="line">            line_spoken = line_spoken.strip()</span><br><span class="line">            if role == &apos;Man&apos;:</span><br><span class="line">                man.append(line_spoken)</span><br><span class="line">            elif role == &apos;Other Man&apos;:</span><br><span class="line">                other.append(line_spoken)          </span><br><span class="line">        except ValueError:</span><br><span class="line">            pass</span><br><span class="line">            </span><br><span class="line">    data.close()</span><br><span class="line">except IOError:</span><br><span class="line">    print(&apos;The data file is missing!&apos;)</span><br><span class="line">    </span><br><span class="line">try:</span><br><span class="line">    with open(&apos;man_data.txt&apos;, &apos;w&apos;) as man_file:</span><br><span class="line">        print(man,file =man_file)</span><br><span class="line">    with open(&apos;other_data.txt&apos;, &apos;w&apos;) as other_file:</span><br><span class="line">        print(other,file=other_file)</span><br><span class="line"></span><br><span class="line">except IOError:</span><br><span class="line">    print(&apos;File error:&apos; + str(err))</span><br></pre></td></tr></table></figure>
+<p>这段代码中，新建啦两个空数组，然后打开原有的sketch.txt文件，筛选出，man和other的对话，放入man_data.txt和other_data.txt两个文件当中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/javaScript/ES6类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1193,154 +2039,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/python/入门知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/17/python/入门知识/" itemprop="url">基础知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T22:41:00+08:00">
-                2018-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1386,7 +2089,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
