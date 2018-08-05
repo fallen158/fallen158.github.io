@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="HTML5语义化," />
+  <meta name="keywords" content="javaScript," />
 
 
 
@@ -86,20 +86,18 @@
 
 
 
-<meta name="description" content="1.什么是语义化？ 简单来说，就是为了让浏览器机器（搜索引擎等）易于理解，用合理、正确的标签来展示内容。  假设我们世界中有一只神奇小爬虫，这个小爬虫非常神奇，我们看不到它，同时它爬行的速度非常快，它可以在世界上所有的计算机之间爬来爬去，爬过的地方都会留下一条线，这条线就是网线。当小爬虫爬过了大部分的计算机之后，这些计算机就组成了网络，而爬虫的速度可以理解成网速。小爬虫的智商比较低，同时比较懒，喜">
-<meta name="keywords" content="HTML5语义化">
+<meta name="description" content="什么是迭代器(Iterator)？迭代器是一种特殊对象，它具有一些专门为迭代过程设计的专有接口，所有的迭代器对象都有一个next()方法，每次调用都返回一个结果对象。结果对象有两个属性：一个是value，表示下一个将要返回的值；另一个是done，它是一个布尔类型的值，当没有更多可返回数据时返回true。迭代器还会保存一个内部指针，用来指向当前集合中值的位置，每调用一次next()方法，都会返回下一">
+<meta name="keywords" content="javaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5语义话">
-<meta property="og:url" content="http://yoursite.com/2018/08/02/HTML/HTML5语义化/index.html">
+<meta property="og:title" content="ES6中的迭代器(Iterator)和生成器(Generator)">
+<meta property="og:url" content="http://yoursite.com/2018/08/05/javaScript/ES6中的迭代器-Iterator-和生成器-Generator/index.html">
 <meta property="og:site_name" content="记昨日书">
-<meta property="og:description" content="1.什么是语义化？ 简单来说，就是为了让浏览器机器（搜索引擎等）易于理解，用合理、正确的标签来展示内容。  假设我们世界中有一只神奇小爬虫，这个小爬虫非常神奇，我们看不到它，同时它爬行的速度非常快，它可以在世界上所有的计算机之间爬来爬去，爬过的地方都会留下一条线，这条线就是网线。当小爬虫爬过了大部分的计算机之后，这些计算机就组成了网络，而爬虫的速度可以理解成网速。小爬虫的智商比较低，同时比较懒，喜">
+<meta property="og:description" content="什么是迭代器(Iterator)？迭代器是一种特殊对象，它具有一些专门为迭代过程设计的专有接口，所有的迭代器对象都有一个next()方法，每次调用都返回一个结果对象。结果对象有两个属性：一个是value，表示下一个将要返回的值；另一个是done，它是一个布尔类型的值，当没有更多可返回数据时返回true。迭代器还会保存一个内部指针，用来指向当前集合中值的位置，每调用一次next()方法，都会返回下一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-4/3419010.jpg">
-<meta property="og:updated_time" content="2018-08-04T03:06:52.482Z">
+<meta property="og:updated_time" content="2018-08-05T06:00:35.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5语义话">
-<meta name="twitter:description" content="1.什么是语义化？ 简单来说，就是为了让浏览器机器（搜索引擎等）易于理解，用合理、正确的标签来展示内容。  假设我们世界中有一只神奇小爬虫，这个小爬虫非常神奇，我们看不到它，同时它爬行的速度非常快，它可以在世界上所有的计算机之间爬来爬去，爬过的地方都会留下一条线，这条线就是网线。当小爬虫爬过了大部分的计算机之后，这些计算机就组成了网络，而爬虫的速度可以理解成网速。小爬虫的智商比较低，同时比较懒，喜">
-<meta name="twitter:image" content="http://pa3otstvm.bkt.clouddn.com/18-8-4/3419010.jpg">
+<meta name="twitter:title" content="ES6中的迭代器(Iterator)和生成器(Generator)">
+<meta name="twitter:description" content="什么是迭代器(Iterator)？迭代器是一种特殊对象，它具有一些专门为迭代过程设计的专有接口，所有的迭代器对象都有一个next()方法，每次调用都返回一个结果对象。结果对象有两个属性：一个是value，表示下一个将要返回的值；另一个是done，它是一个布尔类型的值，当没有更多可返回数据时返回true。迭代器还会保存一个内部指针，用来指向当前集合中值的位置，每调用一次next()方法，都会返回下一">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/02/HTML/HTML5语义化/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/05/javaScript/ES6中的迭代器-Iterator-和生成器-Generator/"/>
 
 
 
 
 
-  <title>HTML5语义话 | 记昨日书</title>
+  <title>ES6中的迭代器(Iterator)和生成器(Generator) | 记昨日书</title>
   
 
 
@@ -263,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/HTML/HTML5语义化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/javaScript/ES6中的迭代器-Iterator-和生成器-Generator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="林枫">
@@ -280,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTML5语义话</h1>
+          <h1 class="post-title" itemprop="name headline">ES6中的迭代器(Iterator)和生成器(Generator)</h1>
         
 
         <div class="post-meta">
@@ -292,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T12:24:48+08:00">
-                2018-08-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T13:47:07+08:00">
+                2018-08-05
               </time>
             
 
@@ -315,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
                   </a>
                 </span>
 
@@ -352,55 +350,21 @@
       
 
       
-        <h2 id="1-什么是语义化？"><a href="#1-什么是语义化？" class="headerlink" title="1.什么是语义化？"></a>1.什么是语义化？</h2><p> 简单来说，就是为了让浏览器机器（搜索引擎等）易于理解，用合理、正确的标签来展示内容。</p>
-<p> 假设我们世界中有一只神奇小爬虫，这个小爬虫非常神奇，我们看不到它，同时它爬行的速度非常快，它可以在世界上所有的计算机之间爬来爬去，爬过的地方都会留下一条线，这条线就是网线。当小爬虫爬过了大部分的计算机之后，这些计算机就组成了网络，而爬虫的速度可以理解成网速。小爬虫的智商比较低，同时比较懒，喜欢刚到门口不进去就能猜到门里面是什么。如果我们在门上贴个标签表明这个房间里有什么，那么小爬虫就省去了进屋这个流程，还能够得知门后的内容，大大提升了爬虫的速度，从而提升用户体验，贴在门上的这个标签就是语义化；反之如果不在门口贴标签或者贴一些莫名其妙的标签，不仅增加了爬虫辨识的时间，还有可能产生错误的误导，导致降低用户体验甚至产生一些不好的后果。而在编写代码过程中，语义化是成本最小的优化方式，所以在现如今开发过程中，倡导人人编程语义化，并逐步将语义化形成开发标准或行业规范的一部分。</p>
-<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><ul>
-<li>易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。</li>
-<li>有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。</li>
-<li>方便其他设备解析，如盲人阅读器根据语义渲染网页</li>
-<li>有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐。</li>
-</ul>
-<h2 id="标签详解"><a href="#标签详解" class="headerlink" title="标签详解"></a>标签详解</h2><p>所谓语义化标签就是一种我们仅通过标签名就能判断出该标签内容的语义的标签。下面将介绍article、section、nav、aside、header、footer等HTML5新增的语义化区块标签。</p>
-<p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-4/3419010.jpg" alt=""></p>
-<ol>
-<li><p><strong>header</strong></p>
-<p><code>&lt;header&gt;</code>定义文档或者文档的部分区域的页眉，应作为介绍内容或者导航链接栏的容器。</p>
-</li>
-</ol>
-<p>​    在一个文档中，您可以定义多个<code>&lt;header&gt;</code>元素，但需要注意的是<code>&lt;header&gt;</code>元素不能作为<code>&lt;address&gt;</code>、<code>&lt;footer&gt;</code>或<code>&lt;header&gt;</code>元素的子元素。</p>
-<ol start="2">
-<li><strong>nav</strong></li>
-</ol>
-<p>​    <code>&lt;nav&gt;</code>描述一个含有多个超链接的区域，该区域包含跳转到其他页面或页面内部其他部分的链接列表。</p>
-<p>​    在一个文档中，可定义多个<code>&lt;nav&gt;</code>元素。</p>
-<ol start="3">
-<li><strong>main</strong></li>
-</ol>
-<p>​    <code>&lt;main&gt;</code>定义文档的主要内容，该内容在文档中应当是独一无二的，不包含任何在文档中重复的内容，比如侧边栏，导航栏链接，版权信息，网站logo，搜索框（除非搜索框作为文档的主要功能）。</p>
-<p>​    需要注意的是在一个文档中不能出现多个<code>&lt;main&gt;</code>标签。</p>
-<ol start="4">
-<li>article</li>
-</ol>
-<p>​    <code>&lt;article&gt;</code>元素表示文档、页面、应用或网站中的独立结构，是可独立分配的、可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。</p>
-<p>​    当<code>&lt;article&gt;</code>元素嵌套使用时，则该元素代表与外层元素有关的文章。例如，代表博客评论的<code>&lt;article&gt;</code>元素可嵌套在代表博客文章的<code>&lt;article&gt;</code>元素中。</p>
-<ol start="5">
-<li><strong>aside</strong></li>
-</ol>
-<p>​    <code>&lt;aside&gt;</code>元素表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分且可以被单独的拆分出来而不会影响整体。通常表现为侧边栏或嵌入内容。</p>
-<ol start="5">
-<li>footer</li>
-</ol>
-<p>​    <code>&lt;footer&gt;</code>定义最近一个章节内容或者根节点元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。</p>
-<p>​    使用footer插入联系信息时，应在 footer 元素内使用 <code>&lt;address&gt;</code>元素。</p>
-<p>​    注意不能包含<code>&lt;footer&gt;</code>或者<code>&lt;header&gt;</code></p>
-<ol start="7">
-<li><strong>section</strong></li>
-</ol>
-<p>​    <code>&lt;section&gt;</code>表示文档中的一个区域（或节），比如，内容中的一个专题组。</p>
-<p>​    如果元素内容可以分为几个部分的话，应该使用 <code>&lt;article&gt;</code>而不是 <code>&lt;section&gt;</code>。 </p>
-<p>不要把 <code>&lt;section&gt;</code> 元素作为一个普通的容器来使用，特别是当<code>&lt;section&gt;</code>仅仅是为了美化样式或方便脚本使用的时候，应使用<code>&lt;div&gt;</code>。</p>
-<p>​    这几个标签，比较容易混淆的是<code>&lt;section&gt;</code>、<code>&lt;article&gt;</code>，所以这里特别说明：</p>
-<p><code>&lt;article&gt;</code>比<code>&lt;section&gt;</code>更具有独立性、完整性。可通过该段内容脱离了所在的语境，是否完整、独立来判断。</p>
+        <h2 id="什么是迭代器-Iterator-？"><a href="#什么是迭代器-Iterator-？" class="headerlink" title="什么是迭代器(Iterator)？"></a>什么是迭代器(Iterator)？</h2><p>迭代器是一种特殊对象，它具有一些专门为迭代过程设计的专有接口，所有的迭代器对象都有一个next()方法，每次调用都返回一个结果对象。结果对象有两个属性：一个是value，表示下一个将要返回的值；另一个是done，它是一个布尔类型的值，当没有更多可返回数据时返回true。迭代器还会保存一个内部指针，用来指向当前集合中值的位置，每调用一次next()方法，都会返回下一个可用的值。</p>
+<p>如果在最后一个值返回后再调用next()方法，那么返回的对象中属性done的值为true，属性value则包含迭代器最终返回的值，这个返回值不是数据集的一部分，它与函数的返回值类似，是函数调用过程中最后一次给调用者传递信息的方法，如果没有相关数据则返回undefined。</p>
+<p>下面用ES5的语法创建一个迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function createIterator(arr)&#123;</span><br><span class="line">    let index = 0</span><br><span class="line">    return &#123;</span><br><span class="line">        next()&#123;</span><br><span class="line">            if(index&lt;arr.length)&#123;</span><br><span class="line">                return &#123;value:arr[index++],done:false&#125;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                return &#123;value:undefinde,done:true&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let item = createIterator([1,2,3])</span><br><span class="line">item.next() // &#123;value: 1, done: false&#125;</span><br><span class="line">item.next() // &#123;value: 2, done: false&#125;</span><br><span class="line">item.next() // &#123;value: 3, done: false&#125;</span><br><span class="line">item.next() // &#123;value: undefined, done: true&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="迭代器的作用"><a href="#迭代器的作用" class="headerlink" title="迭代器的作用"></a>迭代器的作用</h3><p>ES5原有的表示集合的数据结构，主要是（Array）和对象（Object）ES6 又添加了Map和Set。这样就有了四种数据集合，用户还可以组合使用它们，定义自己的数据结构，比如数组的成员是Map，Map的成员是对象。这样就需要一种统一的接口机制，来处理所有不同的数据结构。 </p>
+<p>Iterator 的作用有三个：一是为各种数据结构，提供一个统一的、简便的访问接口；二是使得数据结构的成员能够按某种次序排列；三是 ES6 创造了一种新的遍历命令for…of循环，Iterator 接口主要供for…of消费。</p>
+<p>Iterator 的遍历过程是这样的。</p>
+<p>（1）创建一个指针对象，指向当前数据结构的起始位置。也就是说，遍历器对象本质上，就是一个指针对象。</p>
+<p>（2）第一次调用指针对象的next方法，可以将指针指向数据结构的第一个成员。</p>
+<p>（3）第二次调用指针对象的next方法，指针就指向数据结构的第二个成员。</p>
+<p>（4）不断调用指针对象的next方法，直到它指向数据结构的结束位置。</p>
+<p>每一次调用next方法，都会返回数据结构的当前成员的信息。具体来说，就是返回一个包含value和done两个属性的对象。其中，value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束。</p>
+<p>ES6 规定，默认的 Iterator 接口部署在数据结构的Symbol.iterator属性，或者说，一个数据结构只要具有Symbol.iterator属性，就可以认为是“可遍历的”（iterable）。Symbol.iterator属性本身是一个函数，就是当前数据结构默认的遍历器生成函数。执行这个函数，就会返回一个遍历器。</p>
+<p>例如：创建一个简单的range迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -428,7 +392,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTML5语义化/" rel="tag"># HTML5语义化</a>
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
           
         </div>
       
@@ -441,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/02/javaScript/理解-JavaScript-的-async-await/" rel="next" title="理解 JavaScript 的 async/await">
-                <i class="fa fa-chevron-left"></i> 理解 JavaScript 的 async/await
+              <a href="/2018/08/05/javaScript/Token身份验证/" rel="next" title="Token身份验证">
+                <i class="fa fa-chevron-left"></i> Token身份验证
               </a>
             
           </div>
@@ -450,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/04/HTTP/http协议入门/" rel="prev" title="http协议入门">
-                http协议入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是语义化？"><span class="nav-number">1.</span> <span class="nav-text">1.什么是语义化？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语义化"><span class="nav-number">2.</span> <span class="nav-text">语义化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签详解"><span class="nav-number">3.</span> <span class="nav-text">标签详解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是迭代器-Iterator-？"><span class="nav-number">1.</span> <span class="nav-text">什么是迭代器(Iterator)？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器的作用"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器的作用</span></a></li></ol></li></ol></div>
             
 
           </div>
