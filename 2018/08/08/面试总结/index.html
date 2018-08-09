@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="记昨日书">
 <meta property="og:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T12:39:32.842Z">
+<meta property="og:updated_time" content="2018-08-09T17:46:11.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识总结">
 <meta name="twitter:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
@@ -361,15 +361,27 @@
 <p>5.HTML5中的应用缓存是什么？</p>
 <p>6.meta viewport 是做什么用的，怎么写？</p>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>1.CSS3新特性有哪些？</p>
+<p>动画:transform</p>
 <p>2.常见的清除浮动的方法有哪些?</p>
 <p>3.REM和EM的区别?</p>
 <p>4.盒模型是什么？</p>
 <p>5.css reset 和 normalize.css 有什么区别？</p>
+<p>1) reest是重置，之前的所有样式我都不要，抛弃默认样式。</p>
+<p>2) normalize是为了让所有浏览器统的标签都跟标准规定的的样式一致。</p>
 <p>6.BFC和IFC是什么？</p>
 <p>7.选择器优先级如何确定？</p>
+<p>1) 越具体的优先级越高</p>
+<p>2) 同样优先级，后面的覆盖前面的</p>
+<p>3) !important,优先级最高</p>
 <p>8.使用 CSS 预处理器吗？</p>
+<p>有在用scss，主要用scss的嵌套，全局变量声明，和继承。</p>
 <p>9.如何实现居中？垂直居中？</p>
+<p>1) 居中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">内联元素，爸爸身上写text-align:center，或者flex</span><br><span class="line"></span><br><span class="line">块极元素：margin: 0 aut0;</span><br></pre></td></tr></table></figure>
+<p>2) 垂直居中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">display:felx;align-items:centr;</span><br><span class="line"></span><br><span class="line">line-height,和高度一致</span><br><span class="line"></span><br><span class="line">用padding撑起来垂直居中。</span><br><span class="line"></span><br><span class="line">translate-50%</span><br><span class="line"></span><br><span class="line">100%高度的after before 加上inine-block</span><br><span class="line"></span><br><span class="line">position:absolute:margin: auto; top: 0; bottom: 0; left: 0; right: 0;</span><br></pre></td></tr></table></figure>
 <h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><p>1.Promise是什么？如何使用？</p>
+<p>Promise是为了处理JS回调地狱而发明的。</p>
 <p>2.Ajax的作用是什么？如何创建一个Ajax？</p>
 <p>3.闭包是什么？</p>
 <p>4.this是什么？</p>
@@ -381,9 +393,13 @@
 <p>10.ES 6 中的 class 了解吗？</p>
 <p>11.JS 如何实现继承？</p>
 <p>12.JSON是什么？</p>
-<p>13.call和apply的区别？</p>
+<p>是一门仿照JS的数据交互格式语言。</p>
+<p>13.call和apply，bind的区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call，第一个参数就是this，如果不传或者传null，undefined 就是指向全局对象，后面传的参数是依此传递的。</span><br><span class="line">apply，第一个参数也是this，和call不同的是，第二参数是一个数组，数组用的成员依此作为参数。</span><br><span class="line">bind，第一个参数也是this，第二个参数是一个数组，但是call和apply都是直接调用的，bind是返回一个新函数，需要调用。</span><br></pre></td></tr></table></figure>
 <p>15.如何解决跨域问题？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSONP</span><br><span class="line">callback</span><br></pre></td></tr></table></figure>
 <p>16.同步和异步的区别?</p>
+<p>同步代表一次只能做一个任务，后面的任务需要依次排队。缺点：</p>
 <p>17.模块化开发怎么做？</p>
 <p>18.谈一谈你对ECMAScript6的了解？</p>
 <p>19.什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p>
