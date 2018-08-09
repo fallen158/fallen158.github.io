@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识总结">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/面试总结/index.html">
+<meta property="og:site_name" content="记昨日书">
+<meta property="og:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-08T12:39:32.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知识总结">
+<meta name="twitter:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/面试总结/"/>
+
+
+
+
+
+  <title>知识总结 | 记昨日书</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/fallen158" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">记昨日书</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/面试总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">知识总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T15:36:43+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试总结/" itemprop="url" rel="index">
+                    <span itemprop="name">面试总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>面试前的知识总结</p>
+</blockquote>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>1.HTML5新特性有哪些？</p>
+<p>2.如何理解HTML5语义化的？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用正确的标签做正确的事情。</span><br><span class="line">html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;</span><br><span class="line">即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;</span><br><span class="line">搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;</span><br><span class="line">使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</span><br></pre></td></tr></table></figure>
+<p>3.Canvas元素是什么的？</p>
+<p>4.本地存储和cookies之间的区别是什么？</p>
+<p>5.HTML5中的应用缓存是什么？</p>
+<p>6.meta viewport 是做什么用的，怎么写？</p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>1.CSS3新特性有哪些？</p>
+<p>2.常见的清除浮动的方法有哪些?</p>
+<p>3.REM和EM的区别?</p>
+<p>4.盒模型是什么？</p>
+<p>5.css reset 和 normalize.css 有什么区别？</p>
+<p>6.BFC和IFC是什么？</p>
+<p>7.选择器优先级如何确定？</p>
+<p>8.使用 CSS 预处理器吗？</p>
+<p>9.如何实现居中？垂直居中？</p>
+<h2 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h2><p>1.Promise是什么？如何使用？</p>
+<p>2.Ajax的作用是什么？如何创建一个Ajax？</p>
+<p>3.闭包是什么？</p>
+<p>4.this是什么？</p>
+<p>5.什么是立即执行函数？使用立即执行函数的目的是什么？</p>
+<p>6.如何实现深拷贝？</p>
+<p>7.如何实现数组去重？</p>
+<p>8.async/await 语法了解吗？目的是什么？</p>
+<p>9.JS 原型是什么？</p>
+<p>10.ES 6 中的 class 了解吗？</p>
+<p>11.JS 如何实现继承？</p>
+<p>12.JSON是什么？</p>
+<p>13.call和apply的区别？</p>
+<p>15.如何解决跨域问题？</p>
+<p>16.同步和异步的区别?</p>
+<p>17.模块化开发怎么做？</p>
+<p>18.谈一谈你对ECMAScript6的了解？</p>
+<p>19.什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p>
+<p>20.==和===的区别？</p>
+<p>21.MVC和MVVM是什么？</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>1.DOM事件模型是什么？</p>
+<p>2.移动端的触摸事件了解吗？</p>
+<p>3.事件委托是什么？有什么好处？</p>
+<h2 id="前端框架"><a href="#前端框架" class="headerlink" title="前端框架"></a>前端框架</h2><h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>1.如何组件通信？</p>
+<p>2.钩子函数有哪些？</p>
+<p>3.vuex是什么？</p>
+<p>4.vue-router是什么？</p>
+<p>5.vue是如何实现双向绑定的？</p>
+<h2 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h2><p>1.HTTP 状态码知道哪些？</p>
+<p>2.HTTP 缓存怎么做？</p>
+<p>3..TCP3次握手和4次挥手是指什么？</p>
+<p>4..HTTPS的原理是什么？</p>
+<p>5.Cookie 是什么？Session 是什么？</p>
+<p>6.LocalStorage 和 Cookie 的区别是什么？</p>
+<p>7.怎么跨域？JSONP 是什么？CORS 是什么？postMessage 是什么？</p>
+<p>8.GET 和 POST 的区别是什么？</p>
+<h2 id="web安全"><a href="#web安全" class="headerlink" title="web安全"></a>web安全</h2><p>1.什么是 XSS 攻击？如何预防？</p>
+<p>XSS)是一种代码注入方式, 为了与 CSS 区分所以被称作 XSS. 早期常见于网络论坛, 起因是网站没有对用户的输入进行严格的限制, 使得攻击者可以将脚本上传到帖子让其他人浏览到有恶意脚本的页面.</p>
+<p>当其他用户浏览到这些网页时, 就会执行这些恶意脚本, 对用户进行 Cookie 窃取/会话劫持/钓鱼欺骗等各种攻击.其原理, 如使用 js 脚本收集当前用户环境的信息 (Cookie 等), 然后通过 img.src, Ajax, onclick/onload/onerror 事件等方式将用户数据传递到攻击者的服务器上. </p>
+<p>2.什么是 CSRF 攻击？如何预防？</p>
+<p>跨站请求伪造 (Cross-Site Request Forgery, CSRF),是一种伪造跨站请求的攻击方式. 例如利用你在 A 站 (攻击目标) 的 cookie / 权限等, 在 B 站 (恶意/钓鱼网站) 拼装 A 站的请求.</p>
+<p>比如 Q 君是某论坛管理员. 已知这个论坛 A 删除的接口是 post 到某个地址, 并指定一个帖子的 id. 那么我可以在自己的博客 B 上组织一个 CSRF 请求. 然后诱使 Q 君来访问我的博客. 就可以在 Q 君不知情的情况下删除掉我想删的某个帖子.</p>
+<p>同源策略是最早用于防止 CSRF 的一种方式, 即关于跨站请求 (Cross-Site Request) 只有在同源/信任的情况下才可以请求. 但是如果一个网站群, 在互相信任的情况下, 某个网站出现了问题:</p>
+<p>预防:</p>
+<ol>
+<li>A 站 (预防站) 检查 http 请求的 header 确认其 origin</li>
+<li>检查 CSRF token</li>
+</ol>
+<h3 id="1-同源检查"><a href="#1-同源检查" class="headerlink" title="1.同源检查"></a>1.同源检查</h3><p>通过检查来过滤简单的 CSRF 攻击, 主要检查一下两个 header:</p>
+<ul>
+<li>Origin Header</li>
+<li>Referer Header</li>
+</ul>
+<h3 id="2-CSRF-token"><a href="#2-CSRF-token" class="headerlink" title="2.CSRF token"></a>2.CSRF token</h3><p>简单来说, 对需要预防的请求, 通过特别的算法生成 token 存在 session 中, 然后将 token 隐藏在正确的界面表单中, 正式请求时带上该 token 在服务端验证, 避免跨站请求.</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ol>
+<li>排序算法（背诵冒泡排序、选择排序、计数排序、快速排序、插入排序、归并排序）</li>
+</ol>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h2 id="扩展知识点"><a href="#扩展知识点" class="headerlink" title="扩展知识点"></a>扩展知识点</h2><p>1.从输入 URL 到页面展现中间发生了什么？</p>
+<p>2.你有用过哪些前端性能优化的方法？</p>
+<p>3.说说你对移动前端的了解。</p>
+<p>4.如何理解前端工程化？</p>
+<p>5.你对移动前端的了解。</p>
+<p>6.浏览器的渲染原理是什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。</span><br><span class="line">渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），</span><br><span class="line">以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，</span><br><span class="line">所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。</span><br><span class="line"></span><br><span class="line">JS引擎则：解析和执行javascript来实现网页的动态效果。</span><br><span class="line"></span><br><span class="line">最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。</span><br></pre></td></tr></table></figure>
+<p>7.常见的浏览器内核有哪几种？</p>
+<p>8.页面重构怎么操作？</p>
+<h3 id="JS的设计模式有哪些？"><a href="#JS的设计模式有哪些？" class="headerlink" title="JS的设计模式有哪些？"></a>JS的设计模式有哪些？</h3><p>1.发布订阅模式</p>
+<p>发布—订阅模式又叫观察者模式，它定义对象间的一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。在javascript开发中，一般用事件模型来替代传统的发布—订阅模式。</p>
+<p>## </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+     <div>
+         <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/05/javaScript/Token身份验证/" rel="next" title="Token身份验证">
+                <i class="fa fa-chevron-left"></i> Token身份验证
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林枫</p>
+              <p class="site-description motion-element" itemprop="description">哪里会有人喜欢孤独，不过是不喜欢失望</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+  
+       <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=2154941443&auto=0&height=430">
+       </iframe>
+
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS"><span class="nav-number">3.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">4.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端框架"><span class="nav-number">5.</span> <span class="nav-text">前端框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React"><span class="nav-number">5.1.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue"><span class="nav-number">5.2.</span> <span class="nav-text">Vue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP和HTTPS"><span class="nav-number">6.</span> <span class="nav-text">HTTP和HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web安全"><span class="nav-number">7.</span> <span class="nav-text">web安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-同源检查"><span class="nav-number">7.1.</span> <span class="nav-text">1.同源检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CSRF-token"><span class="nav-number">7.2.</span> <span class="nav-text">2.CSRF token</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">8.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript"><span class="nav-number">9.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">10.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webpack"><span class="nav-number">11.</span> <span class="nav-text">Webpack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展知识点"><span class="nav-number">12.</span> <span class="nav-text">扩展知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS的设计模式有哪些？"><span class="nav-number">12.1.</span> <span class="nav-text">JS的设计模式有哪些？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林枫</span>
+
+  
+</div>
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
