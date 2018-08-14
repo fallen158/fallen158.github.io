@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="记昨日书">
 <meta property="og:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T14:04:40.197Z">
+<meta property="og:updated_time" content="2018-08-14T13:52:27.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="知识总结">
 <meta name="twitter:description" content="面试前的知识总结  HTML1.HTML5新特性有哪些？ 2.如何理解HTML5语义化的？ 12345用正确的标签做正确的事情。html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;使阅读源代码的人对网站更容易将网站分块，便于阅读维护">
@@ -422,14 +422,15 @@
 <p>3.事件委托是什么？有什么好处？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">避免复用</span><br></pre></td></tr></table></figure>
 <h2 id="前端框架"><a href="#前端框架" class="headerlink" title="前端框架"></a>前端框架</h2><h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>1.如何组件通信？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1) 父子通信用props</span><br><span class="line">2) 子父通信用this.$emit传递事件</span><br><span class="line">3) 兄弟组件通信组件通信用发布订阅:</span><br><span class="line">new Vue(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        bus:new Vue()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//订阅upload事件</span><br><span class="line">this.$root.bus.$on(&apos;upload&apos;,回调函数)</span><br><span class="line"></span><br><span class="line">//发布upload事件</span><br><span class="line">this.$root.bus.$emit(&apos;upload&apos;,传递的消息)</span><br></pre></td></tr></table></figure>
 <p>2.钩子函数有哪些？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beforeMount  created</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">beforeMount   在挂载开始之前被调用。</span><br><span class="line">created       在实例创建完成后被立即调用。</span><br><span class="line">beforeCreate  实例初始化之后，数据事件配置之前调用。</span><br><span class="line">beforeDestroy 实例销毁之前调用。</span><br><span class="line">destroyed     vue实例销毁后调用。</span><br><span class="line">activated     组件激活时调用</span><br><span class="line"></span><br><span class="line">详情看vue官网</span><br></pre></td></tr></table></figure>
 <p>3.vuex是什么？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">全局状态管理</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">用来管理状态，共享数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实现原理：创建一个状态仓库，定义全局状态和poetry数据，其他所有组件都可以拿到全局状态</span><br><span class="line">var store = new Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        poetry: &apos;一顾倾城人，再顾倾城国&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">其他所有组件通过： this.$store.state.poetry  拿到全局状态</span><br><span class="line">还有其他mutation更改状态方法，actions方法来操作mutations以及getters方法检测更改状态是否符合要求。</span><br></pre></td></tr></table></figure>
 <p>4.vue-router是什么？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">路由</span><br></pre></td></tr></table></figure>
-<p>5.vue是如何实现双向绑定的？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">是vue官方的路由管理器</span><br><span class="line"></span><br><span class="line">路由就是在页面不刷新的情况下实现url的变化，根据url的变化，更改页面的内容。</span><br><span class="line">前端路由目前主要的实现方式是由hash和HTML5的history API实现的。</span><br></pre></td></tr></table></figure>
+<p>5.vue是如何实现双向绑定的?（响应式原理是什么？）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.js则是采用数据劫持结合发布者-订阅者模式的方式,通过Object.defineProperty()来劫持各个属性的seeter,getter在数据变动时给订阅者发送消息,出发相应的监听回调.</span><br><span class="line"></span><br><span class="line">1) 实现一个数据监听器Observer,能够对数据对象的所有属性进行监听,如果有变动则拿到最新值并通知订阅者</span><br><span class="line">2) 实现一个指令解析器Compiled,对每个元素节点的指令进行扫描和解析,根据指令模板替换数据,以及绑定相应的更新函数</span><br><span class="line">3) 实现一个Watcher,作为链接Observer和Compiled的桥梁,能够订阅并收到每个属性变动的通知,执行指令绑定的相应回调函数,从而更新视图</span><br></pre></td></tr></table></figure>
 <h2 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h2><p>1.HTTP 状态码知道哪些？</p>
 <p>2.HTTP 缓存怎么做？</p>
 <p>3..TCP3次握手和4次挥手是指什么？</p>
@@ -504,6 +505,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/14/Vuex/" rel="prev" title="Vuex">
+                Vuex <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -580,7 +585,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +596,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
