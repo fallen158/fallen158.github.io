@@ -260,6 +260,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/前端框架/Vue响应式原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/21/前端框架/Vue响应式原理/" itemprop="url">Vue响应式原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T03:21:09+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/面试总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -484,6 +627,173 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1) 懒加载就是延迟加载，访问一个页面时，只有当图片加载在浏览器的可视区域内，才让图片显示出来。</span><br><span class="line">实现原理：首先，图片不要放到src属性中，而是放到其他属性（data-src）中。当页面加载完成，根据scrolloTop判断图片是否在用户的视野内，如果在就将data-src属性的值取出存放在srcli。</span><br><span class="line">在滚动事件中重复判断图片是否存在，如果进入，则将data-src属性中值去除存放到src属性里。</span><br><span class="line"></span><br><span class="line">2) 预加载就是提前加载好图片，当用户查看时直接从本地缓存中渲染。</span><br><span class="line"></span><br><span class="line">区别：</span><br><span class="line">两种技术的本质：两者的行为是相反的，一个是提前加载，一个是迟缓甚至不加载。懒加载对服务器前端有一定的缓解压力作用，预加载则会增加服务器前端压力。</span><br><span class="line"></span><br><span class="line">详情：https://www.jianshu.com/p/4876a4fe7731</span><br></pre></td></tr></table></figure>
 <h3 id="JS的设计模式有哪些？"><a href="#JS的设计模式有哪些？" class="headerlink" title="JS的设计模式有哪些？"></a>JS的设计模式有哪些？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1) 发布订阅模式</span><br><span class="line"></span><br><span class="line">发布—订阅模式又叫观察者模式，它定义对象间的一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。在javascript开发中，一般用事件模型来替代传统的发布—订阅模式。</span><br><span class="line">实现原理：定义一个报社，作为存放状态管理，订阅者只需要订阅自己关心的内容即可，接收一个回调函数获取发布者传递过来的数据。发布者根据订阅的内容，发布事件以及数据。</span><br></pre></td></tr></table></figure>
 <p>## </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/TypeScript/TypeScript基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/06/TypeScript/TypeScript基础/" itemprop="url">TypeScript基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T15:36:43+08:00">
+                2018-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TypeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">TypeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是TypeScript？"><a href="#什么是TypeScript？" class="headerlink" title="什么是TypeScript？"></a>什么是TypeScript？</h2><p>TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，它由 Microsoft 开发，代码Github上。</p>
+<blockquote>
+<p>可以在编译阶段就发现大部分错误。</p>
+</blockquote>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>1.安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript@2.9.2 -g </span><br><span class="line">npm install ts-node@7.0.0 -g  //编译typescript工具</span><br></pre></td></tr></table></figure>
+<p>2.使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir TypeScipt</span><br><span class="line">cd  TypeScipt</span><br><span class="line">touch main.ts   // 编写一个console.log(‘Hello World&apos;)</span><br></pre></td></tr></table></figure>
+<p>使用tsc编译器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tsc main.ts  // 会在当前目录自动生成一个main.js</span><br><span class="line"></span><br><span class="line">tsc main.ts --watch // 自动更新编辑文件</span><br></pre></td></tr></table></figure>
+<p>3.使用配置VSCODE调试工具</p>
+<p>在TypeScipt目录创建一个.vcode/launch.json文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">  &quot;configurations&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;name&quot;: &quot;ts-node&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;node&quot;,</span><br><span class="line">      &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">      &quot;program&quot;:</span><br><span class="line">        &quot;/usr/local/bin/ts-node&quot;,</span><br><span class="line">      &quot;args&quot;: [&quot;$&#123;relativeFile&#125;&quot;],</span><br><span class="line">      &quot;cwd&quot;: &quot;$&#123;workspaceRoot&#125;&quot;,</span><br><span class="line">      &quot;protocol&quot;: &quot;inspector&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>TypeScript有JS七种数据类型 + 枚举 + Any + void </p>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>设置属性的值为哪些。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">enum Genter &#123;</span><br><span class="line">  Man = &quot;man&quot;,</span><br><span class="line">  woman = &quot;woman&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let gender = Genter.Man;</span><br><span class="line">gender = Genter.woman;</span><br></pre></td></tr></table></figure>
+<p>如果等于的值不是Genter的Man或woman，编译器就会提示错误。</p>
+<h3 id="Any"><a href="#Any" class="headerlink" title="Any"></a>Any</h3><p>接收任意类型的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let a: any = 121321;</span><br><span class="line">console.log(a); // 121321</span><br><span class="line"></span><br><span class="line">a = &quot;string&quot;;</span><br><span class="line">console.log(a); // “string&quot;</span><br><span class="line"></span><br><span class="line">a = true</span><br><span class="line">console.log(a) // true</span><br></pre></td></tr></table></figure>
+<p>Any是为了那行习惯使用动态程序语言而提提供的一种方法，可以让属性的类型不固定。</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//number转string</span><br><span class="line">let a: number = 123;</span><br><span class="line">let b: string = a.toString();</span><br><span class="line"></span><br><span class="line">//string转number</span><br><span class="line">let c: string = &apos;123&apos;;</span><br><span class="line">let d: number = parseFloat(c);</span><br><span class="line"></span><br><span class="line">//任意类型转为boolean</span><br><span class="line">let s1: number = 2;</span><br><span class="line">let b1: boolean = Boolean(s1); </span><br><span class="line"></span><br><span class="line">//object转为string</span><br><span class="line">let obj = &#123; name: &apos;frank&apos;, age: 18 &#125;;</span><br><span class="line">let string = JSON.stringify(obj);</span><br><span class="line">console.log(typeof string);</span><br><span class="line">console.log(string);</span><br><span class="line"></span><br><span class="line">//string转为object</span><br><span class="line">let string2 = `&#123;&quot;name&quot;: &quot;frank&quot;, &quot;age&quot;: 18&#125;`;</span><br><span class="line">let obj2 = JSON.parse(string2);</span><br><span class="line">console.log(typeof obj2);</span><br><span class="line">console.log(obj2);</span><br></pre></td></tr></table></figure>
+<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let someValue =  ‘xxx&apos;</span><br><span class="line">let b = (&lt;string&gt;someValue).length;</span><br><span class="line">(someValue as string).length;</span><br></pre></td></tr></table></figure>
+<p> 断言（武断）的说这个类型是string，出了事我自己负责</p>
+<p>通过TypeSript完成的一个简单计算器：<a href="https://fallen158.github.io/claculator/" target="_blank" rel="noopener">Calactor</a></p>
 
           
         
@@ -2146,329 +2456,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/Web性能优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/01/浏览器/Web性能优化/" itemprop="url">Web性能优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T11:04:30+08:00">
-                2018-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/浏览器/" itemprop="url" rel="index">
-                    <span itemprop="name">浏览器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/01/浏览器/浏览器渲染过程/" itemprop="url">浏览器渲染过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T10:37:10+08:00">
-                2018-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/浏览器/" itemprop="url" rel="index">
-                    <span itemprop="name">浏览器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg" alt=""></p>
-<p>从上面图中可以看到：</p>
-<p><strong>浏览器会解析三个东西</strong></p>
-<ul>
-<li>一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。</li>
-<li>CSS，解析CSS会产生CSS规则树。</li>
-<li>Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.</li>
-</ul>
-<p><strong>解析完成后</strong></p>
-<ul>
-<li>浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree</li>
-<li>Rendering Tree 渲染树并不等同于DOM树，比如像 head 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 </li>
-<li>通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 reflow 或 Layout </li>
-<li>最终通过调用Native GUI 的 API 绘制网页画面的过程称为 Pain</li>
-</ul>
-<p>当用户在浏览网页时进行交互或通过 js 脚本改变页面结构时，以上的部分操作有可能重复运行，此过程称为 Repaint 或 Reflow。</p>
-<ul>
-<li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变</li>
-<li>当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。（ HTML 使用的是 flow based layout ，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫 Reflow。）</li>
-</ul>
-<blockquote>
-<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。</p>
-</blockquote>
-<p>所以，下面这些动作有很大可能会是成本比较高的</p>
-<ul>
-<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
-<li>增加、删除 ‘class’ 属性值</li>
-<li>元素尺寸改变</li>
-<li>文本内容改变</li>
-<li>浏览器窗口改变大小或拖动</li>
-<li>动画效果进行计算和改变 CSS 属性值</li>
-<li>伪类激活（:hover）</li>
-</ul>
-<p>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</p>
-<p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var bstyle = document.body.style; // cache</span><br><span class="line"> </span><br><span class="line">bstyle.padding = &quot;20px&quot;; // reflow, repaint</span><br><span class="line">bstyle.border = &quot;10px solid red&quot;; //  再一次的 reflow 和 repaint</span><br><span class="line"> </span><br><span class="line">bstyle.color = &quot;blue&quot;; // repaint</span><br><span class="line">bstyle.backgroundColor = &quot;#fad&quot;; // repaint</span><br><span class="line"> </span><br><span class="line">bstyle.fontSize = &quot;2em&quot;; // reflow, repaint</span><br><span class="line"> </span><br><span class="line">// new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(&apos;dude!&apos;));</span><br></pre></td></tr></table></figure>
-<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。<strong>一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow</strong>。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2519,7 +2506,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2530,7 +2517,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2541,7 +2528,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -260,6 +260,329 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/Web性能优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/01/浏览器/Web性能优化/" itemprop="url">Web性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T11:04:30+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/浏览器/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/浏览器渲染过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记昨日书">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/01/浏览器/浏览器渲染过程/" itemprop="url">浏览器渲染过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T10:37:10+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/浏览器/" itemprop="url" rel="index">
+                    <span itemprop="name">浏览器</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><p><img src="http://pa3otstvm.bkt.clouddn.com/18-8-1/68741228.jpg" alt=""></p>
+<p>从上面图中可以看到：</p>
+<p><strong>浏览器会解析三个东西</strong></p>
+<ul>
+<li>一个是HTML/SVG/XHTML，解析这三种文件会产生一个DOM Tree。</li>
+<li>CSS，解析CSS会产生CSS规则树。</li>
+<li>Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.</li>
+</ul>
+<p><strong>解析完成后</strong></p>
+<ul>
+<li>浏览器引擎通过 DOM Tree 和 CSS Rule Tree 构建 Rendering Tree</li>
+<li>Rendering Tree 渲染树并不等同于DOM树，比如像 head 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 </li>
+<li>通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 reflow 或 Layout </li>
+<li>最终通过调用Native GUI 的 API 绘制网页画面的过程称为 Pain</li>
+</ul>
+<p>当用户在浏览网页时进行交互或通过 js 脚本改变页面结构时，以上的部分操作有可能重复运行，此过程称为 Repaint 或 Reflow。</p>
+<ul>
+<li>Repaint——屏幕的一部分要重画，比如某个CSS的背景色变了。但是元素的几何尺寸没有变</li>
+<li>当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。（ HTML 使用的是 flow based layout ，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫 Reflow。）</li>
+</ul>
+<blockquote>
+<p>Reflow的成本比Repaint的成本高得多的多。DOM Tree里的每个结点都会有reflow方法，一个结点的reflow很有可能导致子结点，甚至父点以及同级结点的reflow。<strong>在一些高性能的电脑上也许还没什么，但是如果reflow发生在手机上，那么这个过程是非常痛苦和耗电的</strong>。</p>
+</blockquote>
+<p>所以，下面这些动作有很大可能会是成本比较高的</p>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>增加、删除 ‘class’ 属性值</li>
+<li>元素尺寸改变</li>
+<li>文本内容改变</li>
+<li>浏览器窗口改变大小或拖动</li>
+<li>动画效果进行计算和改变 CSS 属性值</li>
+<li>伪类激活（:hover）</li>
+</ul>
+<p>注：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var bstyle = document.body.style; // cache</span><br><span class="line"> </span><br><span class="line">bstyle.padding = &quot;20px&quot;; // reflow, repaint</span><br><span class="line">bstyle.border = &quot;10px solid red&quot;; //  再一次的 reflow 和 repaint</span><br><span class="line"> </span><br><span class="line">bstyle.color = &quot;blue&quot;; // repaint</span><br><span class="line">bstyle.backgroundColor = &quot;#fad&quot;; // repaint</span><br><span class="line"> </span><br><span class="line">bstyle.fontSize = &quot;2em&quot;; // reflow, repaint</span><br><span class="line"> </span><br><span class="line">// new DOM element - reflow, repaint</span><br><span class="line">document.body.appendChild(document.createTextNode(&apos;dude!&apos;));</span><br></pre></td></tr></table></figure>
+<p>当然，我们的浏览器是聪明的，它不会像上面那样，你每改一次样式，它就reflow或repaint一次。<strong>一般来说，浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow</strong>。但是有些情况浏览器是不会这么做的，比如：resize窗口，改变了页面默认的字体，等。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/01/浏览器/常见的浏览器内核/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1817,390 +2140,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/01/python/函数式编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/01/python/函数式编程/" itemprop="url">函数式编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T23:39:29+08:00">
-                2018-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>高阶函数: 变量可以指向函数-&gt; 函数名也是变量:把函数作为参数传入，这样的函数称为高阶函数，函数式编程就是指这种高度抽象的编程范式。</p>
-<p>函数式编程的准则：不依赖于外部的数据，而且也不改变外部数据的值，而是返回一个新的值给你。</p>
-<p>首先我们再来看一个简单例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def inc(x):</span><br><span class="line">    def incx(y):</span><br><span class="line">        return x+y</span><br><span class="line">    return incx</span><br><span class="line"> </span><br><span class="line">inc2 = inc(2)</span><br><span class="line">inc5 = inc(5)</span><br></pre></td></tr></table></figure>
-<p>从这个技术上，你可能体会到函数式编程的理念：把函数当成变量来用，关注于描述问题而不是怎么实现，这样可以让代码更易读。</p>
-<h3 id="函数式编程的基本单元"><a href="#函数式编程的基本单元" class="headerlink" title="函数式编程的基本单元"></a>函数式编程的基本单元</h3><p>在Python语言中，用于函数式编程的主要由3个基本函数和1个算子。</p>
-<p> 基本函数：map()、reduce()、filter()，还有一些别的如, sorted,find, all, any的函数做辅助（其它函数式的语言也有），可以让你的代码更简洁，更易读。</p>
-<p>算子(operator)：lambda。</p>
-<p>在函数式编程中，我们不应该用循环迭代的方式，我们应该用更为高级的方法，如下方所示的Python代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;fnuc2  = lambda : 6</span><br><span class="line">&gt;&gt;&gt;func1 = lambda : &lt;expression()&gt;</span><br><span class="line">&gt;&gt;&gt;double_func = lambda s : s * 2</span><br></pre></td></tr></table></figure>
-<p>和下面采用def创建函数的效果是相同的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def func2():</span><br><span class="line">    return 6</span><br><span class="line">def func1():</span><br><span class="line">    &lt;expression()&gt;</span><br><span class="line">def double_func(s):</span><br><span class="line">    return s*2</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，调用func1的时候，虽然不需要传入参数，但是必须要带有括号()，否则返回的只是函数的定义，而非函数执行的结果。</p>
-<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;map(func, iterable)</span><br></pre></td></tr></table></figure>
-<p>map函数需要两个必填参数，第一个参数是一个函数名，第二个参数是一个可迭代的对象，如列表、元组等。</p>
-<p>map实现的功能很简单，就是将第二个参数（iterable）中的每一个元素分别传给第一个参数（func），依次执行函数得到结果，并将结果组成一个新的list对象后进行返回。返回结果永远都是一个list。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;double_func = lambda s : s * 2</span><br><span class="line">L = [1,2,3,4,5]</span><br><span class="line">&gt;&gt;&gt;map(double_func, L)</span><br><span class="line">[1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br><span class="line"></span><br><span class="line">#map还可以其他内置函数</span><br><span class="line">&gt;&gt;&gt;R = list(map(str,L))</span><br><span class="line">[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5’]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;R = list(map(float,L))</span><br><span class="line">[1.0, 2.0, 3.0, 4.0, 5.0]</span><br></pre></td></tr></table></figure>
-<p>除了传入一个可迭代对象这种常见的模式外，map还支持传入多个可迭代对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;plus = lambda x,y : (x or 0) + (y or 0)</span><br><span class="line">&gt;&gt;&gt;map(plus, [1,2,3], [4,5,6])</span><br><span class="line">[5, 7, 9]</span><br><span class="line">&gt;&gt;&gt;map(plus, [1,2,3,4], [4,5,6])</span><br><span class="line">[5, 7, 9, 4]</span><br><span class="line">&gt;&gt;&gt;map(plus, [1,2,3], [4,5,6,7])</span><br><span class="line">[5, 7, 9, 7]</span><br></pre></td></tr></table></figure>
-<p>在上面的例子中，之所以采用x or 0的形式，是为了防止None + int出现异常。</p>
-<p>需要注意的是，可迭代对象的个数应该与func的参数个数一致，否则就会出现异常，因为传参个数与函数参数个数不一致了，这个应该比较好理解。</p>
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;reduce(func, iterable[, initializer])</span><br></pre></td></tr></table></figure>
-<p> reduce函数的功能是对可迭代对象（iterable）中的元素从左到右进行累计运算，最终得到一个数值。接收的参数，一个函数f，一个list，但是传入的函数f必须接收两个参数，另外还可以接受第三个可选参数.第三个参数initializer是初始数值，可以空置，空置为None时就从可迭代对象（iterable）的第二个元素开始，并将第一个元素作为之前的结果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;plus = lambda x, y : x + y</span><br><span class="line">&gt;&gt;&gt;reduce(plus, [1,2,3,4,5])</span><br><span class="line">15</span><br><span class="line">&gt;&gt;&gt;reduce(plus, [1,2,3,4,5], 10)</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
-<p>需要注意的是reduce在python3被放进functools包啦，使用前需要导入：from functools import reduce。</p>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;filter(func, iterable)</span><br></pre></td></tr></table></figure>
-<p>filter有且仅有两个参数，第一个参数是一个函数名，第二个参数是一个可迭代的对象，如列表、元组等,这个函数f的作用是对每个元素进行判断，返回True和false，自动过滤不符合条件的元素。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;mode2 = lambda x : x % 2</span><br><span class="line">&gt;&gt;&gt;filter(mode2, [1,2,3,4,5,6,7,8,9,10])</span><br><span class="line">[1, 3, 5, 7, 9]</span><br></pre></td></tr></table></figure>
-<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><p>自定义排序函数，默认是正序排列，它可以接受一个key函数来实现自定义排序,字符串排序依照ASCII。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;L = sorted([1,4,3,-5,2])</span><br><span class="line">[-5, 1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;L = sorted([1,3,6,-20,-70],key=abs)</span><br><span class="line">&gt;&gt;&gt;print(&apos;自定义排序’,[1, 3, 6, -20, -70])</span><br><span class="line">[1, 3, 6, -20, -70]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;sorter2 = sorted([1,3,6,-20,-70],key=abs,reverse=True)</span><br><span class="line">&gt;&gt;&gt;print(‘反向排序’,[1, 3, 6, -20, -70])</span><br><span class="line">[-70, -20, 6, 3, 1]</span><br></pre></td></tr></table></figure>
-<p>###替换for循环</p>
-<p>for循环语句的替换十分简单，采用map函数就能轻松实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;square = lambda x : x * x</span><br><span class="line">&gt;&gt;&gt;for x in [1,2,3,4,5]: square(x)</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">9</span><br><span class="line">16</span><br><span class="line">25</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;map(square, [1,2,3,4,5])</span><br><span class="line">[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
-<h3 id="替换while循环"><a href="#替换while循环" class="headerlink" title="替换while循环"></a>替换while循环</h3><p>while循环语句的替换相比而言就复杂了许多。</p>
-<p>例如一个找quit字符的例子，输入任意非”quit”字符时，打印输入的字符；输入”quit”字符时，退出程序。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">echo_IMP()</span><br><span class="line">IMP -- 1</span><br><span class="line">1</span><br><span class="line">IMP -- 2</span><br><span class="line">2</span><br><span class="line">IMP -- abc</span><br><span class="line">abc</span><br><span class="line">IMP -- 1 + 1</span><br><span class="line">1 + 1</span><br><span class="line">IMP -- quit</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
-<p>如下便是分别采用过程式和函数式语句实现的”echo”功能。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def echo_IMP():</span><br><span class="line">    while 1:</span><br><span class="line">        x = raw_input(&quot;IMP -- &quot;)</span><br><span class="line">        print x</span><br><span class="line">        if x == &apos;quit’:</span><br><span class="line">            break</span><br><span class="line"> def monadic_print(x):</span><br><span class="line">    print x</span><br><span class="line">    return x</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">echo_FP = lambda: monadic_print(raw_input(&quot;FP -- &quot;))==&apos;quit&apos; or echo_FP()</span><br><span class="line">echo_FP()</span><br><span class="line">FP -- 3</span><br><span class="line">3</span><br><span class="line">FP -- 4</span><br><span class="line">4</span><br><span class="line">FP -- 5</span><br><span class="line">5</span><br><span class="line">FP -- quit</span><br><span class="line">quit</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-<p>可以看到，函数式编程有如下好处：</p>
-<ol>
-<li>代码更简单了。</li>
-<li>数据集，操作，返回值都放到了一起。</li>
-<li>你在读代码的时候，没有了循环体，于是就可以少了些临时变量，以及变量倒来倒去逻辑。</li>
-<li>你的代码变成了在描述你要干什么，而不是怎么去干。</li>
-</ol>
-<h3 id="课后练习题"><a href="#课后练习题" class="headerlink" title="课后练习题"></a>课后练习题</h3><p>1.利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(1)def print_from(name):</span><br><span class="line">    	return name.title()</span><br><span class="line">L = list(map(print_from,[&apos;adam&apos;,&apos;LIAS&apos;,&apos;bdarTd&apos;]))</span><br><span class="line">[&apos;Adam&apos;, &apos;Lias&apos;, &apos;Bdartd’]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2) print_from = list(map(lambda name : name.title(),[&apos;Adam&apos;, &apos;Lias&apos;, &apos;Bdartd&apos;]))</span><br></pre></td></tr></table></figure>
-<p>title()方法是python内置的函数。它返回”标题化”的字符串,就是说所有单词都是以大写开始，其余字母均为小写。</p>
-<p>2..Python提供的sum()函数可以接受一个list并求和，请编写一个prod()函数，可以接受一个list并利用reduce()求积：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(1)def prod(L=[]):</span><br><span class="line">    def number(x,y):</span><br><span class="line">        return x*y</span><br><span class="line">    return reduce(number,L)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2)number = lambda x,y : x*y</span><br><span class="line">prod = lambda L=[]: reduce(number,L)</span><br><span class="line">prod([1,2,3,4,5,6,7,8,9])</span><br><span class="line">362880</span><br></pre></td></tr></table></figure>
-<p>3.计算数组中整数的平均值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(1)num =[2, -5, 9, 7, -2, 5, 3, 1, 0, -3, 8]</span><br><span class="line">positive_num_cnt = 0</span><br><span class="line">positive_num_sum = 0</span><br><span class="line">for i in range(len(num)):</span><br><span class="line">    if num[i] &gt; 0:</span><br><span class="line">        positive_num_cnt += 1</span><br><span class="line">        positive_num_sum += num[i]</span><br><span class="line"> </span><br><span class="line">if positive_num_cnt &gt; 0:</span><br><span class="line">    average = positive_num_sum / positive_num_cnt</span><br><span class="line"> </span><br><span class="line">print (average)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(2)num =[2, -5, 9, 7, -2, 5, 3, 1, 0, -3, 8]</span><br><span class="line">positive_num = list(filter(lambda x: x&gt;0, num))</span><br><span class="line">average = reduce(lambda x,y: x+y, positive_num) / len( positive_num )</span><br></pre></td></tr></table></figure>
-<p>未完待续….</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/javaScript/浅谈面对对象编程-opp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林枫">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="记昨日书">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/28/javaScript/浅谈面对对象编程-opp/" itemprop="url">浅谈面对对象编程(opp)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T22:34:54+08:00">
-                2018-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">javaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>与其他语言不同，JavaScript 是一种基于原型的编程语言，并没有 类（class ）语句，而是把函数用作类。类这一概念在 JavaScript 通过对象原型（object prototype）得到延续，ES6中引入的类实质上是JavaScript 现有的基于原型的继承的语法糖。 </p>
-<h3 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h3><p>以一个简单的例子来说明，让我们看看普通的函数是如何定义一个人：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">   var obj =&#123;&#125;;</span><br><span class="line">   obj.name = name</span><br><span class="line">   obj.run = function ()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos;+ this.name + &apos;正在跑!&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    return obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用这个函数并创建一个Join的人。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var Join = Human(&apos;Join’)</span><br><span class="line">Join.name</span><br><span class="line">Join.run()</span><br></pre></td></tr></table></figure>
-<p>上面的代码看起来没有任何的问题，就是有点冗长，如果我们知道如何创建一个对象，就没有必要创建一个新的空对象并且返回它。 </p>
-<p>接下来，试试用构建函数来定义这个对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">    this.run = function()&#123;</span><br><span class="line">        console.log(&apos;我叫 &apos;+ this.name + &apos;正在跑!&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个构建函数是 js版本的类。它只定义了对象的属性和方法，除了没有明确创建一个对象和返回任何值和之外，它有了您期待的函数所拥有的全部功能。</p>
-<p>那么如何创建一个函数实例呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Join = new Human(&apos;Join’)</span><br><span class="line">var Bob  = new Human(&apos;Bob&apos;)</span><br></pre></td></tr></table></figure>
-<p>这种方法看起来是不是更简单，酷一点。</p>
-<p>在控制台输入如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Join.name</span><br><span class="line">Join.run()</span><br><span class="line">Bob.name</span><br><span class="line">Bob.run()</span><br></pre></td></tr></table></figure>
-<p>您现在在页面看到的两个对象，尽管它们有着相同的name属性和run方法，但它们是各自独立的，所以他们相互的功能不会冲突，注意它们使用的是自己的 name 值，这也是使用 this 关键字的原因。</p>
-<p>需要注意的，上面代码中有一个new关键字，它是JS的语法糖，用于告知浏览器我们想要创建一个对象实例,它的作用：</p>
-<ul>
-<li>帮你创建一个空对象,作为将要返回的对象实例。</li>
-<li>将空对象的原型指向构造函数的原型</li>
-<li>将这个空对象赋值给函数内部的<code>this</code>关键字。</li>
-<li>执行函数内的代码并返回</li>
-</ul>
-<p>例如，我们可以通过原型给Human类添加方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Human.prototype.fight = function()&#123;</span><br><span class="line">    console.log(this.name + &apos;糊你一脸&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var Join = new Human(&apos;Join’)</span><br></pre></td></tr></table></figure>
-<p>这时，我们调用Join会发现它的原型链上增加啦一个fight方法</p>
-<p><img src="http://pa3otstvm.bkt.clouddn.com/18-6-28/21735027.jpg" alt=""></p>
-<p>调用用fight方法： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Join.fight() </span><br><span class="line"></span><br><span class="line">//Join糊你一脸</span><br></pre></td></tr></table></figure>
-<h3 id="继承是什么"><a href="#继承是什么" class="headerlink" title="继承是什么"></a>继承是什么</h3><p>  在Javascript中，继承通过赋予子类一个父类的实例并专门化子类来实现。简单来说：继承就是让子类别具有父类别的各种属性和方法。 </p>
-<p>以一个例子为说明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line">var object = new Person(&apos;Join&apos;)</span><br></pre></td></tr></table></figure>
-<p>如何让person类拥有Human的run方法呢？</p>
-<p>（1）直接让Person的原型指向Human</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.__proto__ = Human.prototype</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;)</span><br><span class="line"></span><br><span class="line">object.run()</span><br><span class="line">//我叫 Join正在跑</span><br></pre></td></tr></table></figure>
-<p>这种方法是简单暴力，但是兼容性不太友好，不推荐使用</p>
-<p>（2）使用一个函数做过渡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name,seler)&#123;</span><br><span class="line">    Human.call(this,name) //调用Human函数，使&quot;this&quot; 在调用过程中设置正确</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name,seler)&#123;</span><br><span class="line">    Human.call(this,name)</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这三句话等用于上面一句话</span><br><span class="line"> var f = function()&#123;&#125;  </span><br><span class="line"> f.prototype = Human.prototype</span><br><span class="line"> Person.prototype = new f()</span><br><span class="line"> </span><br><span class="line"> var object = new Person(&apos;Join&apos;,&apos;faimly&apos;)</span><br><span class="line"> object // 打开原型就会发现指向Human有一个run方法</span><br><span class="line"> </span><br><span class="line"> //当然我们还可以修改run方法或添加Person类方法</span><br><span class="line"> </span><br><span class="line"> Person.prototype.sayHello = function()&#123;</span><br><span class="line">    console.log(&apos;Hi &apos;+ this.seler + &apos; !&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我和 &apos;+  this.seler  + this.name + &apos; 正在跑步&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;,&apos;family&apos;)</span><br><span class="line">object.run()</span><br><span class="line">//我和 family Join 正在跑步</span><br><span class="line">object.sayHello()</span><br><span class="line">Hi family !</span><br></pre></td></tr></table></figure>
-<p>这种方法兼容性蛮好的，也是目前比较流行的方法</p>
-<p>（3）使用Object.create</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我叫 &apos; +this.name+ &apos;正在跑&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Person(name，seler)&#123;</span><br><span class="line">    Human.call(this,name) //调用Human函数，使&quot;this&quot; 在调用过程中设置正确</span><br><span class="line">	this.seler = seler</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = Object.create(Human.prototype)</span><br><span class="line"></span><br><span class="line">Person.prototype.constructor = Person;</span><br><span class="line"></span><br><span class="line"> Person.prototype.sayHello = function()&#123;</span><br><span class="line">    console.log(&apos;Hi &apos;+ this.seler + &apos; !&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.run = function()&#123;</span><br><span class="line">    console.log(&apos;我和 &apos;+  this.seler  + this.name + &apos; 正在跑步&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = new Person(&apos;Join&apos;,&apos;family&apos;)</span><br><span class="line">object.run()</span><br><span class="line">//我和 family Join 正在跑步</span><br><span class="line">object.sayHello()</span><br><span class="line">Hi family !</span><br></pre></td></tr></table></figure>
-<p>这个还不太熟，正在学习中</p>
-<p>（4）使用ES6类class</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Human&#123;</span><br><span class="line">    constructor(name)&#123;  //本身属性放在constructor</span><br><span class="line">        this.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    run()&#123; </span><br><span class="line">        console.log(&quot;我叫&quot;+this.name+&quot;，我在跑&quot;)</span><br><span class="line">        return undefined</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//extends用于创建一个类作为另一个类的一个子类。</span><br><span class="line">class Person extends Human&#123; </span><br><span class="line">    constructor(name,subject)&#123;</span><br><span class="line">        super(name) //等同于上面的call</span><br><span class="line">        this.subject = subject</span><br><span class="line">    &#125;</span><br><span class="line">    fight()&#123;</span><br><span class="line">        console.log(&apos;糊你熊脸&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"> speak()&#123; //</span><br><span class="line">	 console.log(&apos;Hi,&apos;+ this.subject)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object =new Person(&apos;Join&apos;,&apos;faye&apos;)</span><br><span class="line"></span><br><span class="line">object //打开原型链可以看到Person的两个方法和指向Human的run方法</span><br><span class="line"></span><br><span class="line">object.fight()</span><br><span class="line">//糊你熊脸</span><br><span class="line">object.speak()</span><br><span class="line">//Hi,faye</span><br><span class="line">object.run()</span><br><span class="line">//我叫Join，我在跑</span><br></pre></td></tr></table></figure>
-<p>这种方法是源于Java类的。</p>
-<p>第二种和第四种方法是目前前端用的最多的，强力推荐。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2251,7 +2190,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2262,7 +2201,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2273,7 +2212,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
